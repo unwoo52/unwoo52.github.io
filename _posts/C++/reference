@@ -1,0 +1,42 @@
+---
+title: reference
+author: unwoo52
+date: 2023-01-02 00:00:00 +09:00
+categories: [C++ ]
+tags: [C++, reference]
+---
+
+
+## Array
+
+```cpp
+int myArray[3] //고정 배열. 컴파일단계에서 배열의 크기를 알 수 있다.
+
+int* myDynamicArray = new int[3]{0,1,2} //동적 배열. 동적 배열도 선언할 때 길이를 설정해 선언해야만 한다.
+```
+
+고정 배열은 간단하게 선언 할 수 있지만,
+
+동적 배열은 배열의 타입(int) 포인터를 생성해 가리키게 해야 한다.
+
+#### 배열 크기 늘리는 방법
+
+- 1. 더 큰 배열을 선언하여 옮기기
+
+- 2. 
+
+## Vector
+
+## List
+
+## Map
+
+## Set
+
+## Hash Table
+
+## Hash Map
+
+## Hash Set
+
+

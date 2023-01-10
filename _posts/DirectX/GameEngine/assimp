@@ -1,0 +1,19 @@
+---
+title: assimp
+author: unwoo52
+date: 2022-12-14 00:00:00 +09:00
+categories: [Win32API]
+tags: [Win32API]
+---
+
+## Assimp 개요
+
+Assimp : 오픈프로젝트의 한 종류이자 라이브러리
+
+버텍스 정보와 인덱스 정보를 담고있는 데이터 파일을 받아 읽어들여 렌더링 하는 작업을 해보자.
+
+Assimp 깃허브에서 라이브러리를 다운로드
+
+![imagename](/assets/image/DirectX/GameEngine/Assimp-Setting/001.png)
+ 
+ ## Assimp 다운로드

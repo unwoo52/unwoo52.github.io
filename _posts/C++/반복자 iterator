@@ -1,0 +1,117 @@
+---
+title: 반복자 iterator
+author: unwoo52
+date: 2023-01-03 00:00:00 +09:00
+categories: [C++ ]
+tags: [C++, reference]
+---
+
+## 반복자
+
+반복자가 가져야 할 요구 사항과 정의되어야 할 연산자는 다음과 같습니다.
+
+ 
+
+1. 가리키는 요소의 값에 접근할 수 있어야 합니다. 따라서 참조 연산자(*)가 정의되어야 합니다.
+
+2. 반복자 사이의 대입 연산, 비교 연산이 가능해야 합니다. 따라서 대입, 관계 연산자가 정의되어야 합니다.
+
+3. 가리키는 요소의 주변 요소로 이동할 수 있어야 합니다. 따라서 증가 연산자(++)가 정의되어야 합니다.
+
+ 
+
+위와 같은 요구 사항을 모두 갖춰야만 STL 알고리즘에서 반복자로 사용될 수 있습니다.
+
+- 반복자는 포인터를 일반화한 것으로, 포인터는 반복자가 가져야 할 모든 요구 사항을 만족합니다.
+
+## 반복자가 필요한 이유
+
+컨테이너의 종류는 여러가지이고, 컨테이너별로 원소에 접근하는 방식이 다르지만, 반복자를 사용하면 같은 방법으로 요소들에 접근할 수 있다.
+
+- vector에 반복자로 접근하기
+
+```cpp
+vector<int> v;
+ 
+v.push_back(1);
+v.push_back(2);
+v.push_back(3);
+ 
+vector<int>::iterator iter_begin = v.begin(); // 첫번째 원소 위치
+vector<int>::iterator iter_end = v.end(); // 마지막 원소 다음 위치
+ 
+for (; iter_begin != iter_end; ++iter_begin) // 증감 연산자로 순회 가능
+    cout << *iter_begin << endl;  // 포인터처럼 역참조 연산으로 실제 값을 참조한다.
+```
+
+- linked list에 반복자로 접근하기
+
+```cpp
+list<int> l;
+l.push_back(1);
+l.push_back(2);
+l.push_back(3);
+ 
+ 
+list<int>::iterator iter_begin = l.begin();
+list<int>::iterator iter_end = l.end();
+ 
+for (; iter_begin != iter_end; ++iter_begin)
+    cout << *iter_begin << endl;
+```
+
+
+## 반족자의 종류
+
+
+반복자의 종류는 아래와 같다.
+
+1. 입력 반복자 (input iterator)
+
+2. 출력 반복자 (output iterator)
+
+3. 순방향 반복자 (forward iterator)
+
+4. 양방향 반복자 (bidirectional iterator)
+
+5. 임의 접근 반복자 (Random access iterator)
+
+벡터는 임의 접근이 가능하다.
+
+```cpp
+vector<int>::iterator iter = v.begin();
+cout << iter[1] << endl;
+```
+
+## 반복자의 무효화
+
+```cpp 
+vector<int> v = { 1,2,3 };
+ 
+vector<int>::iterator iter = v.begin();
+iter++;
+ 
+v.erase(iter);
+cout << *iter << endl; // 반복자 무효화!
+```
+
+2라는 원소가 사라지면서 배열이 변경되었으므로, 삭제된 원소 뒤에 있는 원소들은 앞으로 당겨지게 되고 옮겨진 위치의 반복자들은 모두 무효화된다.
+
+## 반복자 무효화 이후 갱신
+
+```cpp
+vector<int> v = { 1,2,3 };
+ 
+vector<int>::iterator iter = v.begin();
+iter++;
+ 
+iter = v.erase(iter); // 반복자를 갱신
+cout << *iter << endl;
+```
+
+
+## 참고 문서
+
+[TCP](http://www.tcpschool.com/cpp/cpp_iterator_intro)
+
+[blog](https://spenshi.tistory.com/entry/C-%EB%B0%98%EB%B3%B5%EC%9E%90iterator)

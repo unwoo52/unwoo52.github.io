@@ -1,0 +1,11 @@
+---
+title: reference
+author: unwoo52
+date: 2023-01-02 00:00:00 +09:00
+categories: [C++ ]
+tags: [C++, reference]
+---
+
+상수 참조자를 쓰는 이유를 설명. 만약 param이 rvalue라면 methodName(const type& paramName)으로 받야아 함
+
+[](https://easycoding91.tistory.com/entry/C-%EA%B0%95%EC%A2%8C-%EC%B0%B8%EC%A1%B0%EC%9E%90Reference%EC%9D%98-%EA%B0%9C%EB%85%90%EA%B3%BC-%ED%95%A8%EC%88%98-%ED%99%9C%EC%9A%A9)
