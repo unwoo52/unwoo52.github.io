@@ -14,8 +14,11 @@ tags: [directX, Win32API, GameEngine, AdapterReader]
 
 <details>
 <summary markdown="span"> 
-AdapterReader.h 전체 코드
+  
 </summary>
+  
+AdapterReader.h 전체 코드
+  
 ```cpp
 #pragma once
 #include "../DebugLog.h"
@@ -41,6 +44,7 @@ public:
 	static vector<AdapterData> GetAdapters();
 };
 ```
+  
 </details>
 
 -------------
