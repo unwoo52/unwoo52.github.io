@@ -13,13 +13,9 @@ tags: [directX, Win32API, GameEngine, AdapterReader]
 ## AdapterReader.h
 
 <details>
-<summary markdown="span"> 
-  
-AdapterReader.h 전체 코드
-  
-</summary>
-  
-  
+<summary>AdapterReader.h</summary>
+<div markdown="1">
+
 ```cpp
 #pragma once
 #include "../DebugLog.h"
@@ -45,11 +41,13 @@ public:
 	static vector<AdapterData> GetAdapters();
 };
 ```
-  
+
+
+</div>
 </details>
   
   
-<br>
+
 
 -------------
 
@@ -80,9 +78,10 @@ pragma comment와 include의 차이점은 include는 h파일(코드 파일)을 �
 ## AdapterReader.cpp
 
 <details>
-<summary markdown="span"> 
-AdapterReader.cpp 전체 코드
-</summary>
+<summary>AdapterReader.cpp</summary>
+<div markdown="1">
+  
+```cpp
 #include "AdapterReader.h"
 
 vector<AdapterData> AdapterReader::adapters;
@@ -121,9 +120,11 @@ vector<AdapterData> AdapterReader::GetAdapters()
 
 	return adapters;
 }
-
+```
+  
+</div>
 </details>
-
+  
 ----
 
 #### 코드 설명
