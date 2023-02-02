@@ -1,0 +1,70 @@
+---
+title: Unity UI 구현하기
+author: unwoo52
+date: 2022-11-13 00:00:00 +09:00
+categories: [Unity, UI]
+tags: [Unity, UI]
+---
+
+## Event System
+
+UI를 위해 텍스트나 버튼 등을 생성하면 자동으로 같이 생성된다.
+
+이벤트시스템이 없으면 버튼 등 과 같은 UI상호작용을 할 수 없다.
+
+## 한글 폰트 다운받기
+
+[공유마당](https://gongu.copyright.or.kr/gongu/search/search/list.do?viewType=&collection=gongu_wrt&kwd=%ED%8F%B0%ED%8A%B8&reSrchCheck=&reKwd=&pageIndex=1&wrtTy=10009&licenseCd=&koreanClList=&srchAll=1&sotrSe=date&srchName=&dataSe=&koglClSe=&dataSite=&authrNmP=&tagNmList=&d2WrtFileTyChk=&d2WrtTy=&d2LicenseCdTy=&d2LicenseChk=)
+
+무료로 공개되는 폰트를 위의 사이트에서 다운받는다.
+
+
+![imagename](/assets/image/Unity/UI/MakeUI/001.png)
+
+받은 폰트의 ttf 파일을 프로젝트 안에 포함시킨 후, 우클릭하여 Font Asset을 생성한다.
+
+![imagename](/assets/image/Unity/UI/MakeUI/002.png)
+
+캔버스의 Text가 있는 오브젝트의 Font Asset을 지정.
+
+## 아틀라스 늘리기
+
+![imagename](/assets/image/Unity/UI/MakeUI/003.png)
+
+
+글씨의 수가 너무 많아져서 아틀라스의 공간이 다 차버리게 되면 글씨가 깨지게 된다.
+
+
+
+![imagename](/assets/image/Unity/UI/MakeUI/004.png)
+
+해당 Font Asset의 아틀라스 크기를 늘리면 해결 가능
+
+## 채팅 구현하기
+
+chatWindow 오브젝트 생성 후, 스크롤뷰, 인풋필드 생성. 스크롤뷰 안에 Content에 채팅오브젝트들이 생성되어 올라오게 할 것.
+
+인풋필드는 한글 입력이 가능하게 텍스트메시프로를 다운받은 폰트로 변경
+
+텍스트를 소유하는 오브젝트 프리펩을 생성
+
+## 채팅 기능 코드
+
+
+<details>
+<summary>상세내용확인</summary>
+<div markdown="1">
+
+div 에 markdown attribute 를 1 로 
+하는 이유는 div 안에서
+markdown 을 사용하기 위해서 입니다.
+
+
+</div>
+</details>
+
+
+
+
+
+
