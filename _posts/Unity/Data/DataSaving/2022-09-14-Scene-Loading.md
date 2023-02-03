@@ -2,8 +2,8 @@
 title: Scene Loading
 author: unwoo52
 date: 2022-09-14 00:00:00 +09:00
-categories: [Unity, UI]
-tags: [Unity, UI]
+categories: [Unity, Data]
+tags: [Unity, Data, Scene, SceneLoad, DataLoad, DontDestroy, DontDestroyOnLoad]
 ---
 
 ## Scene Load
