@@ -12,6 +12,9 @@ tags: [Win32API]
 <summary markdown="span"> 
 Component.h 전체 코드
 </summary>
+
+<div markdown="1">
+
 ```cpp
 #pragma once
 #include <DirectXMath.h>
@@ -28,6 +31,9 @@ public:
 	virtual void Update() = 0;
 };
 ```
+
+</div>
+
 </details>
 
 
@@ -38,6 +44,9 @@ public:
 <summary markdown="span"> 
 GameObject.h 전체 코드
 </summary>
+
+<div markdown="1">
+
 ```cpp
 #pragma once
 #include "../Component/ComponentTypes.h"
@@ -69,6 +78,9 @@ public:
 	}
 };
 ```
+
+</div>
+
 </details>
 
 
@@ -102,6 +114,9 @@ GetComponent 메소드를 잠시 살펴보자.
 <summary markdown="span"> 
 GameObject.cpp 전체 코드
 </summary>
+
+<div markdown="1">
+
 ```cpp
 #include "GameObject.h"
 
@@ -122,6 +137,9 @@ void GameObject::AddComponent(shared_ptr<Component> com)
 	componentList.push_back(com);
 }
 ```
+
+</div>
+
 </details>
 
 - GetTransform 메소드
@@ -162,6 +180,7 @@ componentList.begin()->get()로 받아온 트랜스폼은 컴포넌트포인터 
 Renderer.h 전체 코드
 </summary>
 
+<div markdown="1">
 
 ```cpp
 #include "../Buffers.h"
@@ -199,6 +218,7 @@ public:
 
 - Renderer::ProcessMesh
 
+</div>
 
 </details>
 
@@ -206,6 +226,8 @@ public:
 <summary markdown="span"> 
 Renderer.cpp 전체 코드
 </summary>
+
+<div markdown="1">
 
 ```cpp
 #include "Renderer.h"
@@ -375,21 +397,8 @@ void Renderer::Draw(const XMMATRIX vpMat)
 }
 
 ```
+
+</div>
+
 </details>
-
-1:13 렌더러에 이것저것 추가 콘스탄트버퍼,vb ib 디바이스, 디바이스컨텍스트
-
-1:41 게임오브젝트 인클루드 하고, Draw() 추가. 쉬는 시간 후 3교시 시작해서 이어서 함 <<<<<<<<<<<<<<
-
-## 그래픽스
-
-2:00 정리 시작
-
-2:03 게임오브젝트로 옮긴 버텍스버퍼 인덱스버퍼 등 지움 월드 뷰 프젝 등 도 지움
-
-2:04?5? 렌더러 컴포넌트를 받아와야지 했다가,,, 컴포넌트 받는 코드를 수정하기 시작함. 스마트포인터를 쓰기 시작. 복습해야 함
-
-2:29 드디어 성공.... 
-
-3:09 사실 잘못된 길이었다 <<<<<
 
