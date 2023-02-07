@@ -6,6 +6,18 @@ categories: [Unity, TeamProj_ImprovementProject]
 tags: [Unity, TeamProj_ImprovementProject]
 ---
 
+## 개요
+
+![image](/assets/image/Unity/TeamProj_ImprovementProject/TeamProj_ImprovementProject_post_001/000.png)
+
+Survival-Project-Improve의 포스트들은 두달전에 끝난 Unity개발 팀 프로젝트를 다시 살펴보고 문제점이나 개선점을 발견하고 수정해보는 활동에 대한 포스팅이다.
+
+이번에 작업할 부분은 팀원 중 문준범님이 개발을 담당한 부분은 Scene로드와 게임 데이터 저장 및 불러오기 등 기능이다.
+
+<br>
+
+<br>
+
 ## ChangeMenu Method 개선
 
 ### 기존 코드
@@ -153,3 +165,63 @@ public class Pause : MonoBehaviour
 - 메뉴 부모 클래스를 만들고, title화면의 메뉴와 인게임 메뉴 클래스가 상속하도록 변경해 코드 중복을 줄이고, 앞으로 개발 편의성도 개선하도록 함.
 
 ### Menu Class 생성
+
+<br>
+<br>
+
+
+## 
+
+### 기존 코드
+
+```cs
+public class Pause : MonoBehaviour
+{
+	...
+    
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            PlayerScript.instance.State.isCursorActive = !PlayerScript.instance.State.isCursorActive;
+            IsActive = !IsActive;
+            myCanvas.gameObject.SetActive(IsActive);
+        }
+    }
+    
+	...
+```
+
+### 기능
+
+> F1버튼을 누르면 메뉴 오브젝트(myCanvas)를 활성화하고, 마우스 커서를 활성화 시킴.
+>
+> isActive는 왜 있는지 모르겠다... private값이라 외부에서 쓰이고 있지도 않고, 스크립트 안에서도 위 기능을 제외하면 어디에서도 쓰이지 않음. 제거해도 되는 값인 것 같다.
+
+### 문제점
+
+> Key입력이 각 기능의 각 클래스와 함수에 분산되어 있으면 찾거나 관리하기 힘들 것 같다.
+
+- Key입력은 한 장소로 모아 관리가 용이하게 한다.
+
+> 코드를 읽었을 때 무슨 기능을 하는지 직관적으로 알기 어렵다.
+
+- 함수로 분리, 함수 명을 통해 어떤 기능을 하는 코드인지 유추할 수 있게 함
+
+```cs	
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            ActivateMenu();
+        }
+    }
+
+    private void ActivateMenu()
+    {
+        PlayerScript.instance.State.isCursorActive = !PlayerScript.instance.State.isCursorActive;
+        IsActive = !IsActive;
+        myCanvas.gameObject.SetActive(IsActive);
+    }
+```
+
