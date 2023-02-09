@@ -3,7 +3,7 @@ title: STUB Turned A와 E
 author: unwoo52
 date: 2022-11-25 10:00:00 +09:00
 categories: [MathContent, Aalgorithm ]
-tags: [MathContent, Aalgorithm, stub]
+tags: [MathContent, Algorithm, stub]
 ---
 
 
