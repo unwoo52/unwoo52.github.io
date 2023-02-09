@@ -6,7 +6,7 @@ categories: [Unity, TeamProj_ImprovementProject]
 tags: [Unity, TeamProj_ImprovementProject]
 ---
 
-![imagename](/assets/image/Project/AtentsTeamProj/l&nasp;(1).png)
+![imagename](/assets/image/Project/AtentsTeamProj/l&#160;(1).png)
 
 ![imagename](/assets/image/Project/AtentsTeamProj/l (2).png)
 
