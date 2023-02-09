@@ -2,8 +2,8 @@
 title: 해시함수
 author: unwoo52
 date: 2023-01-03 10:00:00 +09:00
-categories: [MathContent, Aalgorithm ]
-tags: [MathContent, Aalgorithm, HashTable]
+categories: [MathContent, Algorithm ]
+tags: [MathContent, Algorithm, HashTable]
 ---
 
 ## 해시 함수
