@@ -1,5 +1,5 @@
 ---
-title: 임시문서
+title: Transform과 Component
 author: unwoo52
 date: 2022-12-12 00:00:00 +09:00
 categories: [Win32API]
@@ -85,7 +85,7 @@ public:
 
 
 
-컴포넌트 리스트를 갖고 있다. !!여기서 컴포넌트 리스트의 첫번째는 반드시 transform 컴포넌트이다.
+컴포넌트 리스트를 갖고 있다. \[!!여기서 컴포넌트 리스트의 첫번째는 반드시 transform 컴포넌트이다.\]
 
 - GetComponent 메소드
 
