@@ -10,9 +10,9 @@ tags: [Unity, TeamProj_ImprovementProject]
 
 ![image](/assets/image/Unity/TeamProj_ImprovementProject/TeamProj_ImprovementProject_post_001/000.png)
 
-Survival-Project-Improve의 포스트들은 두달전에 끝난 Unity개발 팀 프로젝트를 다시 살펴보고 문제점이나 개선점을 발견하고 수정해보는 활동에 대한 포스팅이다.
+이 포스트에서는 두달전에 끝난 Unity개발 팀 프로젝트를 다시 살펴보고 문제점이나 개선점을 발견하고 수정해보는 활동을 한다.
 
-이번에 작업할 부분은 팀원 중 문준범님이 개발을 담당한 부분은 Scene로드와 게임 데이터 저장 및 불러오기 등 기능이다.
+이번에 개선작업을 할 부분은 팀원 중 문준범님이 개발을 담당한 부분은 Scene로드와 게임 데이터 저장 및 불러오기 등 기능이다.
 
 <br>
 
@@ -139,38 +139,8 @@ myMain[(int)state].SetActive(true);
 <br>
 <br>
 
-## Menu 부모 클래스 만들기
 
-### 기존 구조
-
-```cs
-public class Title : MonoBehaviour
-{
-	private void ChangeMenu(MenuState state) ...
-}
-```
-
-```cs
-public class Pause : MonoBehaviour
-{
-	private void ChangeMenu(MenuState state) ...
-}
-```
-
-
-#### 문제점
-
->메뉴 클래스마다 ChangeMenu 함수를 만들어 두어서 같은 코드가 중복되어 존재함.
-
-- 메뉴 부모 클래스를 만들고, title화면의 메뉴와 인게임 메뉴 클래스가 상속하도록 변경해 코드 중복을 줄이고, 앞으로 개발 편의성도 개선하도록 함.
-
-### Menu Class 생성
-
-<br>
-<br>
-
-
-## 
+## Key 입력으로 Menu창 띄우기
 
 ### 기존 코드
 
@@ -213,11 +183,11 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            ActivateMenu();
+            ActivateMenuObject();
         }
     }
 
-    private void ActivateMenu()
+    private void ActivateMenuObject()
     {
         PlayerScript.instance.State.isCursorActive = !PlayerScript.instance.State.isCursorActive;
         IsActive = !IsActive;
