@@ -1,9 +1,9 @@
 ---
 title: Atents Team Project Team Activity
 author: unwoo52
-date: 2022-12-19 00:00:00 +09:00
-categories: [Unity, TeamProj_ImprovementProject]
-tags: [Unity, TeamProj_ImprovementProject]
+date: 2022-10-31 00:00:00 +09:00
+categories: [Unity, TeamProj]
+tags: [Unity, TeamProj, PPT, Github, Team]
 ---
 
 ![imagename](/assets/image/Project/AtentsTeamProj/0.png)
