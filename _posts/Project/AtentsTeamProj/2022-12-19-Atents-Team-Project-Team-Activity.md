@@ -6,7 +6,7 @@ categories: [Unity, TeamProj_ImprovementProject]
 tags: [Unity, TeamProj_ImprovementProject]
 ---
 
-![imagename](/assets/image/Project/AtentsTeamProj/Atents-Gclass-Ateam-TeamProject-PPT\-01)
+![imagename](/assets/image/Project/AtentsTeamProj/Atents Gclass Ateam TeamProject PPT-01)
 
 ![imagename](/assets/image/Project/AtentsTeamProj/Atents-Gclass-Ateam-TeamProject-PPT\-02)
 
