@@ -10,7 +10,9 @@ tags: [Unity, TeamProj, Team, Buff, StoryBoard]
 
 ## 일반 버프
 
-![imagename](/assets/image/Project/TeamProject/BuffStoryBoard/001.png)
+![imagename](/assets/image/Project/TeamProject/BuffSystem/002.png)
+
+![imagename](/assets/image/Project/TeamProject/BuffStoryBoard/002.png)
 
 
 <details>
