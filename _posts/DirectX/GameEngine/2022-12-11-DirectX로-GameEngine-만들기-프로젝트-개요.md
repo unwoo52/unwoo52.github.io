@@ -2,8 +2,8 @@
 title: DirectX로 GameEngine 만들기 프로젝트 개요
 author: unwoo52
 date: 2022-12-11 00:00:00 +09:00
-categories: [Win32API]
-tags: [Win32API]
+categories: [DirectX, GameEngine]
+tags: [directX, Win32API, GameEngine]
 ---
 
 ## 프로젝트 개요
