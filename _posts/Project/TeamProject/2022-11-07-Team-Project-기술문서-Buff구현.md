@@ -81,9 +81,6 @@ public class BaseBuff : MonoBehaviour //BuffPrefeb의 스크립트
     
     readonly WaitForSeconds BuffCheckRootSecond = new((float)(Time.deltaTime * 0.1));
 
-    //7. 가중치 타임
-    public float WeightTime;
-
     #endregion
     private void Awake()
     {
@@ -138,29 +135,6 @@ public class BaseBuff : MonoBehaviour //BuffPrefeb의 스크립트
         PlayerIBuff = PlayerScript.instance.GetComponent<IBuff>();
         NonCoroutineBuffActivation();
     }
-    /// <summary>
-    /// 가중치 버프
-    /// </summary>
-    /// <param name="buffTypenameList"></param>
-    /// <param name="buffValueList"></param>
-    /// <param name="buffcode"></param>
-    /// <param name="s">가중치 효과 이름</param>
-    /// <param name="value">가중치 값</param>
-    /// <param name="WeightTime">가중치 시간</param>
-    public void Init(List<string> buffTypenameList, List<float> buffValueList, string s, float value, float WeightTime)
-    {
-        this.buffTypenameList = buffTypenameList;
-        this.buffValueList = buffValueList;
-        this.WeightTime = WeightTime;
-        currentTime = buffOriginTime;
-        icon.fillAmount = 1f;
-
-
-        PlayerIBuff = PlayerScript.instance.GetComponent<IBuff>();
-        NonCoroutineBuffActivation();
-        StartCoroutine(WeightStatAdd(s, value));
-        Destroy(gameObject.GetComponent<Button>());
-    }
 
 
     #region 버프가 생성될 때 버프효과 적용
@@ -193,23 +167,6 @@ public class BaseBuff : MonoBehaviour //BuffPrefeb의 스크립트
         BuffDeActivation();
     }
 
-    IEnumerator WeightStatAdd(string s, float value)
-    {
-        while (this.gameObject != null)
-        {
-            PlayerIBuff.BuffValueApply(s, value);
-            yield return new WaitForSeconds(WeightTime);
-        }
-    }
-
-    IEnumerator WeightBuffAdd(int i, float value)
-    {
-        while (this.gameObject != null)
-        {
-            BuffTypenameList[i] += value;
-            yield return new WaitForSeconds(WeightTime);
-        }
-    }
     #endregion
 
     #region 버프효과 파괴
@@ -239,7 +196,9 @@ public class BaseBuff : MonoBehaviour //BuffPrefeb의 스크립트
 버프 효과를 위한 효과 종류와 가중치, 지속시간과 버프 아이콘 등을 갖고 있다.
 
 ## Base Buff 코드 설명
+
 - 필드 전체
+
 ```cs
 	public IBuff PlayerIBuff;
     List<string> buffTypenameList = new();
@@ -287,28 +246,38 @@ readonly WaitForSeconds BuffCheckRootSecond = new((float)(Time.deltaTime * 0.1))
 <br>
 
 ```cs
-public void Init(List<string> buffTypenameList, List<float> buffValueList) { ... }
-public void Init(List<string> buffTypenameList, List<float> buffValueList, float buffOriginTime) { ... }
-public void Init(List<string> buffTypenameList, List<float> buffValueList, int buffcode) { ... }
-public void Init(List<string> buffTypenameList, List<float> buffValueList, string s, float value, float WeightTime)
-	{
+    public void Init(List<string> buffTypenameList, List<float> buffValueList, float buffOriginTime) { ... }
+    public void Init(List<string> buffTypenameList, List<float> buffValueList, int buffcode) { ... }
+    public void Init(List<string> buffTypenameList, List<float> buffValueList) { ... }
+    public void Init(List<string> buffTypenameList, List<float> buffValueList) //받아온 정보를 이 prefep에 init
+    {
         this.buffTypenameList = buffTypenameList;
         this.buffValueList = buffValueList;
-        this.WeightTime = WeightTime;
-        currentTime = buffOriginTime;
+        currentTime = this.buffOriginTime;
         icon.fillAmount = 1f;
 
-
         PlayerIBuff = PlayerScript.instance.GetComponent<IBuff>();
-        NonCoroutineBuffActivation();
-        StartCoroutine(WeightStatAdd(s, value));
         Destroy(gameObject.GetComponent<Button>());
+        NonCoroutineBuffActivation();
     }
 ```
 
 버프가 생성된 이후 실행하는 Initalize 함수. 버프의 종류별로 override되어 종류별로 함수가 존재한다.
 
 인자로 받아온 버프의 종류들과 가중치, 버프 지속시간 등을 버프 오브젝트의 필드들에 대입한다.
+
+<br>
+
+```cs
+    private void NomalBuffactivation()
+    {
+        PlayerIBuff.BuffListAdd(this);
+        PlayerIBuff.ChooseBuff(buffTypenameList);
+        StartCoroutine(Activation());
+    }
+```
+
+지속시간이 있는 일반 버프에게 실행되는 Buff Activation 함수. Activation()을 실행시키면 버프지속시간에게서 WeightTime만큼을 감소시키는 코루틴이 실행된다.
 
 <br>
 
@@ -320,8 +289,57 @@ public void Init(List<string> buffTypenameList, List<float> buffValueList, strin
     }
 ```
 
+지속시간이 없는(WeightTime을 감소시키는 코루틴을 실행할 필요가 없는) 버프의 경우 실행되는 Buff Activation 함수.
 
+<br>
 
+```cs
+    public void BuffDeActivation()
+    {
+        PlayerIBuff.RemovBuff(this);
+        PlayerIBuff.ChooseBuff(buffTypenameList);
+        Destroy(this.gameObject);
+    }
+```
+
+버프 파괴 함수. 플레이어의 버프 리스트에서 이 버프를 제거하고, 플레이어의 스탯을 갱신한 뒤 버프 오브젝트를 파고한다.
+
+> 플레이어의 RemovBuff에서 ChooseBuff를 실행시키게 해 코드를 한 줄 짧게 만들 수 있지만, 모든 버프가 ChooseBuff()실행이 필요하지 않을 수도 있으므로 BaseBuff 스크립트에서 실행하도록 하였다.
+
+<br>
+
+```cs
+    public void ClickBuffDeActivation()
+    {
+        BuffDeActivation();
+    }
+```
+
+인스펙터의 버튼과 연결되어 있는 함수.
+
+<br>
+
+```cs
+    IEnumerator Activation()
+    {
+        while (currentTime > 0)
+        {
+            icon.fillAmount = currentTime / buffOriginTime;
+            //Buff Root
+            currentTime -= 0.1f;
+            yield return BuffCheckRootSecond;
+        }
+        icon.fillAmount = 0f;
+        currentTime = 0f;
+        BuffDeActivation();
+    }
+```
+
+while동안 버프 지속시간을 감소시키고, 버프 아이콘의 모양을 변경한다.
+
+while문이 끝나면 버프를 파괴하는 코루틴.
+
+<br>
 
 ## BuffManagerScript 전체 코드
 
@@ -371,13 +389,6 @@ public class BuffManagerScript : MonoBehaviour //UI중 Buff Panel에 인스턴�
         gameObject.GetComponent<BaseBuff>().Init(buffTypename, buffValue, buffcode); //인스턴스에 버프 정보 입력
         gameObject.GetComponent<Image>().sprite = bufficon; //
         if (29 <= buffcode || buffcode <= 31) Destroy(gameObject.GetComponent<Button>());
-    }
-    public void CreateBuff(List<string> buffTypename, List<float> buffValue, Sprite bufficon, string s, float value, float WeightTime)
-    {
-        GameObject gameObject = Instantiate(buffPrefab, transform); //인스턴스 생성(buffBase), 위치는 this(MyBuffPanel)에.
-        //gameobject = instanced baseBuff prefep
-        gameObject.GetComponent<BaseBuff>().Init(buffTypename, buffValue, s, value, WeightTime); //인스턴스에 버프 정보 입력
-        gameObject.GetComponent<Image>().sprite = bufficon;
     }
 }
 ```
@@ -589,4 +600,3 @@ BuffList에서 버프를 추가하거나 더하는 함수
 ```
 
 ChooseBuff를 통해 실행되며, 해당하는 버프 종류에 따라 플레이어의 스탯을 변경하는 함수
-
