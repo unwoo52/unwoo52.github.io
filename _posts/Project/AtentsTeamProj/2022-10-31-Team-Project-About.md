@@ -59,7 +59,7 @@ tags: [Unity, TeamProj, PPT, Github, Team, About]
 
 ## PPT
 
-[Link](https://unwoo52.github.io/posts/Team-Project-About/)
+[Link](https://unwoo52.github.io/posts/Team-Project-PPT/)
 
 팀플 협업 위주의 내용이 기재되어 있습니다.
 
