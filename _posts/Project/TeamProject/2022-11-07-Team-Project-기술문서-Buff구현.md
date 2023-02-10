@@ -20,7 +20,6 @@ tags: [Unity, TeamProj, Team, Buff, TechnicalDocument, Docs, Document]
 
 ### 일반 버프
 
-![imagename](/assets/image/Project/TeamProject/BuffSystem/000.png)
 
 <details>
 <summary>testBuffPenal</summary>
