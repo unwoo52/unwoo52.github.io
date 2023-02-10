@@ -1,5 +1,5 @@
 ---
-title: Buff 기능 스토리 보드
+title: Team Project 스토리보드 Buff 기능
 author: unwoo52
 date: 2022-11-08 00:00:00 +09:00
 categories: [Unity, TeamProj]
