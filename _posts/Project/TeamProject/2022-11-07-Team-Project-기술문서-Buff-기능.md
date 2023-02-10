@@ -1,5 +1,5 @@
 ---
-title: Team Project 기술문서 Buff구현
+title: Team Project 기술문서 Buff 기능
 author: unwoo52
 date: 2022-11-07 00:00:00 +09:00
 categories: [Unity, TeamProj]
