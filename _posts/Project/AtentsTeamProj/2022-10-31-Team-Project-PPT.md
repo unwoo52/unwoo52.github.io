@@ -1,7 +1,7 @@
 ---
 title: Team Project PPT
 author: unwoo52
-date: 2022-10-31 00:00:00 +09:00
+date: 2022-10-31 00:01:00 +09:00
 categories: [Unity, TeamProj]
 tags: [Unity, TeamProj, PPT, Github, Team]
 ---
