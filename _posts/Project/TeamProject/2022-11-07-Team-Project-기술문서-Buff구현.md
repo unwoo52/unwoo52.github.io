@@ -20,17 +20,83 @@ tags: [Unity, TeamProj, Team, Buff, TechnicalDocument, Docs, Document]
 
 ### 일반 버프
 
+![imagename](/assets/image/Project/TeamProject/BuffSystem/003.png)
+
+
+<details>
+<summary>testBuffPenal</summary>
+<div markdown="1">
+
+
+```cs
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class testBuffPenal : MonoBehaviour
+{
+    [SerializeField] LayerMask MaskPlayer;
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (((1 << collision.gameObject.layer) & MaskPlayer) != 0)
+        {
+            OnBuff();
+        }
+    }
+
+    void OnBuff()
+    {
+        List<string> buffTypenameList = new() { "MoveSpeed", "MineDelay_Mining" };
+        List<float> buffValueList = new() { 0.5f, -0.7f };
+        BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, 5.0f, Resources.Load("BuffImage/14_Summon", typeof(Sprite)) as Sprite);
+    }
+}
+
+```
+
+</div>
+</details>
+
+버프 테스트를 위해 밟으면 버프가 생기는 테스트 발판과 발판의 스크립트를 구현하였다.
+
+- testBuffPenal::OnBuff
+```cs
+List<string> buffTypenameList = new() { "MoveSpeed", "MineDelay_Mining" };
+List<float> buffValueList = new() { 0.5f, -0.7f };
+BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, 5.0f, Resources.Load("BuffImage/14_Summon", typeof(Sprite)) as Sprite);
+```
+
+원하는 버프를 만들기 위해 버프 종류 이름(이동속도, 채광속도)을 갖는 List<string> buffTypenameList에 원하는 버프 이름을 넣는다.
+
+> List<string> buffTypenameList의 string을 추후에 enum 혹은 단순 int값으로 바꾸어 최적화를 할 수 있음. 
+<br>
+
+
+
+
+
+
+
 ### 지형 버프
+
+----------
+
 
 
 
 # 버프 관련 오브젝트들
+
+----------
+
 
 ## 버프 판넬
 
 ![imagename](/assets/image/Project/TeamProject/BuffSystem/001.png)
 
 플레이어의 버프창과 같은 오브젝트로, BuffManagerScript 스크립트로 제어되고 버프 오브젝트들이 저장되는곳. 버프들 아이콘이 표시되며, 지속시간이 있다면 지속시간도 표시된다.
+
+----------
+
 
 
 ## 버프 오브젝트
@@ -39,7 +105,15 @@ tags: [Unity, TeamProj, Team, Buff, TechnicalDocument, Docs, Document]
 
 Base Buff로 제어되는 버프 객체의 오브젝트. 버프에 대한 정보들을 담고 있으며, 팩토리인 BuffManagerScript를 통해 원하는 타입과 종류의 버프 오브젝트가 생성된다.
 
+----------
+
+
 # 코드 설명
+
+
+----------
+
+
 
 ## BaseBuff 
 
@@ -351,6 +425,11 @@ while문이 끝나면 버프를 파괴하는 코루틴.
 
 <br>
 
+
+----------
+
+
+
 ## BuffManagerScript 
 
 ### 전체 코드
@@ -442,6 +521,9 @@ public void CreateBuff(List<string> buffTypename, List<float> buffValue, Sprite 
 //ex)아이템 사용 스크립트에 BuffManagerScript.instance.CreateBuff(아이템 버프 효과 종류, 버프 값, 버프 아이콘)
 ```
 
+----------
+
+
 
 
 ## interface IBuff 
@@ -466,6 +548,11 @@ public interface IBuff
 
 </div>
 </details>
+
+
+----------
+
+
 
 ## PlayerScript IBuff 
 
@@ -616,3 +703,4 @@ BuffList에서 버프를 추가하거나 더하는 함수
 ```
 
 ChooseBuff를 통해 실행되며, 해당하는 버프 종류에 따라 플레이어의 스탯을 변경하는 함수
+
