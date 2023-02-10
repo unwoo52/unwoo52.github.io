@@ -75,13 +75,11 @@ tags: [Unity, TeamProj, PPT, Github, Team, About]
 
 ### Object Building System
 
-[_]()
+- 미작성
 
 ### Mining \& Logging System 
 
-[_]()
-
-<br>
+- 미작성
 
 **********
 
