@@ -6,7 +6,7 @@ categories: [Unity, TeamProj]
 tags: [Unity, TeamProj, Team, Buff, TechnicalDocument, Docs, Document]
 ---
 
-## 개요
+# 개요
 
 팀 프로젝트 전체 개요 문서 >> [Team Project About](https://unwoo52.github.io/posts/Team-Project-About/)
 
@@ -15,6 +15,14 @@ tags: [Unity, TeamProj, Team, Buff, TechnicalDocument, Docs, Document]
 ## Buff 구현 개요
 
 팩토리 메소드 패턴을 이용하여 Buff를 구현하였다.
+
+## 버프 생성 스토리보드
+
+### 일반 버프
+
+### 지형 버프
+
+
 
 # 버프 관련 오브젝트들
 
@@ -33,7 +41,9 @@ Base Buff로 제어되는 버프 객체의 오브젝트. 버프에 대한 정보
 
 # 코드 설명
 
-## BaseBuff 전체 코드
+## BaseBuff 
+
+### 전체 코드
 
 <details>
 <summary>BaseBuff</summary>
@@ -195,7 +205,7 @@ public class BaseBuff : MonoBehaviour //BuffPrefeb의 스크립트
 
 버프 효과를 위한 효과 종류와 가중치, 지속시간과 버프 아이콘 등을 갖고 있다.
 
-## Base Buff 코드 설명
+### 코드 설명
 
 - 필드 전체
 
@@ -341,7 +351,9 @@ while문이 끝나면 버프를 파괴하는 코루틴.
 
 <br>
 
-## BuffManagerScript 전체 코드
+## BuffManagerScript 
+
+### 전체 코드
 
 <details>
 <summary>BuffManagerScript</summary>
@@ -396,7 +408,7 @@ public class BuffManagerScript : MonoBehaviour //UI중 Buff Panel에 인스턴�
 </div>
 </details>
 
-## BuffManagerScript 코드 설명
+### 코드 설명
 
 ```cs
 	public static BuffManagerScript instance;
@@ -432,7 +444,9 @@ public void CreateBuff(List<string> buffTypename, List<float> buffValue, Sprite 
 
 
 
-## interface IBuff 전체 코드
+## interface IBuff 
+
+### 전체 코드
 
 <details>
 <summary>interface IBuff</summary>
@@ -453,7 +467,9 @@ public interface IBuff
 </div>
 </details>
 
-## PlayerScript IBuff 전체 코드
+## PlayerScript IBuff 
+
+### 전체 코드
 
 <details>
 <summary>PlayerScript IBuff</summary>
@@ -534,7 +550,7 @@ public interface IBuff
 </div>
 </details>
 
-## PlayerScript IBuff 코드 설명
+### 코드 설명
 
 ```cs
 		public List<BaseBuff> BuffList = new();
