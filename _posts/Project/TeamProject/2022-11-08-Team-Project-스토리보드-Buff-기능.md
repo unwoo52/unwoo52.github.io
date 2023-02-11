@@ -16,11 +16,11 @@ BuffSystem은 버프의 종류에 따라 [일반 버프]()(지속시간이 끝�
 
 ## 일반 버프
 
-### 버프 생성하기
+### 테스트 발판 - 버프 생성하기
 
 ![imagename](/assets/image/Project/TeamProject/BuffStoryBoard/003.png)
 
->버프를 생성파는 발판이다. testBuffPenal코드가 들어있으며, 밟으면 버프 생성의 시작인 BuffManagerScript.instance.CreateBuff()을 실행한다.
+>버프를 생성하는 발판이다. testBuffPenal코드가 들어있으며, 밟으면 버프 생성의 시작인 BuffManagerScript.instance.CreateBuff()을 실행한다.
 
 
 일반 버프를 임의로 생성시켜 테스트하기 위한 [테스트 발판]()을 생성하였다.
@@ -69,13 +69,13 @@ public class testBuffPenal : MonoBehaviour
 
 **********
 
-- [BuffManagerScript](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#buffmanagerscript)::OnBuff
 ```cs
     List<string> buffTypenameList = new() { "MoveSpeed", "MineDelay_Mining" };
     List<float> buffValueList = new() { 0.5f, -0.7f };
 
     BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, 5.0f, Resources.Load("BuffImage/14_Summon", typeof(Sprite)) as Sprite);
 ```
+
 플레이어가 테스트 발판을 밟으면 발판 내의 필드인 buffTypenameList와 buffValueList에는 각각 "MoveSpeed", "MineDelay_Mining"와 0.5f, -0.7f이 정의되어 있다.
 
 테스트 발판은 플레이어와 접촉되면 이 정의된 필드를 인자로 하는 [BuffManagerScript](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#buffmanagerscript)의 CreateBuff()를 실행한다.
@@ -85,11 +85,11 @@ public class testBuffPenal : MonoBehaviour
 ***********
 
 
-### 버프 Initialize - 1.BuffManagerScript
+### [BuffManagerScript](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#buffmanagerscript) - 버프 Initialize
 
 ![imagename](/assets/image/Project/TeamProject/BuffStoryBoard/004.png)
 
-> 왼쪽 위 하얀 부분이 버프가 표시되는 버프 패널이다. BuffManagerScript스크립트가 들어있으며, 이곳에 생성된 버프가 등록되고 관리된다.
+> 오른쪽 위 하얀 부분이 버프가 표시되는 버프 패널이다. BuffManagerScript스크립트가 들어있으며, 이곳에 생성된 버프가 등록되고 관리된다.
 
 
 - BuffManagerScript::CreateBuff
@@ -102,13 +102,13 @@ public class testBuffPenal : MonoBehaviour
     }
 ```
 
-BuffManagerScript의 buffPrefab은 버프 오브젝트 프레펩[BaseBuff](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#basebuff)이 저장되어 있다. 버프 오브젝트를 생성한 후, 만들어진 버프 오브젝트의 Init()을 실행하고 아이콘을 지정한다.
+BuffManagerScript의 buffPrefab은 버프 오브젝트 프레펩([BaseBuff](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#basebuff))이 저장되어 있다. 버프 오브젝트를 생성한 후, 만들어진 버프 오브젝트의 Init()을 실행하고 아이콘을 지정한다.
 
 <br>
 
 *************
 
-### 버프 Initialize - 2.BaseBuff
+### [BaseBuff](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#basebuff)
 
 ![imagename](/assets/image/Project/TeamProject/BuffStoryBoard/005.png)
 
@@ -176,7 +176,7 @@ NomalBuffactivation에서는<br> **1.플레이어의 IBuff 함수들을 실행�
 
 *************
 
-### 플레이어 스탯에게 버프 효과 적용
+### [PlayerIBuff](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#playerscript-ibuff) - 플레이어 스탯에게 버프 효과 적용
 
 ```cs
       PlayerIBuff.BuffListAdd(this);
@@ -312,5 +312,3 @@ myInfo.MoveSpeed_AfterBuff = BuffEffectAplly(s, myInfo.MoveSpeed_Origin);
 
 
 ## 지형 버프
-
-----------
