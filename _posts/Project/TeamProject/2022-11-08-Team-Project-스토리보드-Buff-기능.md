@@ -86,7 +86,7 @@ public class testBuffPenal : MonoBehaviour
 
 
 
-## 지형 버프
+## 지형 버프 생성하기
 
 ### 테스트 발판 - 플레이어의 현재 TerrainLayer 값 비교하기
 
@@ -555,5 +555,4 @@ myInfo.MoveSpeed_AfterBuff = BuffEffectAplly(s, myInfo.MoveSpeed_Origin);
 <br>
 
 ******
-### 플레이어 버프 적용
 
