@@ -10,6 +10,10 @@ tags: [Unity, TeamProj, Team, Buff, TechnicalDocument, Docs, Document]
 
 팀 프로젝트 전체 개요 문서 >> [Team Project About](https://unwoo52.github.io/posts/Team-Project-About/)
 
+Buff  시연 >> [https://youtu.be/XYon_3MIK5E?t=39](https://youtu.be/XYon_3MIK5E?t=39)
+
+
+
 팀프로젝트 내에서 내가 구현한 Buff에 대한 기술문서이다.
 
 ## Buff 구현 개요

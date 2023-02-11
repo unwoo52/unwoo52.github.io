@@ -14,7 +14,11 @@ tags: [Unity, TeamProj, Team, Buff, StoryBoard]
 
 BuffSystem은 버프의 종류에 따라 [일반 버프]()(지속시간이 끝나면 사라지는 버프)와 [지형 버프]()(버프 지속시간이 없는 대신 특정 조건에 의해 발동되고 사라짐)으로 나누어진다.
 
-## 일반 버프 생성하기
+**1.일반 버프가 생성되는 과정과 2.지형 버프가 생성되는 과정을 기술한 뒤, 3.실제로 버프가 생성되는 팩토리의 내부 모습을 설명하겠다.**
+
+## 1.일반 버프 생성하기
+
+- 우선 일반 버프가 생성되는 경우의 스토리보드이다.
 
 ### 테스트 발판 - 버프 생성하기
 
@@ -86,7 +90,9 @@ public class testBuffPenal : MonoBehaviour
 
 
 
-## 지형 버프 생성하기
+## 2.지형 버프 생성하기
+  
+  - 지형 버프가 생성되는 경우의 스토리 보드이다.
 
 ### 테스트 발판 - 플레이어의 현재 TerrainLayer 값 비교하기
 
@@ -266,18 +272,18 @@ public class TerrainSystem : MonoBehaviour
 
 지형 버프 교체는 다음과 같은 순서로 이루어진다.
 
-1. 플레이어의 현재 지형 레이어값이 담긴 필드(currentTerrainLayer)를 수정
+I. 플레이어의 현재 지형 레이어값이 담긴 필드(currentTerrainLayer)를 수정
 
 - 지형 값은 플래그 연산으로 이루어진다. 만약 플레이어의 현재 지형 값이 기본지형값(28)이고 밟은 지형이 Ice 지형(31)이라면 플레이어의 현재 지형 값을 Ice 지형(31)로 바꾼다.
 
 - 동시에 여러개의 지형 값을 가질 수 도 있다. 비트연산이므로 29~31 비트에 있는 지형들의 값을 모두 갖고 있다면 0000 0000 ... 0000 1111 플래그 값(-536870912)으로 교체된다.
 
-2. 기존에 있던 지형 버프들을 제거하는 함수를 제거한다.
+II. 기존에 있던 지형 버프들을 제거하는 함수를 제거한다.
 
 - FindCurNoneAxisTerrainBuff()을 실행하면 플레이어의 버프 리스트에 있는 모든 지형 버프들이 리스트로 반환된다.
 - 반환된 리스트를 foreach로 돌려 모든 버프(BaseBuff)에 대해 baseBuff.BuffDeActivation()를 실행한다.
 
-3. 새로운 지형 버프를 AddTerrainBuffActive(i)로 생성한다.
+III. 새로운 지형 버프를 AddTerrainBuffActive(i)로 생성한다.
 
 <br>
 
@@ -330,7 +336,7 @@ public class TerrainSystem : MonoBehaviour
 
 
 
-## 버프 생성 과정
+## 3.버프 생성 과정
 
 ### [BuffManagerScript](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#buffmanagerscript) - 버프 Initialize
 
@@ -551,8 +557,4 @@ myInfo.MoveSpeed_AfterBuff = BuffEffectAplly(s, myInfo.MoveSpeed_Origin);
 
 원래 플레이어 스탯(myInfo)의 버프 적용 후 값에 저장되며, 플레이어의 실제 능력치의 연산에 사용되는 값은 이 _AfterBuff값들이다.
 
-
-<br>
-
-******
 
