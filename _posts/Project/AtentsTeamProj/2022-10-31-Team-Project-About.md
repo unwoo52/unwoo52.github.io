@@ -6,6 +6,30 @@ categories: [Unity, TeamProj]
 tags: [Unity, TeamProj, PPT, Github, Team, About]
 ---
 
+## 관련 문서 링크
+
+### 유튜브
+
+[link](https://youtu.be/XYon_3MIK5E)
+
+시연 영상입니다.
+
+### Project Github
+
+[Link](https://github.com/unwoo52/unity3DProject)
+
+### PPT
+
+[Link](https://unwoo52.github.io/posts/Team-Project-PPT/)
+
+팀플 협업 위주의 내용이 기재되어 있습니다.
+
+
+<br>
+
+**********
+
+
 
 ## 개요
 
@@ -83,19 +107,4 @@ tags: [Unity, TeamProj, PPT, Github, Team, About]
 
 **********
 
-## PPT
 
-[Link](https://unwoo52.github.io/posts/Team-Project-PPT/)
-
-팀플 협업 위주의 내용이 기재되어 있습니다.
-
-
-<br>
-
-**********
-
-## 유튜브
-
-[link](https://youtu.be/XYon_3MIK5E)
-
-시연 영상입니다.
