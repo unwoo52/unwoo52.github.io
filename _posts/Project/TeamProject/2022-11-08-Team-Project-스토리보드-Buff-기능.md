@@ -14,7 +14,7 @@ tags: [Unity, TeamProj, Team, Buff, StoryBoard]
 
 BuffSystem은 버프의 종류에 따라 [일반 버프]()(지속시간이 끝나면 사라지는 버프)와 [지형 버프]()(버프 지속시간이 없는 대신 특정 조건에 의해 발동되고 사라짐)으로 나누어진다.
 
-## 일반 버프
+## 일반 버프 생성하기
 
 ### 테스트 발판 - 버프 생성하기
 
@@ -84,6 +84,253 @@ public class testBuffPenal : MonoBehaviour
 
 ***********
 
+
+
+## 지형 버프 생성하기
+
+### 테스트 발판 - 플레이어의 현재 TerrainLayer 값 비교하기
+
+
+![imagename](/assets/image/Project/TeamProject/BuffStoryBoard/006.png)
+
+>버프를 생성하는 발판이다. TerrainSystem 스크립트가 들어있으며, 밟으면 플레이어 인스턴스의 currentTerrainLayer 필드 값을 수정하고 버프를 적용한다.
+
+
+<details>
+<summary>TerrainSystem 코드</summary>
+<div markdown="1">
+
+
+```cs
+public class TerrainSystem : MonoBehaviour
+{
+    [SerializeField] LayerMask MaskPlayer;
+    [SerializeField] int terrainLayerMaskInt;
+    int TerrainLayerRange = 29;//terrain layer min value
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(((1 << collision.gameObject.layer) & MaskPlayer) != 0)
+        {
+            PlayerScript playerinstance = PlayerScript.instance;
+            //플레이어의 curTerrainLayer가 현재 terrain의 layer와 일치하는가
+            if ((playerinstance.plMask.currentTerrainLayer ^ terrainLayerMaskInt) != 0)
+            {
+                //플레이어 curLayer에 terrain의 Layer 대입
+                playerinstance.plMask.currentTerrainLayer.value = terrainLayerMaskInt;
+                //기존 지형 버프 파괴
+                foreach (BaseBuff baseBuff in FindCurNoneAxisTerrainBuff(playerinstance.BuffList, playerinstance.plMask.currentTerrainLayer))
+                {
+                    baseBuff.BuffDeActivation();
+                }
+                //새 지형 버프 적용
+                foreach (int i in FindCurAxisTerrainBuff(playerinstance.BuffList, playerinstance.plMask.currentTerrainLayer))
+                {
+                    AddTerrainBuffActive(i);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 플레이어의 curTerrainLayer에서는 활성화인데 버프가 없는 Terrain레이어의 번호를 반환.
+    /// 플레이어가 31 30 지형에 있는데 31 버프만 있다면 30(int)를 리턴
+    /// </summary>
+    /// <param name="buffList">Player BuffList</param>
+    /// <param name="layer">Player Current Terrain Layer</param>
+    /// <returns>추가해야 할 버프가 있는 Terrain Layer Value를 리턴</returns>
+    List<int> FindCurAxisTerrainBuff(List<BaseBuff> buffList , LayerMask layer) 
+    {
+        List<int> llist = new();
+        for (int i = TerrainLayerRange; i < 32; i++)//TerrainLayer 범위
+        {
+            if((layer & 1 << i) != 0) //플레이어가 0011 이라면 1과 2번 레이어에 대해서 함수 실행
+            {
+                if(FindTerrainPassive(buffList, i) == null) llist.Add(i);
+            }
+        }
+        return llist;
+    }
+
+    /// <summary>
+    /// 플레이어의 curTerrainLayer에 존재하지 않는 레이어 번호임에도 버프가 있다면 해당 버프들을 모두 리스트에 저장해 리턴.
+    /// 플레이어가 31 30 지형에 있는데 31 30 29 버프가 있다면 29만 리턴
+    /// </summary>
+    /// <param name="buffList">Player BuffList</param>
+    /// <param name="layer">Player Current Terrain Layer</param>
+    /// <returns>삭제해야 할 버프 인스턴스가 담긴 리스트</returns>
+    List<BaseBuff> FindCurNoneAxisTerrainBuff(List<BaseBuff> buffList, LayerMask layer)
+    {
+        List<BaseBuff> list = new();
+        for (int i = TerrainLayerRange; i < 32; i++)//TerrainLayer 범위
+        {
+            if ((~layer ^ 1 << i) != 0) //cur레이어의 i번째 비트가 0일 때 버프 탐색 실행
+            {
+                BaseBuff findedBuff = FindTerrainPassive(buffList, i);
+                if (findedBuff != null) list.Add(findedBuff);
+            }
+        }
+        return list;
+    }
+
+    /// <summary>
+    /// 플레이어의 버프 리스트와 찾아야 할 레이어 번호를 받아 해당 번호의 버프를 탐색해서 리턴
+    /// </summary>
+    /// <param name="BuffList">버프 리스트</param>
+    /// <param name="buffcode">탐색할 버프 레이어 번호</param>
+    /// <returns></returns>
+    BaseBuff FindTerrainPassive(List<BaseBuff> BuffList, int buffcode)// 패시브 버프를 탐색해 반환
+    {
+        if (BuffList.Count > 0)
+        {
+            for (int i = 0; i < BuffList.Count; i++)//버프 갯수만큼 반복, 버프 리스트를 훑기
+            {
+                if (BuffList[i].BuffCode == buffcode) return BuffList[i];
+            }
+        }return null;
+    }
+
+
+    void AddTerrainBuffActive(int terrainLayerNumber)
+    {
+        List<string> buffTypenameList = new();
+        List<float> buffValueList = new();
+        int buffCode = terrainLayerNumber;
+        Sprite icon;
+
+        switch (terrainLayerNumber)
+        {
+            case 29:
+                buffTypenameList.Add("MoveSpeed");
+                buffValueList.Add(0.3f);
+                icon = Resources.Load("BuffImage/11_Melee_Cone", typeof(Sprite)) as Sprite;
+                BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, icon, buffCode);
+                break;
+            case 30:
+                buffTypenameList.Add("MoveSpeed");
+                buffValueList.Add(0.3f);
+                icon = Resources.Load("BuffImage/02_Fire", typeof(Sprite)) as Sprite;
+                BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, icon, buffCode);
+                break;
+            case 31:
+                buffTypenameList.Add("MoveSpeed");
+                buffTypenameList.Add("MineDelay_Mining");
+                buffValueList.Add(-0.3f);
+                buffValueList.Add(0.3f);
+                icon = Resources.Load("BuffImage/04_Ice_Nova", typeof(Sprite)) as Sprite;
+                BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, icon, buffCode);
+                break;
+        }
+    }
+}
+
+```
+
+</div>
+</details>
+
+
+
+<br>
+
+
+**********
+
+```cs
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(((1 << collision.gameObject.layer) & MaskPlayer) != 0)
+        {
+            PlayerScript playerinstance = PlayerScript.instance;
+            //플레이어의 curTerrainLayer가 현재 terrain의 layer와 일치하는가
+            if ((playerinstance.plMask.currentTerrainLayer ^ terrainLayerMaskInt) != 0)
+            {
+                //플레이어 curLayer에 terrain의 Layer 대입
+                playerinstance.plMask.currentTerrainLayer.value = terrainLayerMaskInt;
+                //기존 지형 버프 파괴
+                foreach (BaseBuff baseBuff in FindCurNoneAxisTerrainBuff(playerinstance.BuffList, playerinstance.plMask.currentTerrainLayer))
+                {
+                    baseBuff.BuffDeActivation();
+                }
+                //새 지형 버프 적용
+                foreach (int i in FindCurAxisTerrainBuff(playerinstance.BuffList, playerinstance.plMask.currentTerrainLayer))
+                {
+                    AddTerrainBuffActive(i);
+                }
+            }
+        }
+    }
+```
+
+플레이어와 접촉하면 플레이어 인스턴스의 현재 지형 레이어값이 담긴 필드(currentTerrainLayer)를 체크해 밟은 지형과 다르면 버프 교체 함수를 실행한다.
+
+지형 버프 교체는 다음과 같은 순서로 이루어진다.
+
+1. 플레이어의 현재 지형 레이어값이 담긴 필드(currentTerrainLayer)를 수정
+
+- 지형 값은 플래그 연산으로 이루어진다. 만약 플레이어의 현재 지형 값이 기본지형값(28)이고 밟은 지형이 Ice 지형(31)이라면 플레이어의 현재 지형 값을 Ice 지형(31)로 바꾼다.
+
+- 동시에 여러개의 지형 값을 가질 수 도 있다. 비트연산이므로 29~31 비트에 있는 지형들의 값을 모두 갖고 있다면 0000 0000 ... 0000 1111 플래그 값(-536870912)으로 교체된다.
+
+2. 기존에 있던 지형 버프들을 제거하는 함수를 제거한다.
+
+- FindCurNoneAxisTerrainBuff()을 실행하면 플레이어의 버프 리스트에 있는 모든 지형 버프들이 리스트로 반환된다.
+- 반환된 리스트를 foreach로 돌려 모든 버프(BaseBuff)에 대해 baseBuff.BuffDeActivation()를 실행한다.
+
+3. 새로운 지형 버프를 AddTerrainBuffActive(i)로 생성한다.
+
+<br>
+
+***********
+
+
+```cs
+    void AddTerrainBuffActive(int terrainLayerNumber)
+    {
+        List<string> buffTypenameList = new();
+        List<float> buffValueList = new();
+        int buffCode = terrainLayerNumber;
+        Sprite icon;
+
+        switch (terrainLayerNumber)
+        {
+            case 29:
+                buffTypenameList.Add("MoveSpeed");
+                buffValueList.Add(0.3f);
+                icon = Resources.Load("BuffImage/11_Melee_Cone", typeof(Sprite)) as Sprite;
+                BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, icon, buffCode);
+                break;
+            case 30:
+                buffTypenameList.Add("MoveSpeed");
+                buffValueList.Add(0.3f);
+                icon = Resources.Load("BuffImage/02_Fire", typeof(Sprite)) as Sprite;
+                BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, icon, buffCode);
+                break;
+            case 31:
+                buffTypenameList.Add("MoveSpeed");
+                buffTypenameList.Add("MineDelay_Mining");
+                buffValueList.Add(-0.3f);
+                buffValueList.Add(0.3f);
+                icon = Resources.Load("BuffImage/04_Ice_Nova", typeof(Sprite)) as Sprite;
+                BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, icon, buffCode);
+                break;
+        }
+    }
+```
+
+지형 번호(ice라면 31)을 받아 버프를 생성하는 함수를 실행한다.
+
+
+
+
+<br>
+
+***********
+
+
+
+
+## 버프 생성 과정
 
 ### [BuffManagerScript](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#buffmanagerscript) - 버프 Initialize
 
@@ -308,7 +555,4 @@ myInfo.MoveSpeed_AfterBuff = BuffEffectAplly(s, myInfo.MoveSpeed_Origin);
 <br>
 
 ******
-### 플레이어 버프 적용
 
-
-## 지형 버프
