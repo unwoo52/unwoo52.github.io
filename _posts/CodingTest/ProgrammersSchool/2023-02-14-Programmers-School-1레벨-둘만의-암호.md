@@ -8,7 +8,7 @@ tags: [CodingTest, ProgrammersSchool, Programmers, 5622]
 
 
 
-# 1레벨 [둘만의 암호](https://school.programmers.co.kr/learn/courses/30/lessons/155652)
+# 프로그래머스 1레벨 [둘만의 암호](https://school.programmers.co.kr/learn/courses/30/lessons/155652)
 
 
 ## 문제
