@@ -8,13 +8,23 @@ tags: [Unity, TeamProj, Team, Buff, StoryBoard]
 
 # 버프 생성 스토리보드
 
+
+
 [팀프로젝트 개요 문서](https://unwoo52.github.io/posts/Team-Project-About/)
 
 [Buff 기능 기술 문서](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/)
 
 ## 개요
 
-[팀프로젝트](https://unwoo52.github.io/posts/Team-Project-About/)동안 구현한 Buff System을 설명하기 위해 시간의 흐름되로 어떻게 작동하는지 사진과 코드 설명을 나열한 문서이다.
+### 프로젝트, 기술문서, 스토리보드 링크
+
+> [팀프로젝트 문서](https://unwoo52.github.io/posts/Team-Project-About/)는 프로젝트의 전체 내용과 개요 등에 대해 적혀있습니다.
+>
+> [기술 문서](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/)는 전체 코드와 코드들에 대한 설명이 적혀있습니다.
+> 
+> **스토리보드(현재 포스트)**에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.
+
+### Buff 개요
 
 BuffSystem은 버프의 종류에 따라 [일반 버프]()(지속시간이 끝나면 사라지는 버프)와 [지형 버프]()(버프 지속시간이 없는 대신 특정 조건에 의해 발동되고 사라짐)으로 나누어진다.
 
