@@ -16,7 +16,7 @@ tags: [Unity, TeamProj, Team, Buff, TechnicalDocument, Docs, Document]
 >
 > <span style="color:yellow">기술 문서는 전체 코드와 코드들에 대한 설명이 적혀있습니다.</span>
 > 
-> [스토리보드]()에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.
+> [스토리보드](https://unwoo52.github.io/posts/Team-Project-Buff-%EA%B8%B0%EB%8A%A5-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C/)에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.
 
 ## Buff 구현 개요
 
