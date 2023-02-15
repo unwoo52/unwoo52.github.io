@@ -8,13 +8,15 @@ tags: [Unity, TeamProj, Team, Buff, TechnicalDocument, Docs, Document]
 
 # 개요
 
-팀 프로젝트 전체 개요 문서 >> [Team Project About](https://unwoo52.github.io/posts/Team-Project-About/)
+### 프로젝트, 기술문서, 스토리보드 링크
 
-Buff  시연 >> [https://youtu.be/XYon_3MIK5E?t=39](https://youtu.be/XYon_3MIK5E?t=39)
-
-Buff 기능 스토리 보드 >> [https://unwoo52.github.io/posts/Team-Project-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C-Buff-%EA%B8%B0%EB%8A%A5/](https://unwoo52.github.io/posts/Team-Project-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C-Buff-%EA%B8%B0%EB%8A%A5/)
-
-팀프로젝트 내에서 내가 구현한 Buff에 대한 기술문서이다.
+> [팀프로젝트 문서](https://unwoo52.github.io/posts/Team-Project-About/)는 프로젝트의 전체 내용과 개요 등에 대해 적혀있습니다.
+>
+> [youtube 버프 시연 영상](https://youtu.be/XYon_3MIK5E?t=39)에서 버프 작동을 유튜브로 볼 수 있습니다.
+>
+> \>\>[기술 문서]()는 전체 코드와 코드들에 대한 설명이 적혀있습니다.
+> 
+> [스토리보드]()에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.
 
 ## Buff 구현 개요
 
