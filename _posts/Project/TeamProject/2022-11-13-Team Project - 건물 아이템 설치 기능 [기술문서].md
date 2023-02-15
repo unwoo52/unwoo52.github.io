@@ -41,6 +41,68 @@ tags: [Unity, TeamProj, Team, Building, TechnicalDocument, Docs, Document]
 
 - 모닥불 오브젝트는 일정 범위 내에 플레이어에게 hp를 지속적으로 회복시켜준다.
 
+
+<details>
+<summary>모닥불 회복 버프 스크립트</summary>
+<div markdown="1">
+
+```cs
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Player;
+
+public class BO_CampFireScript : MonoBehaviour
+{
+    readonly WaitForSeconds HealDelayTime = new(5.0f);
+    [SerializeField]
+    private List<PlayerScript> playerList;
+    private Coroutine healCoroutine;
+    #region Method
+    private void Start()
+    {
+        healCoroutine = StartCoroutine(HealPlayer());
+    }
+    IEnumerator HealPlayer()
+    {
+        while (this.gameObject != null)
+        {
+            foreach (PlayerScript pl in playerList)
+            {
+                pl.myInfo.CurHP += 5f;
+            }
+            yield return HealDelayTime;
+        }
+    }
+    #endregion
+    #region OnTrigger
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 6)
+        {
+            //playerList.Add(other.GetComponent<PlayerScript>());
+            if (other.TryGetComponent(out PlayerScript playerscript)) playerList.Add(playerscript);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 6)
+        {
+            //playerList.Remove(other.GetComponent<PlayerScript>());
+            if (other.TryGetComponent(out PlayerScript playerscript)) playerList.Remove(playerscript);
+        }
+    }
+    #endregion
+}
+```
+
+> OnTriggerEnter로 범위 내 플레이어들을 List<PlayerScript> playerList에 저장하여 일정 시간마다 hp를 회복시킴.
+
+</div>
+</details>
+
+  
 ### 건물 아이템 스크립터블 데이터
 
 ![imagename](/assets/image/Project/TeamProject/BuildingObjectSystem/004.png)
