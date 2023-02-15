@@ -8,6 +8,10 @@ tags: [Unity, TeamProj, Team, Buff, StoryBoard]
 
 # 버프 생성 스토리보드
 
+[팀프로젝트 개요 문서](https://unwoo52.github.io/posts/Team-Project-About/)
+
+[Buff 기능 기술 문서](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/)
+
 ## 개요
 
 [팀프로젝트](https://unwoo52.github.io/posts/Team-Project-About/)동안 구현한 Buff System을 설명하기 위해 시간의 흐름되로 어떻게 작동하는지 사진과 코드 설명을 나열한 문서이다.
@@ -557,4 +561,10 @@ myInfo.MoveSpeed_AfterBuff = BuffEffectAplly(s, myInfo.MoveSpeed_Origin);
 
 원래 플레이어 스탯(myInfo)의 버프 적용 후 값에 저장되며, 플레이어의 실제 능력치의 연산에 사용되는 값은 이 _AfterBuff값들이다.
 
+  
+---------
+
+[팀프로젝트 개요 문서](https://unwoo52.github.io/posts/Team-Project-About/)
+  
+[Buff 기능 기술 문서](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/)
 
