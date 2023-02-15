@@ -1,18 +1,22 @@
 ---
-title: Team Project 기술문서 건물 아이템 설치 기능
+title: Team Project - 건물 아이템 설치 기능 [기술문서]
 author: unwoo52
-date: 2022-11-07 00:00:00 +09:00
+date: 2022-11-13 00:00:00 +09:00
 categories: [Unity, TeamProj]
 tags: [Unity, TeamProj, Team, Building, TechnicalDocument, Docs, Document]
 ---
 
-# 개요
+# <span style="color:yellow">기술 문서 개요</span>
 
-팀 프로젝트 전체 개요 문서 >> [Team Project About](https://unwoo52.github.io/posts/Team-Project-About/)
+### 프로젝트, 기술문서, 스토리보드 링크
 
-건물 아이템 설치 시연 >> [https://youtu.be/XYon_3MIK5E?t=72](https://youtu.be/XYon_3MIK5E?t=72)
-
-팀프로젝트 내에서 내가 구현한 건물 아이템 설치 기능에 대한 기술문서이다.
+> [팀프로젝트 문서](https://unwoo52.github.io/posts/Team-Project-About/)는 프로젝트의 전체 내용과 개요 등에 대해 적혀있습니다.
+>
+> [youtube 버프 시연 영상](https://youtu.be/XYon_3MIK5E?t=72)에서 버프 작동을 유튜브로 볼 수 있습니다.
+>
+> <span style="color:yellow">기술 문서는 전체 코드와 코드들에 대한 설명이 적혀있습니다.</span>
+> 
+> [스토리보드]()에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.
 
 ## 건물 아이템 설치 기능 개요
 
