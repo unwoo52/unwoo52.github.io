@@ -22,7 +22,7 @@ tags: [Unity, TeamProj, Team, Buff, StoryBoard]
 >
 > [기술 문서](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/)는 전체 코드와 코드들에 대한 설명이 적혀있습니다.
 > 
-> 스토리보드( 포스트)에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.
+> 스토리보드(현재 포스트)에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.
 
 ### Buff 개요
 
