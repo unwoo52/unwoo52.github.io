@@ -12,7 +12,7 @@ tags: [Unity, TeamProj, Team, Buff, TechnicalDocument, Docs, Document]
 
 Buff  시연 >> [https://youtu.be/XYon_3MIK5E?t=39](https://youtu.be/XYon_3MIK5E?t=39)
 
-
+Buff 기능 스토리 보드 >> [https://unwoo52.github.io/posts/Team-Project-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C-Buff-%EA%B8%B0%EB%8A%A5/](https://unwoo52.github.io/posts/Team-Project-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C-Buff-%EA%B8%B0%EB%8A%A5/)
 
 팀프로젝트 내에서 내가 구현한 Buff에 대한 기술문서이다.
 
