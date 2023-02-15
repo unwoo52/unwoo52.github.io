@@ -6,7 +6,7 @@ categories: [Unity, TeamProj]
 tags: [Unity, TeamProj, Team, Buff, TechnicalDocument, Docs, Document]
 ---
 
-# 개요
+# <span style="color:yellow">기술 문서 개요</span>
 
 ### 프로젝트, 기술문서, 스토리보드 링크
 
