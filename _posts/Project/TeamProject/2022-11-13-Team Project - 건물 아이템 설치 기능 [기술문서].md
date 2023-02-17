@@ -16,6 +16,14 @@ tags: [Unity, TeamProj, Team, Building, TechnicalDocument, Docs, Document]
 >
 > <span style="color:#000000">기술 문서는 전체 코드와 코드들에 대한 설명이 적혀있습니다.</span>
 > 
+> <span style="color:#ffffff">기술 문서는 전체 코드와 코드들에 대한 설명이 적혀있습니다.</span>
+> 
+> <span style="color:#888888">기술 문서는 전체 코드와 코드들에 대한 설명이 적혀있습니다.</span>
+> 
+> <span style="color:#ff00ff">기술 문서는 전체 코드와 코드들에 대한 설명이 적혀있습니다.</span>
+> 
+> <span style="color:#808080">기술 문서는 전체 코드와 코드들에 대한 설명이 적혀있습니다.</span>
+> 
 > [스토리보드]()에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.
 
 ## 건물 아이템 설치 기능 개요
