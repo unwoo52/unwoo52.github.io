@@ -378,5 +378,179 @@ public class MouseInPut_Build// : MonoBehaviour
 
 </div>
 </details>
+  
+  
+  -----------
+  
+### 건물 오브젝트 스크립트
+  
+건물 오브젝트가 건축 상태일 때에 사용되는 코드들이다.
+  
+![imagename](/assets/image/Project/TeamProject/BuildingObjectSystem/008.png)
 
 
+<details>
+<summary>BuildingObjectScript</summary>
+<div markdown="1">
+
+```cs
+using Player;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BuildingObjectScript : MonoBehaviour
+{
+    #region fields, methods
+    public bool isDistanceOver = false; //레이 끝까지 가도 건설 가능한 바닥이 없어서 건설할 수 없는 상태인가?
+    public bool isBoxOverlap = false; //checkBox가 벽에 닿아서 건설할 수 없는 상태인가?
+
+    [SerializeField] private Material OriginMaterial = null;
+    public Material _OriginMaterial { get { return OriginMaterial; } }
+
+    private Transform buildingObject; //자기 자신 스크립트 저장
+    private MeshCollider RootObjectMeshcollider;
+    private GameObject Root; //이 오브젝트의 root 오브젝트 저장
+    private GameObject OverlapObject;
+    private GameObject EffectObject; //campfire의 경우엔 fire 오브젝트, 버프나 효과 등을 가지는 형제 오브젝트
+    #endregion
+    #region Initialize
+    private void Awake()
+    {
+        HierarchySetting();
+    }
+    /// <summary>
+    /// buildingObject, Root를 선언하고 effectObject를 비활성화
+    /// </summary>
+    private void HierarchySetting()
+    {
+        TryGetComponent(out buildingObject);
+        Root = buildingObject.parent.gameObject;
+        if (Root.transform.GetChild(1).gameObject)
+        {
+            EffectObject = Root.transform.GetChild(1).gameObject;
+            EffectObject.SetActive(false);
+        }
+        else Debug.LogError("건물에서 effectObject가 없습니다");
+
+        if(this.transform.GetChild(0).TryGetComponent(out CheckBoxScript _))
+        {
+            OverlapObject = this.transform.GetChild(0).gameObject;
+            OverlapObject.SetActive(false);
+        }
+        else Debug.LogError("건물에 OverlapObject가 없습니다");
+
+        if (Root.TryGetComponent(out MeshCollider RootObjectMeshcollider)) RootObjectMeshcollider.enabled = false;
+        else Debug.LogError("건물에 MeshCollider가 없습니다");
+    }
+    #endregion
+    #region State Machine
+    public enum BuildingObjectState { Create, Item, Making, Runing, Destroy }
+    public BuildingObjectState campFireState = BuildingObjectState.Create;
+    public void ChangeState(BuildingObjectState state)
+    {
+        if (campFireState == state) return;
+        switch (state)
+        {
+            case BuildingObjectState.Create:
+                break;
+            case BuildingObjectState.Item:
+                break;
+            case BuildingObjectState.Making:
+                OverlapObject.SetActive(true);
+                break;
+            case BuildingObjectState.Runing:
+                EffectObject.SetActive(true);
+                break;
+            case BuildingObjectState.Destroy:
+                Destroy(transform.parent.gameObject);
+                Destroy(this);
+                break;
+        }
+    }   
+    #endregion
+    /* codes */
+    public Material GetMaterial()
+    {
+        if(!transform.parent.TryGetComponent(out MeshRenderer BuildObjectMeshRenderer)) return null;
+        return BuildObjectMeshRenderer.material;
+    }
+    public bool SetMaterial(Material material)
+    {
+        transform.parent.TryGetComponent(out MeshRenderer meshRenderer);
+        meshRenderer.material = material;
+        if(meshRenderer == null) return false;
+        return true;
+    }
+    public bool ChangeMaterials(Material material)
+    {
+        if(!transform.parent.TryGetComponent(out MeshRenderer meshRenderer)) return false;
+        meshRenderer.material = material;
+        if (meshRenderer.material == null) return false;
+        return true;
+    }
+    public bool SetOrigibMaterail()
+    {
+        if (!transform.parent.TryGetComponent(out MeshRenderer meshRenderer)) return false;
+        meshRenderer.material = _OriginMaterial;
+        return true;
+    }
+}
+```
+
+</div>
+</details>
+  
+---------
+
+### 건물 충돌 감지 스크립트
+
+건물 오브젝트가 건축상태일 때, 플레이어의 에임 끝에 위치할 때 장애물에 충돌해있는지를 감지하는 스크립트이다. 
+
+![imagename](/assets/image/Project/TeamProject/BuildingObjectSystem/009.png)
+
+
+<details>
+<summary>CheckBoxScript</summary>
+<div markdown="1">
+
+```cs
+using Definitions;
+using Player;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.TerrainUtils;
+
+public class CheckBoxScript : MonoBehaviour
+{
+    private LayerMask TerrainMask;
+    [SerializeField]private List<GameObject> collList = new();
+    private void Start()
+    {
+        TerrainMask = PlayerScript.instance.plMask.MaskTerrain;
+    }
+    private void Update()
+    {
+        GetComponentInParent<BuildingObjectScript>().isBoxOverlap = (collList.Count != 0); //checkBoxCount가 0이 아니면 isBoxOverlap를 트루로
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (((1 << other.gameObject.layer) & TerrainMask) != 0)
+        {
+            collList.Add(other.gameObject);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (((1 << other.gameObject.layer) & TerrainMask) != 0)
+        {
+            collList.Remove(other.gameObject);
+        }
+    }
+}
+
+```
+
+</div>
+</details>
