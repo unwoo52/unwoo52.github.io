@@ -37,7 +37,9 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, TechnicalDocument, Docs
 ----------
 
 
-# 채광 및 벌목 관련 오브젝트들
+## 채광 및 벌목 관련 오브젝트들
+
+### 채광 관련 오브젝트들
 
 ![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/001.png)
 
@@ -46,6 +48,12 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, TechnicalDocument, Docs
 ![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/001-1.png)
 
 > 바위 오브젝트에서 드롭되는 아이템.
+
+<br>
+
+-------------
+
+### 벌목 관련 오브젝트들
 
 ![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/002.png)
 
