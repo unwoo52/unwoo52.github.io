@@ -180,21 +180,7 @@ public class MouseInput
     /// </summary>
     void RightMouseInPut_NomalMethod()
     {
-        /*
-        Ray ray = RayfromTransform();
-        if (myWeapon == WeaponType.Bow && Input.GetMouseButtonDown(1))
-        {
-            GameObject go = Instantiate(Resources.Load("Prefabs\\Arrow"), myAttackpos[(int)myWeapon].position,
-                myAttackpos[(int)myWeapon].rotation, myAttackpos[(int)myWeapon]) as GameObject;
-
-            _components.fpCamera.ScreenPointToRay(new Vector3(_components.fpCamera.pixelWidth / 2, _components.fpCamera.pixelHeight / 2));
-            Debug.DrawRay(Com.rBody.position, myAttackpos[(int)myWeapon].rotation.eulerAngles, Color.red, 5f);
-
-            myArrow = go?.GetComponent<Arrow>() ?? null;
-
-            Com.anim.SetTrigger("BowShot");
-        }
-        */
+        ...
     }
     /* codes */
     private bool IsBuildState()
