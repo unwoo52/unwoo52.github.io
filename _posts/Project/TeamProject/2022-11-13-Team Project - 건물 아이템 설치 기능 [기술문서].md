@@ -1,7 +1,7 @@
 ---
 title: Team Project - 건물 아이템 설치 기능 [기술문서]
 author: unwoo52
-date: 2022-11-13 00:00:00 +09:00
+date: 2022-11-14 00:00:00 +09:00
 categories: [Unity, TeamProj]
 tags: [Unity, TeamProj, Team, Building, TechnicalDocument, Docs, Document]
 ---
