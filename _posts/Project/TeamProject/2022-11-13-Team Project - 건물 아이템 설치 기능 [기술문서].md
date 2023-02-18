@@ -12,7 +12,7 @@ tags: [Unity, TeamProj, Team, Building, TechnicalDocument, Docs, Document]
 
 > [팀프로젝트 문서](https://unwoo52.github.io/posts/Team-Project-About/)는 프로젝트의 전체 내용과 개요 등에 대해 적혀있습니다.
 >
-> [youtube 건물 아 시연 영상](https://youtu.be/XYon_3MIK5E?t=72)에서 버프 작동을 유튜브로 볼 수 있습니다.
+> [youtube 건물 아이템 시연 영상](https://youtu.be/XYon_3MIK5E?t=72)에서 버프 작동을 유튜브로 볼 수 있습니다.
 > 
 > <span style="color:#ffffff">기술 문서는 전체 코드와 코드들에 대한 설명이 적혀있습니다.</span>
 > 
