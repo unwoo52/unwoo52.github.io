@@ -216,7 +216,6 @@ public class RockScript : MonoBehaviour
     [SerializeField] private float maxCrackHp;
     [SerializeField] private float crackHp;
     //TestField
-    public float testDmg;
     public float testPower;//튕겨져나가는 힘
     
     private void Start()
@@ -237,7 +236,6 @@ public class RockScript : MonoBehaviour
     }
     public void DamToRock(Ray ray, Vector3 hit, float Dmg)
     {
-        Dmg = testDmg; //TESTCODE===============================
         if (Dmg <= 0) Dmg = 0;
         cuttingHp -= Dmg;
         crackHp -= Dmg;
