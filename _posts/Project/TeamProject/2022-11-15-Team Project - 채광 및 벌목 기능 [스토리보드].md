@@ -90,6 +90,29 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 
 ### 나무 벌목 후 보상 오브젝트 생성
 
+통나무는 필드로 잎의 갯수, 잔가지의 갯수, 그리고 실린더 갯수를 갖고 있다.
+
+![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/002.png)
+
+> 나무 오브젝트의 인스펙터. 나무에서 드롭되는 오브젝트의 양을 쉽게 조절할 수 있는 필드가 있다.
+
+통나무는 파괴되면서 지정된 통나무 갯수(위 이미지의 빨간 줄 그어진 필드)만큼의 'Tree Effect'를 실행한다.
+
+한번의 Tree Effect에는 통나무(Cylinder)와 지정된 갯수의 잎과 잔가지 수(위 이미지의 number bush, leaf가 그것이다)가 생성되어 떨어진다.
+
+
+나무의 키가 크다면 통나무 갯수를 늘리고, 통나무간 간격 필드(distanceGapofCylinder) 값을 높히면, 생성되는 통나무와 잎사귀간 거리가 멀어진다.
+
+![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/003.png)
+
+
+
+<br>
+
+![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/001.png)
+
+> 4개의 통나무를 벌목한 사진
+
 - TreeScript::TreeDestroyEffect()
 
 ```cs
@@ -185,45 +208,4 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 
 때문에 하나의 오브젝트에서 일관된 시간을 측정하고 삭제하는 것이 최적화 면에서 유리하다.
 
-
-
-
-
-
-뎀투트리 플레이어 애니메이션부터 설명 시작. 트리의 체력이 깎임
-
-트리 파괴 스크립트 실행
-
-통나무는 필드로 잎의 갯수, 잔가지의 갯수, 그리고 실린더 갯수를 갖고 있다.
-
-![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/002.png)
-
-> 나무 오브젝트의 인스펙터. 나무에서 드롭되는 오브젝트의 양을 쉽게 조절할 수 있는 필드가 있다.
-
-통나무는 파괴되면서 지정된 통나무 갯수(위 이미지의 빨간 줄 그어진 필드)만큼의 'Tree Effect'를 실행한다.
-
-<br>
-
-![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/001.png)
-
-> 4개의 통나무를 벌목한 사진
-
-
-한번의 Tree Effect에는 통나무(Cylinder)와 지정된 갯수의 잎과 잔가지 수(위 이미지의 number bush, leaf가 그것이다)가 생성되어 떨어진다.
-
-
-
-나무의 키가 크다면 통나무 갯수를 늘리고, 통나무간 간격 필드(distanceGapofCylinder) 값을 높히면, 생성되는 통나무와 잎사귀간 거리가 멀어진다.
-
-![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/003.png)
-
-
-통나무, 스텀프, 잎과 잔가지 생성 InstanteTreeEffect()
-
-잎과 잔가지를 담아둘 GameObject 리스트 생성,
-
-일단 원래 나무의 콜라이더와 그래픽들을 모두 제거, 나무 오브젝트 자체를 삭제하면 잎과 잔가지 삭제 스크립트도 삭제되면 안되기 때문.
-
-
-## 바위 채광
 
