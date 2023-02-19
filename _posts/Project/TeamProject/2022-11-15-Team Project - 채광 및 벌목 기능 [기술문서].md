@@ -43,9 +43,11 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, TechnicalDocument, Docs
 ![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/001.png)
 
 > 바위 오브젝트. 채굴하면 바위 아이템을 떨어트리며, 채굴하면 할수록 작아진다.
+
 ![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/001-1.png)
 
 > 바위 오브젝트에서 드롭되는 아이템.
+
 <br>
 
 -------------
@@ -55,9 +57,11 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, TechnicalDocument, Docs
 ![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/002.png)
 
 > 나무 오브젝트. 체력을 모두 소모시키면 쓰러지면서 나무 통과 잎사귀 아이템들을 일정량 드롭한다.
+
 ![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/002-1.png)
 
 > 나무 오브젝트를 벌목하면 바닥에 남는 오브젝트.
+
 ![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/002-2.png)
 
 ![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/002-3.png)
