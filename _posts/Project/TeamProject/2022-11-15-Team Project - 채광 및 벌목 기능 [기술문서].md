@@ -6,7 +6,7 @@ categories: [Unity, TeamProj]
 tags: [Unity, TeamProj, Team, Mining, Logging, Resource, TechnicalDocument, Docs, Document]
 ---
 
-# <span style="color:yellow">기술 문서 개요</span>
+# 기술 문서 개요
 
 ### 프로젝트, 기술문서, 스토리보드 링크
 
@@ -14,7 +14,7 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, TechnicalDocument, Docs
 >
 > [youtube 채광 및 벌목 시연 영상](https://youtu.be/XYon_3MIK5E?t=92)에서 버프 작동을 유튜브로 볼 수 있습니다.
 >
-> <span style="color:yellow">기술 문서는 전체 코드와 코드들에 대한 설명이 적혀있습니다.</span>
+> <span style="color:ffffff">기술 문서는 전체 코드와 코드들에 대한 설명이 적혀있습니다.</span>
 > 
 > [스토리보드]()에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.
 
