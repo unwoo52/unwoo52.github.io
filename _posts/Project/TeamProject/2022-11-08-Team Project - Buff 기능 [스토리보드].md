@@ -6,7 +6,7 @@ categories: [Unity, TeamProj]
 tags: [Unity, TeamProj, Team, Buff, StoryBoard]
 ---
 
-# <span style="color:yellow">스토리보드 개요</span>
+# 스토리보드 개요
 
 ### 프로젝트, 기술문서, 스토리보드 링크
 
@@ -16,7 +16,7 @@ tags: [Unity, TeamProj, Team, Buff, StoryBoard]
 >
 > [기술 문서](https://unwoo52.github.io/posts/Team-Project-Buff-%EA%B8%B0%EB%8A%A5-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C/)는 전체 코드와 코드들에 대한 설명이 적혀있습니다.
 > 
-> <span style="color:yellow">스토리보드에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.</span>
+> <span style="color:ffffff">스토리보드에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.</span>
 
 ### Buff 개요
 
