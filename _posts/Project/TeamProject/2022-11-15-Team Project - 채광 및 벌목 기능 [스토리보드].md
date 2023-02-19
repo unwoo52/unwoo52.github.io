@@ -322,7 +322,7 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 
 ### 바위 아이템 드롭
 
-![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/006.gif)
+![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/006.gif)
 
 - RockScript::instantiateDropItem(Ray ray, Vector3 hit)
 
@@ -344,7 +344,7 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 
 ### 바위 크기 감소
 
-![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/004.gif)
+![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/004.gif)
 
 > 바위 채굴 중 컷팅 체력에 도달하면 바위의 크기가 줄어든다.
 
@@ -367,7 +367,7 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
     }
 ```
 
-![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/005.gif)
+![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/005.gif)
 
 > Mesh[] MeshList와 Vector3[] ScaleList에 다음과 같이 Mesh와 Scale값이 저장되어 있다.
 
@@ -380,7 +380,7 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 
 ### 바위 아이템 
 
-![imagename](/assets/image/Project/TeamProject/MiningAndLoggingSystem/000.gif)
+![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/000.gif)
 
 > 바위의 체력이 모두 소진되면 numofDestroyDropItem필드에 저장된 값 만큼의 돌맹이 아이템이 드롭된다.
 
