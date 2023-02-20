@@ -68,7 +68,6 @@ public class testBuffPenal : MonoBehaviour
         BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, 5.0f, Resources.Load("BuffImage/14_Summon", typeof(Sprite)) as Sprite);
     }
 }
-
 ```
 
 </div>
@@ -82,10 +81,10 @@ public class testBuffPenal : MonoBehaviour
 **********
 
 ```cs
-    List<string> buffTypenameList = new() { "MoveSpeed", "MineDelay_Mining" };
-    List<float> buffValueList = new() { 0.5f, -0.7f };
+List<string> buffTypenameList = new() { "MoveSpeed", "MineDelay_Mining" };
+List<float> buffValueList = new() { 0.5f, -0.7f };
 
-    BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, 5.0f, Resources.Load("BuffImage/14_Summon", typeof(Sprite)) as Sprite);
+BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, 5.0f, Resources.Load("BuffImage/14_Summon", typeof(Sprite)) as Sprite);
 ```
 
 플레이어가 테스트 발판을 밟으면 발판 내의 필드인 buffTypenameList와 buffValueList에는 각각 "MoveSpeed", "MineDelay_Mining"와 0.5f, -0.7f이 정의되어 있다.
@@ -251,29 +250,29 @@ public class TerrainSystem : MonoBehaviour
 **********
 
 ```cs
-    private void OnCollisionEnter(Collision collision)
+private void OnCollisionEnter(Collision collision)
+{
+    if(((1 << collision.gameObject.layer) & MaskPlayer) != 0)
     {
-        if(((1 << collision.gameObject.layer) & MaskPlayer) != 0)
+        PlayerScript playerinstance = PlayerScript.instance;
+        //플레이어의 curTerrainLayer가 현재 terrain의 layer와 일치하는가
+        if ((playerinstance.plMask.currentTerrainLayer ^ terrainLayerMaskInt) != 0)
         {
-            PlayerScript playerinstance = PlayerScript.instance;
-            //플레이어의 curTerrainLayer가 현재 terrain의 layer와 일치하는가
-            if ((playerinstance.plMask.currentTerrainLayer ^ terrainLayerMaskInt) != 0)
+            //플레이어 curLayer에 terrain의 Layer 대입
+            playerinstance.plMask.currentTerrainLayer.value = terrainLayerMaskInt;
+            //기존 지형 버프 파괴
+            foreach (BaseBuff baseBuff in FindCurNoneAxisTerrainBuff(playerinstance.BuffList, playerinstance.plMask.currentTerrainLayer))
             {
-                //플레이어 curLayer에 terrain의 Layer 대입
-                playerinstance.plMask.currentTerrainLayer.value = terrainLayerMaskInt;
-                //기존 지형 버프 파괴
-                foreach (BaseBuff baseBuff in FindCurNoneAxisTerrainBuff(playerinstance.BuffList, playerinstance.plMask.currentTerrainLayer))
-                {
-                    baseBuff.BuffDeActivation();
-                }
-                //새 지형 버프 적용
-                foreach (int i in FindCurAxisTerrainBuff(playerinstance.BuffList, playerinstance.plMask.currentTerrainLayer))
-                {
-                    AddTerrainBuffActive(i);
-                }
+                baseBuff.BuffDeActivation();
+            }
+            //새 지형 버프 적용
+            foreach (int i in FindCurAxisTerrainBuff(playerinstance.BuffList, playerinstance.plMask.currentTerrainLayer))
+            {
+                AddTerrainBuffActive(i);
             }
         }
     }
+}
 ```
 
 플레이어와 접촉하면 플레이어 인스턴스의 현재 지형 레이어값이 담긴 필드(currentTerrainLayer)를 체크해 밟은 지형과 다르면 버프 교체 함수를 실행한다.
@@ -299,37 +298,37 @@ III. 새로운 지형 버프를 AddTerrainBuffActive(i)로 생성한다.
 
 
 ```cs
-    void AddTerrainBuffActive(int terrainLayerNumber)
-    {
-        List<string> buffTypenameList = new();
-        List<float> buffValueList = new();
-        int buffCode = terrainLayerNumber;
-        Sprite icon;
+void AddTerrainBuffActive(int terrainLayerNumber)
+{
+    List<string> buffTypenameList = new();
+    List<float> buffValueList = new();
+    int buffCode = terrainLayerNumber;
+    Sprite icon;
 
-        switch (terrainLayerNumber)
-        {
-            case 29:
-                buffTypenameList.Add("MoveSpeed");
-                buffValueList.Add(0.3f);
-                icon = Resources.Load("BuffImage/11_Melee_Cone", typeof(Sprite)) as Sprite;
-                BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, icon, buffCode);
-                break;
-            case 30:
-                buffTypenameList.Add("MoveSpeed");
-                buffValueList.Add(0.3f);
-                icon = Resources.Load("BuffImage/02_Fire", typeof(Sprite)) as Sprite;
-                BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, icon, buffCode);
-                break;
-            case 31:
-                buffTypenameList.Add("MoveSpeed");
-                buffTypenameList.Add("MineDelay_Mining");
-                buffValueList.Add(-0.3f);
-                buffValueList.Add(0.3f);
-                icon = Resources.Load("BuffImage/04_Ice_Nova", typeof(Sprite)) as Sprite;
-                BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, icon, buffCode);
-                break;
-        }
+    switch (terrainLayerNumber)
+    {
+        case 29:
+            buffTypenameList.Add("MoveSpeed");
+            buffValueList.Add(0.3f);
+            icon = Resources.Load("BuffImage/11_Melee_Cone", typeof(Sprite)) as Sprite;
+            BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, icon, buffCode);
+            break;
+        case 30:
+            buffTypenameList.Add("MoveSpeed");
+            buffValueList.Add(0.3f);
+            icon = Resources.Load("BuffImage/02_Fire", typeof(Sprite)) as Sprite;
+            BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, icon, buffCode);
+            break;
+        case 31:
+            buffTypenameList.Add("MoveSpeed");
+            buffTypenameList.Add("MineDelay_Mining");
+            buffValueList.Add(-0.3f);
+            buffValueList.Add(0.3f);
+            icon = Resources.Load("BuffImage/04_Ice_Nova", typeof(Sprite)) as Sprite;
+            BuffManagerScript.instance.CreateBuff(buffTypenameList, buffValueList, icon, buffCode);
+            break;
     }
+}
 ```
 
 지형 번호(ice라면 31)을 받아 버프를 생성하는 함수를 실행한다.
@@ -355,12 +354,12 @@ III. 새로운 지형 버프를 AddTerrainBuffActive(i)로 생성한다.
 
 - BuffManagerScript::CreateBuff
 ```cs
-    public void CreateBuff(List<string> buffTypename, List<float> buffValue, float buffOriginTime, Sprite bufficon)
-    {
-        GameObject gameObject = Instantiate(buffPrefab, transform);
-        gameObject.GetComponent<BaseBuff>().Init(buffTypename, buffValue, buffOriginTime);
-        gameObject.GetComponent<Image>().sprite = bufficon;
-    }
+public void CreateBuff(List<string> buffTypename, List<float> buffValue, float buffOriginTime, Sprite bufficon)
+{
+    GameObject gameObject = Instantiate(buffPrefab, transform);
+    gameObject.GetComponent<BaseBuff>().Init(buffTypename, buffValue, buffOriginTime);
+    gameObject.GetComponent<Image>().sprite = bufficon;
+}
 ```
 
 BuffManagerScript의 buffPrefab은 버프 오브젝트 프레펩([BaseBuff](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#basebuff))이 저장되어 있다. 버프 오브젝트를 생성한 후, 만들어진 버프 오브젝트의 Init()을 실행하고 아이콘을 지정한다.
@@ -378,17 +377,17 @@ BuffManagerScript의 buffPrefab은 버프 오브젝트 프레펩([BaseBuff](http
 - [BaseBuff](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#basebuff)::Init
 
 ```cs
-    public void Init(List<string> buffTypenameList, List<float> buffValueList, float buffOriginTime)
-    {
-        this.buffTypenameList = buffTypenameList;
-        this.buffValueList = buffValueList;
-        this.buffOriginTime = buffOriginTime;
-        currentTime = this.buffOriginTime;
-        icon.fillAmount = 1f;
+public void Init(List<string> buffTypenameList, List<float> buffValueList, float buffOriginTime)
+{
+    this.buffTypenameList = buffTypenameList;
+    this.buffValueList = buffValueList;
+    this.buffOriginTime = buffOriginTime;
+    currentTime = this.buffOriginTime;
+    icon.fillAmount = 1f;
 
-        PlayerIBuff = PlayerScript.instance.GetComponent<IBuff>();
-        NomalBuffactivation();
-    }
+    PlayerIBuff = PlayerScript.instance.GetComponent<IBuff>();
+    NomalBuffactivation();
+}
 ```
 
 인자로 받은 값들을 버프 오브젝트에 대입한 후, 버프 효과 적용 함수 NomalBuffactivation()을 실행한다.
@@ -398,12 +397,12 @@ BuffManagerScript의 buffPrefab은 버프 오브젝트 프레펩([BaseBuff](http
 - [BaseBuff](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#basebuff)::NomalBuffactivation
 
 ```cs
-    private void NomalBuffactivation()
-    {
-        PlayerIBuff.BuffListAdd(this);
-        PlayerIBuff.ChooseBuff(buffTypenameList);
-        StartCoroutine(Activation());
-    }
+private void NomalBuffactivation()
+{
+    PlayerIBuff.BuffListAdd(this);
+    PlayerIBuff.ChooseBuff(buffTypenameList);
+    StartCoroutine(Activation());
+}
 ```
 
 
@@ -414,19 +413,19 @@ NomalBuffactivation에서는<br> **1.플레이어의 IBuff 함수들을 실행�
 <div markdown="1">
 
 ```cs
-    IEnumerator Activation()
+IEnumerator Activation()
+{
+    while (currentTime > 0)
     {
-        while (currentTime > 0)
-        {
-            icon.fillAmount = currentTime / buffOriginTime;
-            //Buff Root
-            currentTime -= 0.1f;
-            yield return BuffCheckRootSecond;
-        }
-        icon.fillAmount = 0f;
-        currentTime = 0f;
-        BuffDeActivation();
+        icon.fillAmount = currentTime / buffOriginTime;
+        //Buff Root
+        currentTime -= 0.1f;
+        yield return BuffCheckRootSecond;
     }
+    icon.fillAmount = 0f;
+    currentTime = 0f;
+    BuffDeActivation();
+}
 ```
 
 </div>
@@ -440,8 +439,8 @@ NomalBuffactivation에서는<br> **1.플레이어의 IBuff 함수들을 실행�
 ### [PlayerIBuff](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#playerscript-ibuff) - 플레이어 스탯에게 버프 효과 적용
 
 ```cs
-      PlayerIBuff.BuffListAdd(this);
-      PlayerIBuff.ChooseBuff(buffTypenameList);
+PlayerIBuff.BuffListAdd(this);
+PlayerIBuff.ChooseBuff(buffTypenameList);
 ```
 
 NomalBuffactivation 함수의 코드에서 위의 코드를 실행하였다.
@@ -449,10 +448,10 @@ NomalBuffactivation 함수의 코드에서 위의 코드를 실행하였다.
 <br>
 
 ```cs
-      public void BuffListAdd(BaseBuff baseBuff)
-      {
-          BuffList.Add(baseBuff);
-      }
+public void BuffListAdd(BaseBuff baseBuff)
+{
+    BuffList.Add(baseBuff);
+}
 ```
 
 PlayerIBuff.BuffListAdd(this) 코드는 플레이어의 버프 리스트에 버프 오브젝트를 추가하는 코드이다.
@@ -462,24 +461,24 @@ PlayerIBuff.BuffListAdd(this) 코드는 플레이어의 버프 리스트에 버�
 - [PlayerScriptIBuff](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#playerscript-ibuff)::ChooseBuff
 
 ```cs
-        public void ChooseBuff(List<string> buffTypenameList)//리스트[1]에 0.miningDelay와 1.movespeed를 받아왔다면 miningDelay와 movespeed에 대한 BuffEffectApply를 실행
+public void ChooseBuff(List<string> buffTypenameList)//리스트[1]에 0.miningDelay와 1.movespeed를 받아왔다면 miningDelay와 movespeed에 대한 BuffEffectApply를 실행
+{
+    foreach (string s in buffTypenameList)
+    {
+        switch (s)
         {
-            foreach (string s in buffTypenameList)
-            {
-                switch (s)
-                {
-                    case "MineDelay_Mining":
-                        myInfo.MineDelay_Mining_AfterBuff = BuffEffectAplly(s, myInfo.MineDelay_Mining_Origin);
-                        break;
-                    case "MineDelay_Picking":
-                        myInfo.MineDelay_Picking_AfterBuff = BuffEffectAplly(s, myInfo.MineDelay_Picking_Origin);
-                        break;
-                    case "MoveSpeed":
-                        myInfo.MoveSpeed_AfterBuff = BuffEffectAplly(s, myInfo.MoveSpeed_Origin);
-                        break;
-                }
-            }
+            case "MineDelay_Mining":
+                myInfo.MineDelay_Mining_AfterBuff = BuffEffectAplly(s, myInfo.MineDelay_Mining_Origin);
+                break;
+            case "MineDelay_Picking":
+                myInfo.MineDelay_Picking_AfterBuff = BuffEffectAplly(s, myInfo.MineDelay_Picking_Origin);
+                break;
+            case "MoveSpeed":
+                myInfo.MoveSpeed_AfterBuff = BuffEffectAplly(s, myInfo.MoveSpeed_Origin);
+                break;
         }
+    }
+}
 ```
 
 PlayerIBuff.ChooseBuff(buffTypenameList)는 BuffEffectAplly에게 입력받은 버프 유형 타입을 입력해 실행하는 코드이다.
@@ -501,15 +500,15 @@ BuffEffectAplly는 플레이어의 스탯을 수정하는 함수이다.
 <div markdown="1">
 
 ```cs
-        //이동속도
-        [SerializeField] float moveSpeed_Origin;
-        public float MoveSpeed_Origin { get => moveSpeed_Origin; set { moveSpeed_Origin = Mathf.Clamp(value, 0.1f, 100.0f); ; } }
-        [SerializeField] float moveSpeed_Multiple;
-        public float MoveSpeed__Multiple { get => moveSpeed_Multiple; set { moveSpeed_Multiple = value; } }
-        [SerializeField] float moveSpeed_Plus;
-        public float MoveSpeed_Plus { get => moveSpeed_Plus; set { moveSpeed_Plus = value; } }
-        [SerializeField] float moveSpeed_AfterBuff;
-        public float MoveSpeed_AfterBuff { get => moveSpeed_AfterBuff; set { moveSpeed_AfterBuff = Mathf.Clamp(value, 0.1f, 100.0f); } }
+//이동속도
+[SerializeField] float moveSpeed_Origin;
+public float MoveSpeed_Origin { get => moveSpeed_Origin; set { moveSpeed_Origin = Mathf.Clamp(value, 0.1f, 100.0f); ; } }
+[SerializeField] float moveSpeed_Multiple;
+public float MoveSpeed__Multiple { get => moveSpeed_Multiple; set { moveSpeed_Multiple = value; } }
+[SerializeField] float moveSpeed_Plus;
+public float MoveSpeed_Plus { get => moveSpeed_Plus; set { moveSpeed_Plus = value; } }
+[SerializeField] float moveSpeed_AfterBuff;
+public float MoveSpeed_AfterBuff { get => moveSpeed_AfterBuff; set { moveSpeed_AfterBuff = Mathf.Clamp(value, 0.1f, 100.0f); } }
 ```
 
 
@@ -533,23 +532,23 @@ BuffEffectAplly는 플레이어의 스탯을 수정하는 함수이다.
 - [PlayerScriptIBuff](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/#playerscript-ibuff)::BuffEffectAplly
 
 ```cs
-        public float BuffEffectAplly(string buffTypeName, float origin)
+public float BuffEffectAplly(string buffTypeName, float origin)
+{
+    if (BuffList.Count > 0)
+    {
+        float temp = 0;
+        for (int i = 0; i < BuffList.Count; i++)
         {
-            if (BuffList.Count > 0)
+            for (int j = 0; j < BuffList[i].BuffTypenameList.Count; j++)
             {
-                float temp = 0;
-                for (int i = 0; i < BuffList.Count; i++)
-                {
-                    for (int j = 0; j < BuffList[i].BuffTypenameList.Count; j++)
-                    {
-                        if (BuffList[i].BuffTypenameList[j].Equals(buffTypeName)) 
-                            temp += origin * BuffList[i].BuffValueList[j];
-                    }
-                }
-                return origin + temp;
+                if (BuffList[i].BuffTypenameList[j].Equals(buffTypeName)) 
+                    temp += origin * BuffList[i].BuffValueList[j];
             }
-            else return origin;
         }
+        return origin + temp;
+    }
+    else return origin;
+}
 ```
 
 버프의 종류와 해당 버프의 _Origin값을 인자로 받으면 해당 종류의 버프에 대해 탐색을 실행한다.
