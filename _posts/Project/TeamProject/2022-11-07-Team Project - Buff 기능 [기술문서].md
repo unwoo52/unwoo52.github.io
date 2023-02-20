@@ -94,13 +94,13 @@ public class BuffManagerScript : MonoBehaviour //UI중 Buff Panel에 인스턴�
 ### 코드 설명
 
 ```cs
-	public static BuffManagerScript instance;
-    [SerializeField] private GameObject buffPrefab;
-    private void Awake()
-    {
-        instance = this;
-        buffPrefab = Resources.Load("Prefabs/buffObject") as GameObject;
-    }
+public static BuffManagerScript instance;
+[SerializeField] private GameObject buffPrefab;
+private void Awake()
+{
+    instance = this;
+    buffPrefab = Resources.Load("Prefabs/buffObject") as GameObject;
+}
 ```
 
 싱글턴 객체 구현과 [버프 오브젝트 프레펩]()을 갖고있다.
@@ -109,12 +109,12 @@ public class BuffManagerScript : MonoBehaviour //UI중 Buff Panel에 인스턴�
 
 ```cs
 public void CreateBuff(List<string> buffTypename, List<float> buffValue, Sprite bufficon)
-    {
-        GameObject gameObject = Instantiate(buffPrefab, transform);
-        //gameobject = instanced baseBuff prefep
-        gameObject.GetComponent<BaseBuff>().Init(buffTypename, buffValue);
-        gameObject.GetComponent<Image>().sprite = bufficon; //
-    }
+{
+    GameObject gameObject = Instantiate(buffPrefab, transform);
+    //gameobject = instanced baseBuff prefep
+    gameObject.GetComponent<BaseBuff>().Init(buffTypename, buffValue);
+    gameObject.GetComponent<Image>().sprite = bufficon; //
+}
 ```
 
 여러 종류의 버프를 구현할 수 있게 다양한 타입을 가지는 버프 생성 메소드.
@@ -295,20 +295,20 @@ public class BaseBuff : MonoBehaviour //BuffPrefeb의 스크립트
 - 필드 전체
 
 ```cs
-	public IBuff PlayerIBuff;
-    List<string> buffTypenameList = new();
-    public List<string> BuffTypenameList { get => buffTypenameList; }
-    List<float> buffValueList = new();
-    public List<float> BuffValueList { get => buffValueList; }
-    float buffOriginTime;
-    public float BuffOriginTime { get => buffOriginTime; }
-    public Image icon; //여기에 버프 이미지 보관 ex)"디버프오라 아이콘"
-    float currentTime;
-    int buffCode;
-    public int BuffCode { get => buffCode; }
-    
-    readonly WaitForSeconds BuffCheckRootSecond = new((float)(Time.deltaTime * 0.1));
-    public float WeightTime;
+public IBuff PlayerIBuff;
+List<string> buffTypenameList = new();
+public List<string> BuffTypenameList { get => buffTypenameList; }
+List<float> buffValueList = new();
+public List<float> BuffValueList { get => buffValueList; }
+float buffOriginTime;
+public float BuffOriginTime { get => buffOriginTime; }
+public Image icon; //여기에 버프 이미지 보관 ex)"디버프오라 아이콘"
+float currentTime;
+int buffCode;
+public int BuffCode { get => buffCode; }
+
+readonly WaitForSeconds BuffCheckRootSecond = new((float)(Time.deltaTime * 0.1));
+public float WeightTime;
 ```
 
 버프에게 필요한 필드들이다. 버프 아이콘, 버프 효과 종류와 그 값, 지속시간 등이 포함되어 있다.
@@ -324,10 +324,10 @@ readonly WaitForSeconds BuffCheckRootSecond = new((float)(Time.deltaTime * 0.1))
 <br>
 
 ```cs
-    private void Awake()
-    {
-        icon = GetComponent<Image>();
-    }
+private void Awake()
+{
+    icon = GetComponent<Image>();
+}
 ```
 
 버프 생성시 인자로 받은 이미지를 아이콘으로 지정
@@ -335,19 +335,19 @@ readonly WaitForSeconds BuffCheckRootSecond = new((float)(Time.deltaTime * 0.1))
 <br>
 
 ```cs
-    public void Init(List<string> buffTypenameList, List<float> buffValueList, float buffOriginTime) { ... }
-    public void Init(List<string> buffTypenameList, List<float> buffValueList, int buffcode) { ... }
-    public void Init(List<string> buffTypenameList, List<float> buffValueList) { ... }
-    public void Init(List<string> buffTypenameList, List<float> buffValueList) //받아온 정보를 이 prefep에 init
-    {
-        this.buffTypenameList = buffTypenameList;
-        this.buffValueList = buffValueList;
-        currentTime = this.buffOriginTime;
-        icon.fillAmount = 1f;
-        PlayerIBuff = PlayerScript.instance.GetComponent<IBuff>();
-        Destroy(gameObject.GetComponent<Button>());
-        NonCoroutineBuffActivation();
-    }
+public void Init(List<string> buffTypenameList, List<float> buffValueList, float buffOriginTime) { ... }
+public void Init(List<string> buffTypenameList, List<float> buffValueList, int buffcode) { ... }
+public void Init(List<string> buffTypenameList, List<float> buffValueList) { ... }
+public void Init(List<string> buffTypenameList, List<float> buffValueList) //받아온 정보를 이 prefep에 init
+{
+    this.buffTypenameList = buffTypenameList;
+    this.buffValueList = buffValueList;
+    currentTime = this.buffOriginTime;
+    icon.fillAmount = 1f;
+    PlayerIBuff = PlayerScript.instance.GetComponent<IBuff>();
+    Destroy(gameObject.GetComponent<Button>());
+    NonCoroutineBuffActivation();
+}
 ```
 
 버프가 생성된 이후 실행하는 Initalize 함수. 버프의 종류별로 override되어 종류별로 함수가 존재한다.
@@ -357,12 +357,12 @@ readonly WaitForSeconds BuffCheckRootSecond = new((float)(Time.deltaTime * 0.1))
 <br>
 
 ```cs
-    private void NomalBuffactivation()
-    {
-        PlayerIBuff.BuffListAdd(this);
-        PlayerIBuff.ChooseBuff(buffTypenameList);
-        StartCoroutine(Activation());
-    }
+private void NomalBuffactivation()
+{
+    PlayerIBuff.BuffListAdd(this);
+    PlayerIBuff.ChooseBuff(buffTypenameList);
+    StartCoroutine(Activation());
+}
 ```
 
 지속시간이 있는 일반 버프에게 실행되는 Buff Activation 함수. Activation()을 실행시키면 버프지속시간에게서 WeightTime만큼을 감소시키는 코루틴이 실행된다.
@@ -370,11 +370,11 @@ readonly WaitForSeconds BuffCheckRootSecond = new((float)(Time.deltaTime * 0.1))
 <br>
 
 ```cs
-    void NonCoroutineBuffActivation()
-    {
-        PlayerIBuff.BuffListAdd(this);
-        PlayerIBuff.ChooseBuff(buffTypenameList);
-    }
+void NonCoroutineBuffActivation()
+{
+    PlayerIBuff.BuffListAdd(this);
+    PlayerIBuff.ChooseBuff(buffTypenameList);
+}
 ```
 
 지속시간이 없는(WeightTime을 감소시키는 코루틴을 실행할 필요가 없는) 버프의 경우 실행되는 Buff Activation 함수.
@@ -382,12 +382,12 @@ readonly WaitForSeconds BuffCheckRootSecond = new((float)(Time.deltaTime * 0.1))
 <br>
 
 ```cs
-    public void BuffDeActivation()
-    {
-        PlayerIBuff.RemovBuff(this);
-        PlayerIBuff.ChooseBuff(buffTypenameList);
-        Destroy(this.gameObject);
-    }
+public void BuffDeActivation()
+{
+    PlayerIBuff.RemovBuff(this);
+    PlayerIBuff.ChooseBuff(buffTypenameList);
+    Destroy(this.gameObject);
+}
 ```
 
 버프 파괴 함수. 플레이어의 버프 리스트에서 이 버프를 제거하고, 플레이어의 스탯을 갱신한 뒤 버프 오브젝트를 파고한다.
@@ -396,10 +396,10 @@ readonly WaitForSeconds BuffCheckRootSecond = new((float)(Time.deltaTime * 0.1))
 <br>
 
 ```cs
-    public void ClickBuffDeActivation()
-    {
-        BuffDeActivation();
-    }
+public void ClickBuffDeActivation()
+{
+    BuffDeActivation();
+}
 ```
 
 인스펙터의 버튼과 연결되어 있는 함수.
@@ -407,19 +407,19 @@ readonly WaitForSeconds BuffCheckRootSecond = new((float)(Time.deltaTime * 0.1))
 <br>
 
 ```cs
-    IEnumerator Activation()
+IEnumerator Activation()
+{
+    while (currentTime > 0)
     {
-        while (currentTime > 0)
-        {
-            icon.fillAmount = currentTime / buffOriginTime;
-            //Buff Root
-            currentTime -= 0.1f;
-            yield return BuffCheckRootSecond;
-        }
-        icon.fillAmount = 0f;
-        currentTime = 0f;
-        BuffDeActivation();
+        icon.fillAmount = currentTime / buffOriginTime;
+        //Buff Root
+        currentTime -= 0.1f;
+        yield return BuffCheckRootSecond;
     }
+    icon.fillAmount = 0f;
+    currentTime = 0f;
+    BuffDeActivation();
+}
 ```
 
 while동안 버프 지속시간을 감소시키고, 버프 아이콘의 모양을 변경한다.
@@ -474,74 +474,74 @@ public interface IBuff
 <div markdown="1">
 
 ```cs
-		public List<BaseBuff> BuffList = new();
-        /// <summary>
-        /// 버프스탯에 적용받는 스탯들(이동속도 등) 외의 체력과 같은 스탯에 효과를 적용
-        /// </summary>
-        /// <param name="s">ex) CurHP</param>
-        /// <param name="f">ex) 5.0f</param>
-        public void BuffValueApply(string s, float f)
+public List<BaseBuff> BuffList = new();
+/// <summary>
+/// 버프스탯에 적용받는 스탯들(이동속도 등) 외의 체력과 같은 스탯에 효과를 적용
+/// </summary>
+/// <param name="s">ex) CurHP</param>
+/// <param name="f">ex) 5.0f</param>
+public void BuffValueApply(string s, float f)
+{
+    switch (s)
+    {
+        case "CurHP":
+            myInfo.CurHP += f;
+            break;
+    }
+}
+public void BuffListAdd(BaseBuff baseBuff)
+{
+    BuffList.Add(baseBuff);
+}
+public void RemovBuff(BaseBuff baseBuff)
+{
+    BuffList.Remove(baseBuff);
+}
+/// <summary>
+/// buffTypenameList에 있는 buffTypename들에 대해 각각의 IBuff.BuffEffectAplly()을 수행
+/// </summary>
+/// <param name="buffTypenameList"></param>
+public void ChooseBuff(List<string> buffTypenameList)//리스트[1]에 0.miningDelay와 1.movespeed를 받아왔다면 miningDelay와 movespeed에 대한 BuffEffectApply를 실행
+{
+    foreach (string s in buffTypenameList)
+    {
+        switch (s)
         {
-            switch (s)
+            case "MineDelay_Mining":
+                myInfo.MineDelay_Mining_AfterBuff = BuffEffectAplly(s, myInfo.MineDelay_Mining_Origin);
+                break;
+            case "MineDelay_Picking":
+                myInfo.MineDelay_Picking_AfterBuff = BuffEffectAplly(s, myInfo.MineDelay_Picking_Origin);
+                break;
+            case "MoveSpeed":
+                myInfo.MoveSpeed_AfterBuff = BuffEffectAplly(s, myInfo.MoveSpeed_Origin);
+                break;
+        }
+    }
+}
+/// <summary>
+/// 버프 리스트를 모두 탐색하여 buffTypeName이 일치하는 버프의 값들을 구해 origin에 더하여 반환
+/// </summary>
+/// <param name="buffTypeName">변경해야 하는 버프 타입 이름 ex)MoveSpeed_AfterBuff</param>
+/// <param name="origin">해당 타입의 오리진 ex)MoveSpeed_Origin</param>
+/// <returns>해당 버프 타입의 버프 효과가 모두 더해진 값</returns>
+public float BuffEffectAplly(string buffTypeName, float origin)//플레이어가 가진 BuffList에서 s와 일치하는 모두를 탐색한 후 해당하는 value들을 origin에 더해서 return
+{
+    if (BuffList.Count > 0)
+    {
+        float temp = 0;
+        for (int i = 0; i < BuffList.Count; i++)//버프 갯수만큼 반복, 버프 리스트를 훑기
+        {
+            for (int j = 0; j < BuffList[i].BuffTypenameList.Count; j++)//리스트의 i번째 버프의 buffTypenameList를 탐색
             {
-                case "CurHP":
-                    myInfo.CurHP += f;
-                    break;
+                if (BuffList[i].BuffTypenameList[j].Equals(buffTypeName)) //리스트의 i번째 버프의 buffTypenameList의 j번째 문자열을 s와 비교
+                    temp += origin * BuffList[i].BuffValueList[j]; //일치한다면 temp에 버프의 value를 더하기
             }
         }
-        public void BuffListAdd(BaseBuff baseBuff)
-        {
-            BuffList.Add(baseBuff);
-        }
-        public void RemovBuff(BaseBuff baseBuff)
-        {
-            BuffList.Remove(baseBuff);
-        }
-        /// <summary>
-        /// buffTypenameList에 있는 buffTypename들에 대해 각각의 IBuff.BuffEffectAplly()을 수행
-        /// </summary>
-        /// <param name="buffTypenameList"></param>
-        public void ChooseBuff(List<string> buffTypenameList)//리스트[1]에 0.miningDelay와 1.movespeed를 받아왔다면 miningDelay와 movespeed에 대한 BuffEffectApply를 실행
-        {
-            foreach (string s in buffTypenameList)
-            {
-                switch (s)
-                {
-                    case "MineDelay_Mining":
-                        myInfo.MineDelay_Mining_AfterBuff = BuffEffectAplly(s, myInfo.MineDelay_Mining_Origin);
-                        break;
-                    case "MineDelay_Picking":
-                        myInfo.MineDelay_Picking_AfterBuff = BuffEffectAplly(s, myInfo.MineDelay_Picking_Origin);
-                        break;
-                    case "MoveSpeed":
-                        myInfo.MoveSpeed_AfterBuff = BuffEffectAplly(s, myInfo.MoveSpeed_Origin);
-                        break;
-                }
-            }
-        }
-        /// <summary>
-        /// 버프 리스트를 모두 탐색하여 buffTypeName이 일치하는 버프의 값들을 구해 origin에 더하여 반환
-        /// </summary>
-        /// <param name="buffTypeName">변경해야 하는 버프 타입 이름 ex)MoveSpeed_AfterBuff</param>
-        /// <param name="origin">해당 타입의 오리진 ex)MoveSpeed_Origin</param>
-        /// <returns>해당 버프 타입의 버프 효과가 모두 더해진 값</returns>
-        public float BuffEffectAplly(string buffTypeName, float origin)//플레이어가 가진 BuffList에서 s와 일치하는 모두를 탐색한 후 해당하는 value들을 origin에 더해서 return
-        {
-            if (BuffList.Count > 0)
-            {
-                float temp = 0;
-                for (int i = 0; i < BuffList.Count; i++)//버프 갯수만큼 반복, 버프 리스트를 훑기
-                {
-                    for (int j = 0; j < BuffList[i].BuffTypenameList.Count; j++)//리스트의 i번째 버프의 buffTypenameList를 탐색
-                    {
-                        if (BuffList[i].BuffTypenameList[j].Equals(buffTypeName)) //리스트의 i번째 버프의 buffTypenameList의 j번째 문자열을 s와 비교
-                            temp += origin * BuffList[i].BuffValueList[j]; //일치한다면 temp에 버프의 value를 더하기
-                    }
-                }
-                return origin + temp; //origin에 temp들을 모두 더하여 리턴
-            }
-            else return origin;
-        }
+        return origin + temp; //origin에 temp들을 모두 더하여 리턴
+    }
+    else return origin;
+}
 ```
 
 
@@ -559,14 +559,14 @@ public interface IBuff
 <br>
 
 ```cs
-        public void BuffListAdd(BaseBuff baseBuff)
-        {
-            BuffList.Add(baseBuff);
-        }
-        public void RemovBuff(BaseBuff baseBuff)
-        {
-            BuffList.Remove(baseBuff);
-        }
+public void BuffListAdd(BaseBuff baseBuff)
+{
+    BuffList.Add(baseBuff);
+}
+public void RemovBuff(BaseBuff baseBuff)
+{
+    BuffList.Remove(baseBuff);
+}
 ```
 
 BuffList에서 버프를 추가하거나 더하는 함수
@@ -575,24 +575,24 @@ BuffList에서 버프를 추가하거나 더하는 함수
 
 
 ```cs
-	public void ChooseBuff(List<string> buffTypenameList)
+public void ChooseBuff(List<string> buffTypenameList)
+{
+    foreach (string s in buffTypenameList)
+    {
+        switch (s)
         {
-            foreach (string s in buffTypenameList)
-            {
-                switch (s)
-                {
-                    case "MineDelay_Mining":
-                        myInfo.MineDelay_Mining_AfterBuff = BuffEffectAplly(s, myInfo.MineDelay_Mining_Origin);
-                        break;
-                    case "MineDelay_Picking":
-                        myInfo.MineDelay_Picking_AfterBuff = BuffEffectAplly(s, myInfo.MineDelay_Picking_Origin);
-                        break;
-                    case "MoveSpeed":
-                        myInfo.MoveSpeed_AfterBuff = BuffEffectAplly(s, myInfo.MoveSpeed_Origin);
-                        break;
-                }
-            }
+            case "MineDelay_Mining":
+                myInfo.MineDelay_Mining_AfterBuff = BuffEffectAplly(s, myInfo.MineDelay_Mining_Origin);
+                break;
+            case "MineDelay_Picking":
+                myInfo.MineDelay_Picking_AfterBuff = BuffEffectAplly(s, myInfo.MineDelay_Picking_Origin);
+                break;
+            case "MoveSpeed":
+                myInfo.MoveSpeed_AfterBuff = BuffEffectAplly(s, myInfo.MoveSpeed_Origin);
+                break;
         }
+    }
+}
 ```
 
 버프 리스트를 인자로 받아 리스트 내의 각각의 버프 타입들에 대해 BuffEffectAplly를 실행해 플레이어 스탯을 갱신하는 함수
@@ -600,17 +600,17 @@ BuffList에서 버프를 추가하거나 더하는 함수
 <br>
 
 ```cs
-		public void BuffValueApply(string s, float f)
-        {
-            switch (s)
-            {
-                case "CurHP":
-                    myInfo.CurHP += f;
-                    break;
-                    
-                ....
-            }
-        }
+public void BuffValueApply(string s, float f)
+{
+    switch (s)
+    {
+        case "CurHP":
+            myInfo.CurHP += f;
+            break;
+
+        ....
+    }
+}
 ```
 
 ChooseBuff를 통해 실행되며, 해당하는 버프 종류에 따라 플레이어의 스탯을 변경하는 함수
