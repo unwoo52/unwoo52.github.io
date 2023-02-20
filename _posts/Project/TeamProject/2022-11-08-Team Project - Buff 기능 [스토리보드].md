@@ -8,13 +8,13 @@ tags: [Unity, TeamProj, Team, Buff, StoryBoard]
 
 # 스토리보드 개요
 
-### 프로젝트, 기술문서, 스토리보드 링크
+### 프로젝트, 오브젝트와 전체코드 설명, 스토리보드 링크
 
 > [팀프로젝트 문서](https://unwoo52.github.io/posts/Team-Project-About/)는 프로젝트의 전체 내용과 개요 등에 대해 적혀있습니다.
 >
 > [youtube 버프 시연 영상](https://youtu.be/XYon_3MIK5E?t=39)에서 버프 작동을 유튜브로 볼 수 있습니다.
 >
-> [기술 문서](https://unwoo52.github.io/posts/Team-Project-Buff-%EA%B8%B0%EB%8A%A5-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C/)는 전체 코드와 코드들에 대한 설명이 적혀있습니다.
+> [오브젝트와 전체코드 설명](https://unwoo52.github.io/posts/Team-Project-Buff-%EA%B8%B0%EB%8A%A5-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C/)는 전체 코드와 코드들에 대한 설명이 적혀있습니다.
 > 
 > <span style="color:ffffff">스토리보드에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.</span>
 
