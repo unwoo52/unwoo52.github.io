@@ -31,21 +31,21 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 - PlayerScript::AnimDamageToTree()
 
 ```cs
-    public void AnimDamageToTree()
-    {
-    	Mining mining = _mouseInput.Mining;
-    	if (mining.TreeScript != null)
-    	{
-    		mining.TreeScript.DamtoTree(50f);
-    	}
-    }
+public void AnimDamageToTree()
+{
+  Mining mining = _mouseInput.Mining;
+  if (mining.TreeScript != null)
+  {
+    mining.TreeScript.DamtoTree(50f);
+  }
+}
 ```
 
 ```cs
-    public void MiningTreeEvent()
-    {
-        TreeGet?.Invoke();
-    }
+public void MiningTreeEvent()
+{
+    TreeGet?.Invoke();
+}
 ```
 
 <br>
@@ -59,11 +59,11 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 - AnimEvent::DamtoTree()
 
 ```cs
-    public void DamtoTree(float f)
-    {
-        curHp -= f;
-        if (curHp == 0) TreeDestroy();
-    }
+public void DamtoTree(float f)
+{
+    curHp -= f;
+    if (curHp == 0) TreeDestroy();
+}
 ```
 
 
@@ -72,14 +72,14 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 - TreeScript::TreeDestroy()
 
 ```cs
-    void TreeDestroy()
-    {
-        leafList = new GameObject[(numberBush + numberLeaf) * numberTreeEffect];
-        if (TryGetComponent<CapsuleCollider>(out var cc)) Destroy(cc);
-        if (TryGetComponent<MeshRenderer>(out var mr)) Destroy(mr);
-        if (TryGetComponent<MeshFilter>(out var mf)) Destroy(mf);
-        TreeDestroyEffect();
-    }
+void TreeDestroy()
+{
+    leafList = new GameObject[(numberBush + numberLeaf) * numberTreeEffect];
+    if (TryGetComponent<CapsuleCollider>(out var cc)) Destroy(cc);
+    if (TryGetComponent<MeshRenderer>(out var mr)) Destroy(mr);
+    if (TryGetComponent<MeshFilter>(out var mf)) Destroy(mf);
+    TreeDestroyEffect();
+}
 ````
 
 나무를 파괴하는 스크립트이다. 후술할 스크립트가 실행되어야 하기 때문에 나무의 스크립트는 파괴되면 안되므로 충돌체와 렌더링을 지워 스크립트만 남은 오브젝트로 만들었다.
@@ -125,15 +125,15 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 - TreeScript::TreeDestroyEffect()
 
 ```cs
-    void TreeDestroyEffect()
+void TreeDestroyEffect()
+{
+    Instantiate(TrunkBottom, transform.position + positionTrunkBottom, transform.rotation);
+    for (int i = 0; i < numberTreeEffect; i++)
     {
-        Instantiate(TrunkBottom, transform.position + positionTrunkBottom, transform.rotation);
-        for (int i = 0; i < numberTreeEffect; i++)
-        {
-            InstanteTreeEffect(transform.position + new Vector3(0, i * distanceGapofCylinder, 0) , i);
-        }
-        StartCoroutine(CleaningBushandLeaf());
+        InstanteTreeEffect(transform.position + new Vector3(0, i * distanceGapofCylinder, 0) , i);
     }
+    StartCoroutine(CleaningBushandLeaf());
+}
 ```
 
 나무가 벌목되면 생성되는 오브젝트는 밑에 이미지의 4종류이다.
@@ -163,15 +163,15 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 - TreeScript::CleaningBushandLeaf()
 
 ```cs
-    IEnumerator CleaningBushandLeaf()
+IEnumerator CleaningBushandLeaf()
+{
+    yield return new WaitForSeconds(5);
+    foreach(GameObject obj in leafList)
     {
-        yield return new WaitForSeconds(5);
-        foreach(GameObject obj in leafList)
-        {
-            Destroy(obj.gameObject);
-            //or obj.FadeLeaf();
-        }
+        Destroy(obj.gameObject);
+        //or obj.FadeLeaf();
     }
+}
 ```
 
 </div>
@@ -191,29 +191,29 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 
 
 ```cs
-    void InstanteTreeEffect(Vector3 position, int i)
-    {
-        Instantiate(TrunkCylinder, position + positionTrunkCylinder, TrunkCylinder.transform.rotation);
-        int tempNumberBush = numberBush;
-        int tempNumberLeaf = numberLeaf;
+void InstanteTreeEffect(Vector3 position, int i)
+{
+    Instantiate(TrunkCylinder, position + positionTrunkCylinder, TrunkCylinder.transform.rotation);
+    int tempNumberBush = numberBush;
+    int tempNumberLeaf = numberLeaf;
 
-        while (tempNumberBush > 0)
-        {
-            GameObject obj = Instantiate(Bush1,
-                position + positionLeaf + new Vector3(Random.Range(-3, 3), Random.Range(0, 3), Random.Range(-3, 3)),
-                new Quaternion(Random.Range(0, RotationValue), Random.Range(0, RotationValue), Random.Range(0, RotationValue), 0));
-            leafList[(numberBush + numberLeaf) * i + numberLeaf + tempNumberBush - 1] = obj;
-            tempNumberBush--;
-        }
-        while (tempNumberLeaf > 0)
-        {
-            GameObject obj = Instantiate(Leaf,
-                position + positionLeaf + new Vector3(Random.Range(-3, 3), Random.Range(0, 3), Random.Range(-3, 3)),
-                new Quaternion(Random.Range(0, RotationValue), Random.Range(0, RotationValue), Random.Range(0, RotationValue), 0));
-            leafList[(numberBush + numberLeaf) * i + tempNumberLeaf - 1] = obj;
-            tempNumberLeaf--;
-        }
+    while (tempNumberBush > 0)
+    {
+        GameObject obj = Instantiate(Bush1,
+            position + positionLeaf + new Vector3(Random.Range(-3, 3), Random.Range(0, 3), Random.Range(-3, 3)),
+            new Quaternion(Random.Range(0, RotationValue), Random.Range(0, RotationValue), Random.Range(0, RotationValue), 0));
+        leafList[(numberBush + numberLeaf) * i + numberLeaf + tempNumberBush - 1] = obj;
+        tempNumberBush--;
     }
+    while (tempNumberLeaf > 0)
+    {
+        GameObject obj = Instantiate(Leaf,
+            position + positionLeaf + new Vector3(Random.Range(-3, 3), Random.Range(0, 3), Random.Range(-3, 3)),
+            new Quaternion(Random.Range(0, RotationValue), Random.Range(0, RotationValue), Random.Range(0, RotationValue), 0));
+        leafList[(numberBush + numberLeaf) * i + tempNumberLeaf - 1] = obj;
+        tempNumberLeaf--;
+    }
+}
 ````
 
 통나무와 잎사귀, 잔가지를 지정된 갯수만큼 생성한다. 생성된 오브젝트들은 leafList라는 GameObject[] 배열 필드에 저장되었다가 일정 시간이 지나면 삭제된다.
@@ -240,10 +240,10 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 - AnimEvent::MiningAnimEvent()
 
 ```cs
-    public void MiningAnimEvent()
-    {
-        Mining?.Invoke();
-    }
+public void MiningAnimEvent()
+{
+    Mining?.Invoke();
+}
 ```
 
 <br>
@@ -270,47 +270,47 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 - RockScript::DamToRock(Ray ray, Vector3 hit, float Dmg)
 
 ```cs
-    public void DamToRock(Ray ray, Vector3 hit, float Dmg)
+publi             c void DamToRock(Ray ray, Vector3 hit, float Dmg)
+{
+    if (Dmg <= 0) Dmg = 0;
+    cuttingHp -= Dmg;
+    crackHp -= Dmg;
+    if (crackHp <= 0)
     {
-        if (Dmg <= 0) Dmg = 0;
-        cuttingHp -= Dmg;
-        crackHp -= Dmg;
-        if (crackHp <= 0)
+        int temp = CalculateTempHp(ref crackHp, ref maxCrackHp);
+        while(temp > 0 && curHp > 0)
         {
-            int temp = CalculateTempHp(ref crackHp, ref maxCrackHp);
-            while(temp > 0 && curHp > 0)
-            {
-                Dmg -= maxCrackHp;
-                curHp -= maxCrackHp;
-                instantiateDropItem(ray, hit);
-                temp--;
-            }
-            curHp -= Dmg;
+            Dmg -= maxCrackHp;
+            curHp -= maxCrackHp;
+            instantiateDropItem(ray, hit);
+            temp--;
         }
-        if(cuttingHp <= 0 && curHp > 0)
-        {
-            int temp = CalculateTempHp(ref cuttingHp, ref maxCuttingHp);
-            curStoneSizeLevel -= temp;
-            ChangeStoneSize(curStoneSizeLevel);
-        }
-        if (curHp <= 0) RockDestroyMethod();
+        curHp -= Dmg;
     }
+    if(cuttingHp <= 0 && curHp > 0)
+    {
+        int temp = CalculateTempHp(ref cuttingHp, ref maxCuttingHp);
+        curStoneSizeLevel -= temp;
+        ChangeStoneSize(curStoneSizeLevel);
+    }
+    if (curHp <= 0) RockDestroyMethod();
+}
 ```
 
 - RockScript::CalculateTempHp()
 
 ```cs
-    private int CalculateTempHp(ref float curTempHp, ref float maxTempHp)
+private int CalculateTempHp(ref float curTempHp, ref float maxTempHp)
+{
+    if (curTempHp > 0) return 0;
+    int temp = 0;
+    while(curTempHp <= 0)
     {
-        if (curTempHp > 0) return 0;
-        int temp = 0;
-        while(curTempHp <= 0)
-        {
-            curTempHp += maxTempHp;
-            temp++;
-        }
-        return temp;
+        curTempHp += maxTempHp;
+        temp++;
     }
+    return temp;
+}
 ```
 
 
@@ -327,15 +327,15 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 - RockScript::instantiateDropItem(Ray ray, Vector3 hit)
 
 ```cs
-    private void instantiateDropItem(Ray ray, Vector3 hit)
+private void instantiateDropItem(Ray ray, Vector3 hit)
+{
+    GameObject obj = Instantiate(DropItem, hit, new Quaternion(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360), 0));
+    if (obj.TryGetComponent<Rigidbody>(out var rigid))
     {
-        GameObject obj = Instantiate(DropItem, hit, new Quaternion(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360), 0));
-        if (obj.TryGetComponent<Rigidbody>(out var rigid))
-        {
-            rigid.AddForce(-ray.direction * testPower, ForceMode.VelocityChange);
-        }
-        obj.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        rigid.AddForce(-ray.direction * testPower, ForceMode.VelocityChange);
     }
+    obj.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+}
 ```
 
 <br>
@@ -351,20 +351,20 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 - RockScript::ChangeStoneSize(int i)
 
 ```cs
-    [SerializeField] private Mesh[] MeshList;
-    [SerializeField] private Vector3[] ScaleList;
-    
-    ...
-   
-    void ChangeStoneSize(int i)
-    {
-        if (TryGetComponent<MeshFilter>(out var rockMeshFilter))
-            rockMeshFilter.mesh = MeshList[i];
-        if(TryGetComponent<MeshCollider>(out var rockMeshCollider))
-            rockMeshCollider.sharedMesh = MeshList[i - 1];
-        if(TryGetComponent<Transform>(out var rockTransform))
-            rockTransform.localScale = ScaleList[i - 1];
-    }
+[SerializeField] private Mesh[] MeshList;
+[SerializeField] private Vector3[] ScaleList;
+
+...
+
+void ChangeStoneSize(int i)
+{
+    if (TryGetComponent<MeshFilter>(out var rockMeshFilter))
+        rockMeshFilter.mesh = MeshList[i];
+    if(TryGetComponent<MeshCollider>(out var rockMeshCollider))
+        rockMeshCollider.sharedMesh = MeshList[i - 1];
+    if(TryGetComponent<Transform>(out var rockTransform))
+        rockTransform.localScale = ScaleList[i - 1];
+}
 ```
 
 ![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/005.png)
@@ -388,20 +388,20 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 
 
 ```cs
-    private void RockDestroyMethod()
+private void RockDestroyMethod()
+{
+    if (TryGetComponent<MeshCollider>(out var mc)) Destroy(mc);
+    if (TryGetComponent<MeshRenderer>(out var mr)) Destroy(mr);
+    if (TryGetComponent<MeshFilter>(out var mf)) Destroy(mf);
+    for (int i = 0; i < numofDestroyDropItem; i++)
     {
-        if (TryGetComponent<MeshCollider>(out var mc)) Destroy(mc);
-        if (TryGetComponent<MeshRenderer>(out var mr)) Destroy(mr);
-        if (TryGetComponent<MeshFilter>(out var mf)) Destroy(mf);
-        for (int i = 0; i < numofDestroyDropItem; i++)
-        {
-            Ray ray = new Ray(Vector3.zero, new Vector3(Random.Range(0, 1), Random.Range(0, 1), Random.Range(0, 1)));
-            Vector3 hit = transform.position;
-            instantiateDropItem(ray, hit);
-        }
-        
-        ...
-        
-        //2분 뒤 돌맹이들이 삭제되는 코루틴
+        Ray ray = new Ray(Vector3.zero, new Vector3(Random.Range(0, 1), Random.Range(0, 1), Random.Range(0, 1)));
+        Vector3 hit = transform.position;
+        instantiateDropItem(ray, hit);
     }
+
+    ...
+
+    //2분 뒤 돌맹이들이 삭제되는 코루틴
+}
 ```
