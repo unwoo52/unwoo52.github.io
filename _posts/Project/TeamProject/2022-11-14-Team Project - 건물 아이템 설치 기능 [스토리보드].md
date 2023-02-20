@@ -43,42 +43,42 @@ start build 실행
 - MouseInPut_Build::StartBuilding(GameObject gameObject)
 
 ```cs
-    public void StartBuilding(GameObject gameObject)
+public void StartBuilding(GameObject gameObject)
+{
+    HandBuilding = gameObject;
+    HandBuilding.transform.GetChild(0).TryGetComponent(out HandBuildingScript);
+    if (HandBuilding is null)
     {
-        HandBuilding = gameObject;
-        HandBuilding.transform.GetChild(0).TryGetComponent(out HandBuildingScript);
-        if (HandBuilding is null)
-        {
-            throw new ArgumentNullException(nameof(gameObject));
-        }
-        if (HandBuildingScript is null)
-        {
-            throw new ArgumentNullException(nameof(gameObject));
-        }
-
-        PlayerScript.PlayerInstance.ActiveOnCursor();
-        isBuildingStateActive = true;
-
-        HandBuildingScript.ChangeState(BuildingObjectScript.BuildingObjectState.Making);
-        HandBuilding.transform.SetParent(PlayerScript.PlayerInstance.transform);
-        gameObject.transform.GetChild(0).TryGetComponent(out HandBuildingScript);
-        SwapRenderer();
+        throw new ArgumentNullException(nameof(gameObject));
     }
+    if (HandBuildingScript is null)
+    {
+        throw new ArgumentNullException(nameof(gameObject));
+    }
+
+    PlayerScript.PlayerInstance.ActiveOnCursor();
+    isBuildingStateActive = true;
+
+    HandBuildingScript.ChangeState(BuildingObjectScript.BuildingObjectState.Making);
+    HandBuilding.transform.SetParent(PlayerScript.PlayerInstance.transform);
+    gameObject.transform.GetChild(0).TryGetComponent(out HandBuildingScript);
+    SwapRenderer();
+}
 ```
 
 - MouseInPut_Build::SwapRenderer()
 
 ```cs
-    private void SwapRenderer()
-    {
-        Material material = Resources.Load("Prefabs/imsi") as Material;
-        HandBuildingScript.ChangeMaterials(material);
-        if (HandBuildingScript.GetMaterial() == null) 
-        { 
-            Debug.LogError("임시 Metarial로 바꾸는 데에 실패했습니다.");
-            HandBuildingScript.SetOrigibMaterail();
-        }
+private void SwapRenderer()
+{
+    Material material = Resources.Load("Prefabs/imsi") as Material;
+    HandBuildingScript.ChangeMaterials(material);
+    if (HandBuildingScript.GetMaterial() == null) 
+    { 
+        Debug.LogError("임시 Metarial로 바꾸는 데에 실패했습니다.");
+        HandBuildingScript.SetOrigibMaterail();
     }
+}
 ```
 
 건물 오브젝트가 건축중에는 반투명하게 이펙트 형태로 보여지게 하기 위해 메테리얼과 셰이더를 임시 메테리얼로 교체한다. 
@@ -105,10 +105,10 @@ bool 필드인 isBuildingStateActive를 활성화 한다.
 
 
 ```cs
-    private void RotateBuilding_to_HitPosition(Vector3 vector3)
-    {
-        HandBuilding.transform.position = vector3;
-    }
+private void RotateBuilding_to_HitPosition(Vector3 vector3)
+{
+    HandBuilding.transform.position = vector3;
+}
 ```
 
 
@@ -138,27 +138,27 @@ bool 필드인 isBuildingStateActive를 활성화 한다.
 상태머신을 통해 건물이 running 상태가 되면 효과 오브젝트를 활성화 시킨다.
 
 ```cs
-    public void ChangeState(BuildingObjectState state)
+public void ChangeState(BuildingObjectState state)
+{
+    if (campFireState == state) return;
+    switch (state)
     {
-        if (campFireState == state) return;
-        switch (state)
-        {
-            case BuildingObjectState.Create:
-                break;
-            case BuildingObjectState.Item:
-                break;
-            case BuildingObjectState.Making:
-                OverlapObject.SetActive(true);
-                break;
-            case BuildingObjectState.Runing:
-                EffectObject.SetActive(true);
-                break;
-            case BuildingObjectState.Destroy:
-                Destroy(transform.parent.gameObject);
-                Destroy(this);
-                break;
-        }
-    }   
+        case BuildingObjectState.Create:
+            break;
+        case BuildingObjectState.Item:
+            break;
+        case BuildingObjectState.Making:
+            OverlapObject.SetActive(true);
+            break;
+        case BuildingObjectState.Runing:
+            EffectObject.SetActive(true);
+            break;
+        case BuildingObjectState.Destroy:
+            Destroy(transform.parent.gameObject);
+            Destroy(this);
+            break;
+    }
+}   
 ```
 <br>
 
@@ -167,27 +167,27 @@ bool 필드인 isBuildingStateActive를 활성화 한다.
 <div markdown="1">
 
 ```cs
-    private void HierarchySetting()
+private void HierarchySetting()
+{
+    TryGetComponent(out buildingObject);
+    Root = buildingObject.parent.gameObject;
+    if (Root.transform.GetChild(1).gameObject)
     {
-        TryGetComponent(out buildingObject);
-        Root = buildingObject.parent.gameObject;
-        if (Root.transform.GetChild(1).gameObject)
-        {
-            EffectObject = Root.transform.GetChild(1).gameObject;
-            EffectObject.SetActive(false);
-        }
-        else Debug.LogError("건물에서 effectObject가 없습니다");
-
-        if(this.transform.GetChild(0).TryGetComponent(out CheckBoxScript _))
-        {
-            OverlapObject = this.transform.GetChild(0).gameObject;
-            OverlapObject.SetActive(false);
-        }
-        else Debug.LogError("건물에 OverlapObject가 없습니다");
-
-        if (Root.TryGetComponent(out MeshCollider RootObjectMeshcollider)) RootObjectMeshcollider.enabled = false;
-        else Debug.LogError("건물에 MeshCollider가 없습니다");
+        EffectObject = Root.transform.GetChild(1).gameObject;
+        EffectObject.SetActive(false);
     }
+    else Debug.LogError("건물에서 effectObject가 없습니다");
+
+    if(this.transform.GetChild(0).TryGetComponent(out CheckBoxScript _))
+    {
+        OverlapObject = this.transform.GetChild(0).gameObject;
+        OverlapObject.SetActive(false);
+    }
+    else Debug.LogError("건물에 OverlapObject가 없습니다");
+
+    if (Root.TryGetComponent(out MeshCollider RootObjectMeshcollider)) RootObjectMeshcollider.enabled = false;
+    else Debug.LogError("건물에 MeshCollider가 없습니다");
+}
 ```
 
 </div>
@@ -282,31 +282,31 @@ if (Physics.Raycast(ray, out RaycastHit hit, distanceBuilding, PlayerScript.inst
 - MouseInPut_Build::BuildingProcess(Ray ray)
 
 ```cs
-    public void BuildingProcess(Ray ray)
+public void BuildingProcess(Ray ray)
+{
+    if (Input.GetMouseButtonDown(1))
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            CancelBuilding();
-            return;
-        }
-
-        //레이가 땅에 닿는다면
-        if (Physics.Raycast(ray, out RaycastHit hit, distanceBuilding, PlayerScript.instance.plMask.MaskTerrain))
-        {
-            RotateBuilding_to_HitPosition(hit.point);
-
-            if (IsCollOverlap())    return;
-            RenderGreen();
-
-            if (Input.GetMouseButton(0))
-                BuildProcess(hit);
-        }
-        else
-        {
-            RotateBuilding_to_RayEnd(ray);
-            RenderCyan();
-        }
+        CancelBuilding();
+        return;
     }
+
+    //레이가 땅에 닿는다면
+    if (Physics.Raycast(ray, out RaycastHit hit, distanceBuilding, PlayerScript.instance.plMask.MaskTerrain))
+    {
+        RotateBuilding_to_HitPosition(hit.point);
+
+        if (IsCollOverlap())    return;
+        RenderGreen();
+
+        if (Input.GetMouseButton(0))
+            BuildProcess(hit);
+    }
+    else
+    {
+        RotateBuilding_to_RayEnd(ray);
+        RenderCyan();
+    }
+}
 ```
 
 건축 가능 상태(그린)일때만 좌클릭으로 건축을 실행할 수 있다. 만약 건축을 취소하고 싶다면 우클릭을 실행한다.
@@ -314,17 +314,17 @@ if (Physics.Raycast(ray, out RaycastHit hit, distanceBuilding, PlayerScript.inst
 - MouseInPut_Build::BuildProcess()
 
 ```cs
-    public void BuildProcess(RaycastHit hit)
-    {
-        RollbackMaterial();
-        isBuildingStateActive = false;
-        HandBuilding.GetComponent<Collider>().isTrigger = false;
-        HandBuilding.transform.position = hit.point;
-        HandBuilding.transform.parent = null;
-        HandBuilding.GetComponentInChildren<Renderer>().sharedMaterial.color = Color.white;
-        HandBuildingScript.ChangeState(BuildingObjectScript.BuildingObjectState.Runing);
-        HandBuilding = null;
-    }
+public void BuildProcess(RaycastHit hit)
+{
+    RollbackMaterial();
+    isBuildingStateActive = false;
+    HandBuilding.GetComponent<Collider>().isTrigger = false;
+    HandBuilding.transform.position = hit.point;
+    HandBuilding.transform.parent = null;
+    HandBuilding.GetComponentInChildren<Renderer>().sharedMaterial.color = Color.white;
+    HandBuildingScript.ChangeState(BuildingObjectScript.BuildingObjectState.Runing);
+    HandBuilding = null;
+}
 ```
 
 좌클릭을 통해 건축을 실행하면 다음과 같은 코드와 기능들이 실행된다.
@@ -340,13 +340,13 @@ Build 인스턴스의 bool값인 isBuildingStateActive을 다시 false로 돌려
 - MouseInPut_Build::CancelBuilding()
 
 ```cs
-    private void CancelBuilding()
-    {
-        RollbackMaterial();
-        HandBuildingScript.ChangeState(BuildingObjectScript.BuildingObjectState.Destroy);
-        HandBuilding = null;
-        isBuildingStateActive = false;
-    }
+private void CancelBuilding()
+{
+    RollbackMaterial();
+    HandBuildingScript.ChangeState(BuildingObjectScript.BuildingObjectState.Destroy);
+    HandBuilding = null;
+    isBuildingStateActive = false;
+}
 ```
 
 우클릭을 통해 건축을 취소하면 다음과 같은 코드와 기능들이 실행된다.
