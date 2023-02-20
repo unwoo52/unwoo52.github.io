@@ -362,22 +362,22 @@ public class AnimEvent : MonoBehaviour
 <div markdown="1">
 
 ```cs
-        public void AnimDamageTpRock()
-        {
-            Mining mining = _mouseInput.Mining;
-            if (mining.RockScript != null)
-            {
-                mining.RockScript.DamToRock(mining.RockHitRay, mining.RockHitVector, PlayerScript.PlayerInstance.myInfo.PowerMining_Origin);
-            }
-        }
-        public void AnimDamageToTree()
-        {
-            Mining mining = _mouseInput.Mining;
-            if (mining.TreeScript != null)
-            {
-                mining.TreeScript.DamtoTree(50f);
-            }
-        }
+public void AnimDamageTpRock()
+{
+    Mining mining = _mouseInput.Mining;
+    if (mining.RockScript != null)
+    {
+        mining.RockScript.DamToRock(mining.RockHitRay, mining.RockHitVector, PlayerScript.PlayerInstance.myInfo.PowerMining_Origin);
+    }
+}
+public void AnimDamageToTree()
+{
+    Mining mining = _mouseInput.Mining;
+    if (mining.TreeScript != null)
+    {
+        mining.TreeScript.DamtoTree(50f);
+    }
+}
 ```
 
 </div>
