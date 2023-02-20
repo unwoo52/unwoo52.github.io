@@ -367,7 +367,7 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
     }
 ```
 
-![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/005.gif)
+![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/005.png)
 
 > Mesh[] MeshList와 Vector3[] ScaleList에 다음과 같이 Mesh와 Scale값이 저장되어 있다.
 
