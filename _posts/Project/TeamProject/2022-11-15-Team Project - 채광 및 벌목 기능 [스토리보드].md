@@ -378,7 +378,7 @@ tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 
 ------------
 
-### 바위 아이템 
+### 바위 파괴
 
 ![imagename](/assets/image/Project/TeamProject/MiningAndLoggingStoryBoard/000.gif)
 
