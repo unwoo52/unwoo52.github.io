@@ -153,8 +153,6 @@ VertexBuffer...
 IndexBuffer...
 ```
 
-[전체 코드](https://unwoo52.github.io/posts/Buffers/)
-
 c++은 템플릿을 쓰기 위해 헤더파일에서 선언과 정의를 동시에 해야 한다. 지금 만들 buffers는 헤더파일만 있고 cpp파일은 없음.
 
 -----------

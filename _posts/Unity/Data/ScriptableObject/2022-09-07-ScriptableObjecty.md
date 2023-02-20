@@ -6,8 +6,9 @@ categories: [Unity, Data]
 tags: [Unity, Data, Scriptable, ScriptableObject, Item, ItemData]
 ---
 
-## Scriptable Onbject
+## Scriptable Object
 
+```cs
 [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObjects/ItemData", order = 1)]
 public class StudyItemData : ScriptableObject
 {
@@ -15,3 +16,4 @@ public class StudyItemData : ScriptableObject
     public int Price;
     public int Value;
 }
+```

@@ -68,6 +68,9 @@ DXGI를 사용해 그래픽카드에 그림을 구현해보고 스왑체인을 �
 
 [constant buffer](https://unwoo52.github.io/posts/constant-buffer%EB%A1%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%9B%80%EC%A7%81%EC%9D%B4%EA%B8%B0/)
 
+----
+
+
 ### 선형대수학을 이용해 3d 화면 구현하기
 
 [행렬](https://unwoo52.github.io/posts/%ED%96%89%EB%A0%AC/)

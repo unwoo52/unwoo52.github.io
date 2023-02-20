@@ -6,32 +6,13 @@ categories: [Unity, TeamProj]
 tags: [Unity, TeamProj, PPT, Github, Team, About]
 ---
 
-## 관련 문서 링크
 
-### 유튜브
-
-[link](https://youtu.be/XYon_3MIK5E)
-
-시연 영상입니다.
-
-### Project Github
-
-[Link](https://github.com/unwoo52/unity3DProject)
-
-### PPT
-
-[Link](https://unwoo52.github.io/posts/Team-Project-PPT/)
-
-팀플 협업 위주의 내용이 기재되어 있습니다.
-
-
-<br>
-
-**********
 
 
 
 ## 개요
+
+<span style="color:ffffff">팀프로젝트의 팀활동에 대한 내용을 담은 포스트입니다. 제 개인 포트폴리오 및 개발을 설명하는 기술 문서는 다음 링크에 있습니다. [Link]()</span>
 
 ### 팀 프로젝트 설명
 
@@ -39,7 +20,7 @@ tags: [Unity, TeamProj, PPT, Github, Team, About]
 
 돈스타브, 마인크래프트, 테라리아 와 같은 생존게임을 모티브로 3D 생존게임을 주제로 프로젝트를 진행하였습니다. 팀원은 팀장인 저를 포함한 6명의 인원이 참가했었으나 초반에 두명이 중도 하차하여서 실제로는 임대호, 문준범, 임재환과 함께 넷이서 진행하게 되었습니다.
 
-**팀프로젝트 내에 제가 구현한 기능들만에 대해서만 기술 문서와 스토리 보드를 작성하였습니다. 개인 포트폴리오를 위한 포스팅이므로 다른 팀원이 개발한 내용은 포함시키지 않았습니다.**
+
 
 <br>
 
@@ -85,25 +66,27 @@ tags: [Unity, TeamProj, PPT, Github, Team, About]
 
 **********
 
-## 기술문서와 스토리보드
 
-> 기술 문서는 전체 코드와 코드들에 대한 설명이 적혀있습니다.
-> 
-> 스토리보드에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.
+## 관련 문서 링크
 
-### Buff System
+### 유튜브
 
-[Buff 코드와 기술 문서](https://unwoo52.github.io/posts/Team-Project-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C-Buff-%EA%B8%B0%EB%8A%A5/)
+[link](https://youtu.be/XYon_3MIK5E)
 
-[Buff 스토리보드](https://unwoo52.github.io/posts/Team-Project-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C-Buff-%EA%B8%B0%EB%8A%A5/)
+시연 영상입니다.
 
-### Object Building System
+### Project Github
 
-- 미작성
+[Link](https://github.com/unwoo52/unity3DProject)
 
-### Mining \& Logging System 
+### PPT
 
-- 미작성
+[Link](https://unwoo52.github.io/posts/Team-Project-PPT/)
+
+팀플 협업 위주의 내용이 기재되어 있습니다.
+
+
+<br>
 
 **********
 
