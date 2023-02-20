@@ -24,7 +24,7 @@ tags: [Unity, TeamProj, PPT, Github, SurvivalGame,About]
 
 - [기술 문서](https://unwoo52.github.io/posts/Team-Project-%EA%B1%B4%EB%AC%BC-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%84%A4%EC%B9%98-%EA%B8%B0%EB%8A%A5-%EA%B8%B0%EC%88%A0-%EB%AC%B8%EC%84%9C/)는 구현된 기능에 대해 시간순서대로 작동하는 코드와 인게임 사진을 나열하여 어떻게 구현되었는지를 설명합니다.
 
-- [오브젝트와 전체코드 설명]([https://unwoo52.github.io/posts/Team-Project-Buff-%EA%B8%B0%EB%8A%A5-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%99%80-%EC%A0%84%EC%B2%B4%EC%BD%94%EB%93%9C-%EC%84%A4%EB%AA%85/](https://unwoo52.github.io/posts/Team-Project-%EA%B1%B4%EB%AC%BC-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%84%A4%EC%B9%98-%EA%B8%B0%EB%8A%A5-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%99%80-%EC%A0%84%EC%B2%B4%EC%BD%94%EB%93%9C-%EC%84%A4%EB%AA%85/)는 이 기능과 관련된 오브젝트들과, 오브젝트에 있는 스크립트의 전체 코드를 설명합니다.
+- [오브젝트와 전체코드 설명](https://unwoo52.github.io/posts/Team-Project-Buff-%EA%B8%B0%EB%8A%A5-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%99%80-%EC%A0%84%EC%B2%B4%EC%BD%94%EB%93%9C-%EC%84%A4%EB%AA%85/](https://unwoo52.github.io/posts/Team-Project-%EA%B1%B4%EB%AC%BC-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%84%A4%EC%B9%98-%EA%B8%B0%EB%8A%A5-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%99%80-%EC%A0%84%EC%B2%B4%EC%BD%94%EB%93%9C-%EC%84%A4%EB%AA%85/)는 이 기능과 관련된 오브젝트들과, 오브젝트에 있는 스크립트의 전체 코드를 설명합니다.
 
 기술 문서를 읽으시면 기능 구현에 대해 알 수 있습니다. 기술 문서의 내용이나 글이 미흡해 기능의 내용을 잘 파악하지 못했다면, 선택적으로 오브젝트와 전체코드 설명을 추가로 참고하며 읽으실 수 있습니다.
 
