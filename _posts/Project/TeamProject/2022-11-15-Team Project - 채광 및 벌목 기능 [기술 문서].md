@@ -1,22 +1,22 @@
 ---
-title: Team Project - 채광 및 벌목 기능 [스토리보드]
+title: Team Project - 채광 및 벌목 기능 [기술 문서]
 author: unwoo52
 date: 2022-11-15 00:00:00 +09:00
 categories: [Unity, TeamProj]
 tags: [Unity, TeamProj, Team, Mining, Logging, Resource, StoryBoard]
 ---
 
-# 스토리보드 개요
+# 기술 문서 개요
 
-### 프로젝트, 기술문서, 스토리보드 링크
+### 프로젝트, 오브젝트와 전체코드 설명, 기술 문서 링크
 
 > [팀프로젝트 문서](https://unwoo52.github.io/posts/Team-Project-About/)는 프로젝트의 전체 내용과 개요 등에 대해 적혀있습니다.
 >
 > [youtube 채광 및 벌목 시연 영상](https://youtu.be/XYon_3MIK5E?t=92)에서 버프 작동을 유튜브로 볼 수 있습니다.
 >
-> [기술 문서]()는 전체 코드와 코드들에 대한 설명이 적혀있습니다.
+> [오브젝트와 전체코드 설명]()는 전체 코드와 코드들에 대한 설명이 적혀있습니다.
 > 
-> <span style="color:ffffff">스토리보드에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 스토리로 작성하였습니다.</span>
+> <span style="color:ffffff">기술 문서에는 해당 기능이 어떻게 게임에서 실행되는지 시간순서대로 읽기 쉽게 작성하였습니다.</span>
 
 
 <br>
