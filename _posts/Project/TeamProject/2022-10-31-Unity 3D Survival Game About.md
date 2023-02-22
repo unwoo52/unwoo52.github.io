@@ -8,6 +8,8 @@ tags: [Unity, TeamProj, PPT, Github, SurvivalGame,About]
 
 # 개요
 
+[팀 프로젝트 유튜브 영상 링크 https://youtu.be/XYon_3MIK5E](https://youtu.be/XYon_3MIK5E)
+
 아텐츠게임아카데미에서 팀프로젝트 활동을 통해 진행한 '생존게임' 프로젝트의 개요를 설명합니다.
 
 **팀프로젝트 내에 제가 구현한 기능들만에 대해서만 기술 문서와 스토리 보드를 작성하였습니다. 개인 포트폴리오를 위한 포스팅이므로 다른 팀원이 개발한 내용에 대한 코드는 포함시키지 않았습니다.**
