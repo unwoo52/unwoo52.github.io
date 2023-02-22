@@ -9,7 +9,7 @@ tags: [Unity, TeamProj, PPT, Github, Team, About]
 
 # 유튜브 영상 링크
 
-[https://youtu.be/XYon_3MIK5E](팀 프로젝트 유튜브 영상 링크)
+[https://youtu.be/XYon_3MIK5E](팀프로젝트 유튜브 영상 링크)
 
 ## 개요
 
