@@ -13,6 +13,9 @@ tags: [directX, Win32API, GameEngine]
 ![imagename](/assets/image/DirectX/GameEngine/About/001.gif)
 
 
+[깃허브 주소 링크 https://github.com/unwoo52/DirectX11Engine](https://github.com/unwoo52/DirectX11Engine)
+
+
 
 > 이번 프로젝트에서는 Win32API와 DirectX, DXGI를 이용하여 직접 게임 엔진을 구현해보고, 게임 엔진이 실제로 어떻게 마우스, 키보드 등의 입력을 받고 처리하는지, 렌더링파이프라인을 사용해보고 그래픽이 어떻게 화면에 렌더링 되는지를 배워보자 한다.
 
