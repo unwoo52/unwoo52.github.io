@@ -71,12 +71,28 @@ order: 4
 
 <br>
 
+<br>
+
+
+![imagename](/assets/image/About/002.png)
+
+[이 외에도 다양한 카테고리에 저의 개인 공부를 기록한 포스트들이 있습니다.](https://unwoo52.github.io/categories/)
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
 ------------
 
 
-# 내 자투리 소개
+# 개발자가 아닌 개인적인 나에 대한 소개
 
-![imagename](/assets/image/About/aboutGif.gif)
 
 > 개발자가 아닌 저 김현우의 개인적인 내용에 대한 이야기입니다.
 >
@@ -84,6 +100,7 @@ order: 4
 >
 > 저는 프로그래밍을 정말 좋아합니다. 다른 모든 사람들이 공부를 싫어하듯 저도 공부를 싫어하지만,,, 이 프로그래밍 만큼은 예외였습니다. 저에게 있어 개발자는 천직이죠. 그러나 개발만큼이나 좋아하는 것이 또 있습니다.
 
+![imagename](/assets/image/About/aboutGif.gif)
 
 ## 우주에 대한 관심
 
