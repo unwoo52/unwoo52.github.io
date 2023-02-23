@@ -9,7 +9,6 @@ tags: [Unity, TeamProj, PPT, Github, Team, About]
 
 
 
-
 ## 개요
 
 <span style="color:ffffff">팀프로젝트의 팀활동에 대한 내용을 담은 포스트입니다. 제 개인 포트폴리오 및 개발을 설명하는 기술 문서는 다음 링크에 있습니다. [Link]()</span>
