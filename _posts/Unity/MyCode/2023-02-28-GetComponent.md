@@ -48,3 +48,8 @@ private bool Initialize()
     return true;
 }
 ```
+
+## .
+
+- OCP, Open-Closed Principle
+- 중복 코드 방지
