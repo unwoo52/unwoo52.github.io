@@ -33,18 +33,18 @@ public class StaticTool : MonoBehaviour
 ## 사용 예
 
 ```cs
-    private void Start()
-    {
-        if(!Initialize()) 
-            Debug.LogError("ERROR! 컴포넌트를 찾지 못했습니다.");
-    }
+private void Start()
+{
+    if(!Initialize()) 
+        Debug.LogError("ERROR! 컴포넌트를 찾지 못했습니다.");
+}
 
-    private bool Initialize()
-    {
-        if (!StaticTool.GetCom<AnimMovement>(gameObject, ref _animMovement)) return false;
-        if (!StaticTool.GetCom<ZombieFSM_Idle>(gameObject, ref _zombieFSM_Idle)) return false;
-        if (!StaticTool.GetCom<ZombieFSM_Tracking>(gameObject, ref _zombieFSM_Tracking)) return false;
+private bool Initialize()
+{
+    if (!StaticTool.GetCom<AnimMovement>(gameObject, ref _animMovement)) return false;
+    if (!StaticTool.GetCom<ZombieFSM_Idle>(gameObject, ref _zombieFSM_Idle)) return false;
+    if (!StaticTool.GetCom<ZombieFSM_Tracking>(gameObject, ref _zombieFSM_Tracking)) return false;
 
-        return true;
-    }
+    return true;
+}
 ```
