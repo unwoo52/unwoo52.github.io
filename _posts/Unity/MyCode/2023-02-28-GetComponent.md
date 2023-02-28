@@ -3,7 +3,7 @@ title: GetComponent
 author: unwoo52
 date: 2023-02-28 00:00:00 +09:00
 categories: [Unity, MyCode]
-tags: [Unity, MyCode, Static]
+tags: [Unity, MyCode, Static, OCP]
 ---
 
 ## GetCom\<T\>
