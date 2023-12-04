@@ -61,12 +61,16 @@ Behavior Tree가 등장한 배경과, 어떤 구조를 통해 동작하는지 �
 
 [읽은 포스트 1](https://gmlwjd9405.github.io/2018/11/09/dependency-injection.html)
 
-[읽은 포스트 2](https://jaejong.tistory.com/123)
+[읽은 포스트 2](https://jaejong.tistory.com/123) <<todo5
 
 ---------
 
 ## 보일러플레이트 코드 Boilerplate code
-[읽은 포스트 1](https://coding-grandpa.tistory.com/2)
+[읽은 포스트 1](https://coding-grandpa.tistory.com/2) <<todo4
+
+[wik pedia](https://en.wikipedia.org/wiki/Boilerplate_code) <<todo3
+
+[C# record](https://learn.microsoft.com/ko-kr/dotnet/csharp/language-reference/builtin-types/record) <<todo2
 
 -----
 ## 관계 (의존 연관 집합 구성)
@@ -80,3 +84,4 @@ Behavior Tree가 등장한 배경과, 어떤 구조를 통해 동작하는지 �
 [객체지향과 의존성](https://velog.io/@from_numpy/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EA%B3%BC-%EC%9D%98%EC%A1%B4%EC%84%B1-Dependency)
 
 [의존과 책임](https://effectiveprogramming.tistory.com/entry/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98-%EC%98%AC%EB%B0%94%EB%A5%B8-%EC%9D%B4%ED%95%B4-%EC%B1%85%EC%9E%84Responsibility)
+ <<todo1
