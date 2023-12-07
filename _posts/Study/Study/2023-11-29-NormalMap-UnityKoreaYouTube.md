@@ -1,3 +1,12 @@
+---
+title: NormalMap UnityKoreaYouTube
+author: unwoo52
+date: 2023-11-29 00:00:00 +09:00
+categories: [UnityKoreaYoutube]
+tags: [UnityKoreaYoutube]
+---
+NormalMap UnityKoreaYouTube
+
 # Markdown Editor 
  
 https://www.youtube.com/watch?v=fWVTePoMS5o 
