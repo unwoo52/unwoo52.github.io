@@ -8,7 +8,7 @@ tags: [UnityMultiplayer, Multiplayer, NetCode]
 
 # [Learning with Golden Path - II](https://docs-multiplayer.unity3d.com/netcode/current/tutorials/goldenpath_series/goldenpath_two/#introducing-a-server-controlled-network-variable)
 
-[Learning with Golden Path - I]()를 진행한것에 이어서 , Golden Path 포스트를 읽고 멀티플레이 네트워킹을 더 구현해보기로 한다.
+[Learning with Golden Path - I](https://unwoo52.github.io/posts/Learn-NetCode-with-GoldenPath-I/)를 진행한것에 이어서 , Golden Path 포스트를 읽고 멀티플레이 네트워킹을 더 구현해보기로 한다.
 
 ---
 

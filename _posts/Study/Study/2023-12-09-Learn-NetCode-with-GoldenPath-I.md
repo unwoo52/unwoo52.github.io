@@ -43,6 +43,6 @@ public class HelloWorldPlayer : NetworkBehaviour
 GUI로 host server client를 선택할 수 있게 했고, Player Prefab이 각 client에서 동기화 되는 것을 확인했다.
 
 [Golden Path Module Two(unity 문서)](https://docs-multiplayer.unity3d.com/netcode/current/tutorials/goldenpath_series/goldenpath_two/#introducing-a-server-controlled-network-variable) 를 이어서 진행하였다. >> [Golden Path Module Two
-를 진행한 포스트]()
+를 진행한 포스트](https://unwoo52.github.io/posts/Learn-NetCode-with-GoldenPath-II/)
 
 ServerRpc를 사용해 보았다.
