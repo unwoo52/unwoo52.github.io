@@ -1,7 +1,7 @@
 ﻿---
 title: Learn NetCode with GoldenPath I
 author: unwoo52
-date: 2023-12-09 00:00:00 +09:00
+date: 2023-12-09 01:00:00 +09:00
 categories: [UnityMultiplayer, Multiplayer, NetCode]
 tags: [UnityMultiplayer, Multiplayer, NetCode]
 ---

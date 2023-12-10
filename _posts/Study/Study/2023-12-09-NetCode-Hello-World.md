@@ -12,8 +12,7 @@ tags: [UnityMultiplayer, Multiplayer, NetCode]
 
 유니티 엔진을 이용해 멀티플레이 게임을 구현할 수 있는 다양한 서비스들(유니티 멀티플레이, 포톤, 아마존 게임리프트 등)이 있음을 알게 되었고, 그 중 내게 적합한 방법이 무엇인지 고민해 본 결과, 교육 샘플 및 기술 문서가 잘 작성되어 있는 유니티 멀티플레이를 사용해 구현하기로 결정하였다.
 
-그래서 이번 포스트에서는 NetCode를 이용하여 Hello World를 출력하는 프로그램을 만들어 보았다.
-
+멀티플레이 구현을 위한 첫번째 포스트로 NetCode를 이용하여 Hello World 프로젝트 구현 튜토리얼을 진행하였다.
 ### [NetCode Hello World](https://docs-multiplayer.unity3d.com/netcode/current/tutorials/helloworld/index.html)
 
 위 링크 문서를 따라 NetCode 학습을 진행하였다.
