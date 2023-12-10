@@ -75,6 +75,26 @@ private void DoSomethingClientRpc(int randomInteger, ClientRpcParams clientRpcPa
 }
 ```
 
+<br>
+
+[Struct ClientRpcParams](https://docs.unity3d.com/Packages/com.unity.netcode.gameobjects@1.7/api/Unity.Netcode.ClientRpcParams.html)
+
+```css
+...
+DoSomethingClientRpc(randomInteger, clientRpcParams);
+
+
+[ClientRpc]
+private void DoSomethingClientRpc(int randomInteger, ClientRpcParams clientRpcParams = default)
+{
+  if (IsOwner) return;
+
+// Run your client-side logic here!!
+Debug.LogFormat("GameObject: {0} has received a randomInteger with value: {1}", gameObject.name, randomInteger);
+}
+...
+```
+
 ---
 
 ### 결과
@@ -82,3 +102,5 @@ private void DoSomethingClientRpc(int randomInteger, ClientRpcParams clientRpcPa
 Network Transform을 이용해서 플레이어 오브젝트를 움직이게 해 보았다.
 
 서버 제어 네트워크 변수를 추가 해 보았다. 플레이어가 서버에 접속한 뒤 부터 0.5초마다 경과 시간을 출력하는 디버그 로그를 출력하였다.
+
+ClientRpc를 사용 해 보았다.

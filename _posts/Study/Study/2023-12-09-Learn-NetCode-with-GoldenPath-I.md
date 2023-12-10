@@ -45,3 +45,4 @@ GUI로 host server client를 선택할 수 있게 했고, Player Prefab이 각 c
 [Golden Path Module Two(unity 문서)](https://docs-multiplayer.unity3d.com/netcode/current/tutorials/goldenpath_series/goldenpath_two/#introducing-a-server-controlled-network-variable) 를 이어서 진행하였다. >> [Golden Path Module Two
 를 진행한 포스트]()
 
+ServerRpc를 사용해 보았다.
