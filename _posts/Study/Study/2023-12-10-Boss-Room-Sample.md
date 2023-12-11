@@ -89,7 +89,7 @@ boss room 샘플 개발자들은 다양한 클라이언트-서버 코드 분리 
 
 #### 즉각 반응 액션 (클라이언트에서 입력과 동시에 예상 행동을 수행하는 경우)
 
-Player Move Image hear...
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/f5583d72-0bf6-435f-be86-6a294b38dd05)
 
 > 클라이언트가 키 입력을 받음
 >
@@ -105,7 +105,7 @@ Player Move Image hear...
 
 #### 매직 볼트(보낸 클라이언트는, 서버에 보낸 rpc를 회신받아서 행동을 수행)
 
-magic bolt image hear...
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/ed0366d0-04f6-4f60-bdd9-6713211fac50)
 
 > 클라이언트가 스킬 키 입력을 받음
 >
@@ -120,7 +120,7 @@ magic bolt image hear...
 
 #### 화살 발사(화살은 NetworkObject이자 NetTransform을 이용해서 동기화)
 
-image hear..
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/aee278f4-e827-47c5-86a6-bdfc28298e7f)
 
 > 화살은 생성된 뒤에 NetObject로 존재하며 계속해서 자기 자신을 동기화
 
@@ -128,7 +128,7 @@ image hear..
 
 <br>
 
-Rogue Sneak Image hear...
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/fbb09eb1-bf4d-4b64-b200-d85c085ab333)
 
 >client가 스킬 키 입력을 받음
 >
