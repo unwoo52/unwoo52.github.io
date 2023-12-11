@@ -14,8 +14,13 @@ Boss Room Sample은 최대 8명의 플레이어가 플레이어블 가능한 캐
 
 ---
 
-### 같이 읽은 포스터들
+<br>
 
+## 같이 읽은 포스터들
+
+---
+
+### [Getting Started with Boss Room](https://docs-multiplayer.unity3d.com/netcode/current/learn/bossroom/bossroom/)
 
 #### Boss Room 실행을 위한 UGS 서비스 목록
 Boss Room은 UGS의 여러 서비스를 활용하여 플레이어 간의 연결을 용이하게 합니다. 프로젝트 내에서 이러한 서비스를 사용하려면 다음을 수행해야 합니다.
@@ -59,14 +64,23 @@ Unity 대시보드 내에서 조직을 생성하세요 .
 
 > 이 외에도 패키지에 대한 변경 사항을 동기화를 하지 않는 문제가 있다. 자세한 내용은 [ParrelSync](https://docs-multiplayer.unity3d.com/netcode/current/tutorials/testing/testing_locally/#parrelsync)를 읽으면서 확인할 것.
 
-<br>
 
-#### add post...
+---
+
+### [Boss Room Architecture](https://docs-multiplayer.unity3d.com/netcode/current/learn/bossroom/bossroom-architecture/)
+
+#### [Assembly structure](https://docs.unity3d.com/kr/2019.4/Manual/ScriptCompilationAssemblyDefinitionFiles.html)
+
+이미지
+
+---
+
+### [Boss Room Actions Walkthrough](https://docs-multiplayer.unity3d.com/netcode/current/learn/bossroom/bossroom-actions/)
 
 write text...
 
 ---
 
-### 결과
+## 결과
 
 결과...
