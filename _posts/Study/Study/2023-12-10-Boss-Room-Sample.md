@@ -71,7 +71,8 @@ Unity 대시보드 내에서 조직을 생성하세요 .
 
 #### [Assembly structure](https://docs.unity3d.com/kr/2019.4/Manual/ScriptCompilationAssemblyDefinitionFiles.html)
 
-이미지
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/ce4015c1-d071-4f32-af20-0f4e260267bf)
+
 
 ---
 
