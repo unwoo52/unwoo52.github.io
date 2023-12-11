@@ -16,7 +16,7 @@ Boss Room Sample은 최대 8명의 플레이어가 플레이어블 가능한 캐
 
 <br>
 
-## 같이 읽은 포스터들
+## 같이 읽은 포스트들
 
 ---
 
@@ -218,6 +218,14 @@ boss room 샘플 개발자들은 다양한 클라이언트-서버 코드 분리 
 
 > 뒤늦게 합류한 플레이어의 클라이언트에서, 씬 로드에 의해 생성은 되었지만 NetCode를 통해 파괴되지 못한 오브젝트(즉, 좀비 오프젝트)가 존재할 수 있다.
 
+
+---
+
+## 라이브러리
+
+[VContainer](https://vcontainer.hadashikick.jp/getting-started/hello-world)
+>
+>DI 종속성을 지원하는 오픈소스 라이브러리
 
 ---
 
