@@ -14,3 +14,9 @@ health point와 같은 정보는 netVar인 것은 맞는데, 이 변수가 있�
 
 boss room sample을 보니 맞다.
 
+### todo
+
+fps framework에서 1.총알 발사 부분, 2.총알 피격 부분, 3.health point 계산 부분을 찾아야 함
+
+총알 발사 이벤트에서 데미지 계산 부분은 client에서는 없애고, server에서만 계산하게
+
