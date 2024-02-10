@@ -1,21 +1,26 @@
-﻿---
+﻿
 title: UGS Development Plan
 author: unwoo52
 date: 2023-12-28 00:00:00 +09:00
 categories: [Planner]
 tags: [UnityGameService, Dev, DevGoal, Goal, Plan, Project]
----
+
 
 ## UGS goals
 
 #### NGO로 동작하는 시연 구현하기
+* FPS Framework 구현하기
+  * <span style="color: #369F36">**first person controller 구현**</span>
+  * <span style="color: #369F36">**projectile 구현**</span>
+  * firearm 구현
+  * 무기 파츠 장착 구현
+  * 아이템 버리기 구현
+  * 피격 효과 이펙트 구현
+  * 사운드 및 애니메이션 구현
 
 * 멀티플레이어블 가능하게 FPS FrameWork를 개조해보기
-  * <span style="color: #369F36">**플레이어 스폰 구현**</span>
-  * <span style="color: #369F36">**총 쏘기 구현**</span>
-  * <span style="color: #369F36">**움직임 구현**</span>
-  * 무기 교체 동기화 구현
-  * 무기 파츠 장착 구현
+  * 플레이어 스폰 구현
+  * 무기 교체 및 파츠 교체 동기화 구현
 
 #### 로그인 및 인증 구현하기
 
