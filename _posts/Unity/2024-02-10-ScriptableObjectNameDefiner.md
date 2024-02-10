@@ -10,6 +10,11 @@ tags: [Unity, ScriptableObject, AssetPostprocessor, EditorUtility, INameDesignat
 
 Scriptable Object 파일을 생성하면, 이름도 자동으로 정의되는 기능을 만들어보려고 한다.
 
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/f94a4a9a-0656-4bb2-a8bc-2896fcff65cf)
+
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/f71d333d-eaef-4e4b-ae1a-d9bb59ceddc8)
+
+
 ## 이름 변경 시 자동으로 name field의 값을 변경하기
 
 이 기능은 OnValidate() 콜백을 이용해 쉽게 구현할 수 있다.
