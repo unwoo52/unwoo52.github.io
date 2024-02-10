@@ -14,7 +14,7 @@ Scriptable Object 파일을 생성하면, 이름도 자동으로 정의되는 �
 
 이 기능은 OnValidate() 콜백을 이용해 쉽게 구현할 수 있다.
 
-```css
+```cs
 public class MonsterData_SO : ScriptableObject
 {
     public string monsterName;
@@ -33,7 +33,7 @@ public class MonsterData_SO : ScriptableObject
 
 코파일럿에게 이 기능을 구현해달라고 요청하여서 아래 코드를 받았다.
 
-```css
+```cs
 using UnityEditor;
 
 namespace Tool.AssetsPostprocessor
@@ -70,7 +70,7 @@ AssetPostprocessor의 OnPostprocessAllAssets() 콜백을 이용해 import된 파
 
 ## 결과물
 
-```css
+```cs
 using System;
 using UnityEditor;
 using UnityEngine;
