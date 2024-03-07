@@ -32,7 +32,7 @@ public class MonsterData_SO : ScriptableObject
     }
 ```
 
-그러나 파일을 생성함과 동시에 이름을 적을 땐 이름이 자동으로 변경되지 않는다.
+아직은 파일을 생성함과 동시에 이름을 적을 땐 이름이 자동으로 변경되지 않는다.
 
 ## 생성 시 이름 자동으로 정의하기
 
@@ -66,9 +66,9 @@ namespace Tool.AssetsPostprocessor
 
 AssetPostprocessor의 OnPostprocessAllAssets() 콜백을 이용해 import된 파일으로부터 MonsterData_SO타입을 얻을 수 있다면 바로 이름을 적용하는 코드가 작성되었다.
 
-그러나 이 코드는 MonsterData_SO 외에 새로운 type이 등장할 때 마다 ScriptableObjectNameDefiner가 수정되어야 하기 때문에 개방 폐쇄 원칙에 어긋난다.
+하지만 이 코드는 MonsterData_SO 외에 새로운 type이 등장할 때 마다 ScriptableObjectNameDefiner가 수정되어야 하기 때문에 개방 폐쇄 원칙에 어긋난다.
 
-그러므로 이름을 자동으로 지정하기 위해 사용할 INameDesignator라는 인터페이스를 만들고, 위 코드에서 MonsterData_SO를 직접 명시하는것을 피하도록 하려고 한다.
+이름을 자동으로 지정하기 위해 사용할 INameDesignator라는 인터페이스를 만들고, 위 코드에서 MonsterData_SO를 직접 명시하는것을 피하도록 하려고 한다.
  또한, OnPostprocessAllAssets함수의 매개변수인 importedAssets에서 이 인터페이스를 추출한 뒤 이름을 전달하는 식으로 개선하였다.
 
 이를 통해 이름을 지정하는 행위는 OnPostprocessAllAssets에선 추상적으로 제시되고, 구체적인 행위는 INameDesignator를 구현한 클래스에서 이루어지도록 하였다.
