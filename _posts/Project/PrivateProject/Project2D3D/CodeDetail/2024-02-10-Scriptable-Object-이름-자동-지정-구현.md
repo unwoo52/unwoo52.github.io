@@ -2,8 +2,8 @@
 title: Scriptable Object 이름 자동 저장 기능 구현
 author: unwoo52
 date: 2024-02-10 00:00:00 +09:00
-categories: [Unity]
-tags: [Unity, ScriptableObject, AssetPostprocessor, EditorUtility, INameDesignator, Automatize]
+categories: [Project, PrivateProject, Project2D3D, CodeDetail]
+tags: [Unity, ScriptableObject, AssetPostprocessor, EditorUtility, INameDesignator, Automatize, Project2D3D]
 ---
 
 # Scriptable Object 이름 자동 저장 기능 구현
