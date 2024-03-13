@@ -5,3 +5,20 @@ date: 2024-02-24 00:00:00 +09:00
 categories: [Project, PrivateProject, Project2D3D, CodeDetail]
 tags: [Unity, ScriptableObject, Project2D3D, Palette, Grid, RuleTile]
 ---
+
+TODO - 링크 하나 적어야 함
+
+# RuleTile Finder 구현
+
+[링크 적기]Grid And Object MatchMaker을 구현하던 도중 문제가 생겼다.
+
+tile grid에 그려진 TileBase에서는 ruletile에 대한 정보밖에 얻을 수 없었고, 어떤 형태의 sprite인지 알 수 없었다.
+
+TileBase의 모든 함수를 찾아보기도 하고, TileBase를 Tile로 캐스팅 하는 방법 등 여러 방법을 시도하였지만,
+TileBase는 어떤 sprite인지 디버그창에서만 보여줄 수 있을 뿐 함수나 프로퍼티로는 전혀 공개되어 노출 되어있지 않았다.
+
+때문에 각 8방향별로 다르게 배치되어야 하는 언덕 prefab을 배치하는 것이 불가능했다.
+
+<br>
+
+그래서 TileBase의 Rule과, Rule별 배치되는 Sprite에 접근해서 어떤 유형의 RuleTile인지를 판별하는 Tool을 구현하였다.
