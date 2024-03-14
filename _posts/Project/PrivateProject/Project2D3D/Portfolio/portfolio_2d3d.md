@@ -110,10 +110,6 @@ EditorWindow를 통한 유니티 에디터 확장 기능 구현과 Sprite, Textu
 
 tile grid에 배치된 sprite에 매치되는 3d prefab을 서로 짝지을 수 있는 화면을 구현하고, 이 매치를 저장하고 불러올 수 있는 기능을 구현하였다.
 
-#### ruletile 탐색기
-
-tile grid에서 읽어올 수 있는 정보에서는 어떤 sprite인지 알 수 없는 문제점이 있다. 이를 해결하기 위해 ruletile 탐색기를 구현하여 사용하였다.
-
 #### 랜덤 꽃 타일 배치기
 
 간단하게 꽃과 바위 같은 타일을 쉽게 랜덤으로 배치할 수 있는 EditorWindow를 구현하였다.
