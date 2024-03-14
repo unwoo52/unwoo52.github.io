@@ -285,7 +285,45 @@ public class ObjectTileDispositionDataEditor : EditorWindow
 </div>
 </details>
 
-공백부분FIXME
+## Editor Window 설명
+
+* EditorWindow를 사용하는 전체 모습
+
+[TODOEditorWindow사용하는 움짤 추가]
+
+
+두개의 화면으로 나뉜다.
+
+#### tileMap 선택
+
+[TODO첫번째 화면 사진 추가]
+
+먼저 첫번째 화면에서는 배치 타겟이 될 tileMap들을 선택한다.
+
+> tileMap은 등록하는 필드는 tileMap이지만, 실재로 저장은 string형태로 저장된다. 이는 여러 씬에서 작업해야 하기 때문에
+> 다른 씬에 있는 동일한 이름의 tileMap 레이아웃 형태에서도 작동해야 하기 때문에 의도적으로 이와 같이 구현했다.
+
+tileMap들을 모두 선택했다면 버튼을 눌러 다음 화면으로 넘어갈 수 있다.
+
+<br>
+
+#### 배치 데이터 생성
+
+[TODO두번째 화면 사진 추가]
+
+가장 위의 Column Count를 설정할 수 있고, 밑의 AddRow버튼을 눌러서 새로운 Row를 추가할 수 있다.
+
+Row에서는 tileMap 대상을 고를 수 있고, 왼쪽의 네모를 클릭해 sprite를 설정하는 상태로 진입할 수 있다.
+
+네모를 클릭하면 색이 활성화 되면서 Sprite를 선택할 수 있는 상태임을 시각적으로 알려준다.
+
+[TODO실제로 나무가 그려진 에셋 사진 추가]
+
+이 상태에서 tileMap의 sprite를 설정하면 [일련의 프로세스"TODO문단 링크 추가"]()를 수행하여서 sprite를 저장하고, 이 sprite를 버튼 위에 보여준다.
+
+[TODO저장하는 모습 추가]
+
+각 tileMap 레이어들에 모든 오브젝트 sprite들을 배치한 뒤에 밑의 버튼을 눌러 이 에셋을 저장할 수 있다.
 
 ## 코드 설명
 
