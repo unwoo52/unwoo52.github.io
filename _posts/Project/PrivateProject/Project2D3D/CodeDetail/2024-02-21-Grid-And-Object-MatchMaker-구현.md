@@ -8,6 +8,7 @@ tags: [Unity, ScriptableObject, Project2D3D, Automatize]
 
 <details>
 <summary>전체 코드 [접기/펼치기]</summary>
+<div markdown="1">
 
 ```csharp
 using System;
@@ -351,6 +352,7 @@ public class GridAnd3dObjectMatchMaker : EditorWindow
 }
 ```
 
+</div>
 </details>
 
 # Grid And Object MatchMaker 구현
@@ -487,6 +489,7 @@ if (GUILayout.Button("Batch Tiles", new GUIStyle(GUI.skin.button){normal = {text
 
 <details>
 <summary>Load and Save 전체 코드 [접기/펼치기]</summary>
+<div markdown="2">
 
 ```csharp
 private void Save(string path = null)
@@ -583,6 +586,7 @@ private void Load()
 }
 ```
 
+</div>
 </details>
 
 처음에는 단순히 gameObject와 Sprite를 저장하려고 시도했었다. 그러나 전혀 작동하지 않았다.
