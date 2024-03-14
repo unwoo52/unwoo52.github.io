@@ -492,7 +492,7 @@ if (GUILayout.Button("Batch Tiles", new GUIStyle(GUI.skin.button){normal = {text
 
 <details>
 <summary>Load and Save 전체 코드 [접기/펼치기]</summary>
-<div markdown="2">
+<div markdown="1">
 
 ```csharp
 private void Save(string path = null)
