@@ -19,9 +19,48 @@ tags: [Unity, ScriptableObject, Project2D3D, Json, Save, Load]
 
 ## PlayerData 및 PlayerData 사용자
 
+### 플레이어 데이터
+```csharp
+[Serializable]
+public class PlayerData
+{
+    public PlayerData(float positionX = 0f, float positionY = 0f, string locatedSceneName = "StartVillage House")
+    {
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.locatedSceneName = locatedSceneName;
+    }
+
+    [SerializeField] public float positionX;
+    [SerializeField] public float positionY;
+    [SerializeField] public string locatedSceneName;
+}
+```
+
+### 플레이어 데이터 사용자
+
+[ TODO 사진 플레이어 데이터 사용자 모노비헤비어 사진]
+
+```csharp
+
 ## ScenarioData 및 ScenarioData 사용자
 
-### ScenarioData 사용자인 SceneScenarioEvent
+### 시나리오 데이터
+
+```csharp
+[Serializable]
+public class FieldScenarioData : ScenarioData
+{
+    public FieldScenarioData(string eventName, bool isRead = false) : base(eventName, isRead)
+    {
+    }
+
+    [SerializeField] private string upperTestData = "upperTest";
+    public bool IsConditionSatisfied { get; private set; } = true;
+}
+```
+
+### 시나리오 데이터 사용자
 
 <details>
 <summary> SceneScenarioEvent.cs 전체 코드 [접기/펼치기]</summary>
@@ -92,3 +131,99 @@ public class SceneScenarioEvent : MonoBehaviour
 
 [TODO ScenarioData 사용자인 SceneScenarioEvent 모노비헤비어 사진]
 
+이 오브젝트는 씬이 시작될 때 ScenarioData를 불러와서 시나리오가 읽혔는지 아닌지를 판단해서 대화를 시작한다.
+
+만약 한번 읽은 시나리오라면 재생하지 않는다.
+
+```csharp
+private void Start()
+{
+    // Get ScenarioData Array from SaveData
+    FieldScenarioData fieldScenarioData = LoadGameData(scenarioAsset.name);
+
+    if (fieldScenarioData.IsConditionSatisfied)
+    {
+        void OnDialogueEnd()
+        {
+            fieldScenarioData.isRead = true;
+            SaveGameData(fieldScenarioData);
+        }
+
+        DialogueManager.Instance.StartDialogue(scenarioAsset, OnDialogueEnd).Forget();
+    }
+}
+```
+
+씬에 들어오면 LoadGameData를 통해 ScenarioData를 불러와서 ScenarioData가 읽혔는지 아닌지를 판단해서 대화를 시작한다.
+
+```csharp
+DialogueManager.Instance.StartDialogue(scenarioAsset, OnDialogueEnd).Forget();
+```
+
+대화를 시작할 수 있는 Singleton DialogueManager를 통해 대화를 시작할 수 있으며, 대화가 끝나면 ScenarioData의 isRead를 true로 바꾸고 SaveGameData를 통해 저장한다.
+
+<br>
+
+---
+
+
+```csharp
+private FieldScenarioData LoadGameData(string eventName)
+{
+    TotalGameData totalGameData = GameDataManager.Instance.TotalGameData;
+    FieldScenarioData[] loadData = totalGameData.LoadData<FieldScenarioData>();
+
+    FieldScenarioData fieldScenarioData = loadData.FirstOrDefault(x => x.eventName == eventName);
+
+    // If the ScenarioData does not exist, create a new ScenarioData
+    if (fieldScenarioData == null)
+    {
+        fieldScenarioData = new FieldScenarioData(eventName);
+    }
+
+    return fieldScenarioData;
+}
+```
+
+LoadGameData는 TotalGameData에서 FieldScenarioData를 불러오는 함수이다.
+
+FieldScenarioData를 모두 불러온 뒤, eventName과 일치하는 FieldScenarioData가 있는지 확인하고 없다면 새로운 FieldScenarioData를 생성하고, 있다면 해당 FieldScenarioData를 반환한다.
+
+이 씬에 있는 이 SceneScenarioEvent가 갖고 있는 시나리오 이벤트를 찾는 코드는 아래와 같은데
+
+```csharp
+FieldScenarioData fieldScenarioData = loadData.FirstOrDefault(x => x.eventName == eventName);
+```
+
+이렇듯, 특정 데이터를 찾는 코드는 각 데이터를 사용하는 클래스(이 경우에는 SceneScenarioEvent)에서 구현하도록 하였다.
+
+---
+
+<br>
+
+```csharp
+private void SaveGameData(FieldScenarioData fieldScenarioData)
+{
+    // Get T Data Array from TotalGameData
+    TotalGameData totalGameData = GameDataManager.Instance.TotalGameData;
+    FieldScenarioData[] loadDataArray = totalGameData.LoadData<FieldScenarioData>();
+
+    FieldScenarioData loadData = loadDataArray.FirstOrDefault(x => x.eventName == fieldScenarioData.eventName);
+
+    // Check if the ScenarioData is already in the GameData
+    // If the ScenarioData is already in the GameData, update the data
+    if (loadData != null)
+    {
+        loadData.isRead = true;
+    }
+    else // If the ScenarioData does not exist in the GameData, add the data
+    {
+        totalGameData.SaveData(fieldScenarioData);
+    }
+}
+```
+
+SaveGameData는 TotalGameData에 FieldScenarioData를 저장하는 함수이다.
+
+FieldScenarioData를 저장하려고 할 때, 이미 해당 FieldScenarioData가 TotalGameData에 존재하는지 확인한다.
+만약 이미 있다면 해당 FieldScenarioData의 isRead를 true로 바꾸고, 없다면 새로운 FieldScenarioData를 추가한다.
