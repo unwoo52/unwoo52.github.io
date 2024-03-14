@@ -6,6 +6,32 @@ categories: [Project, PrivateProject, Project2D3D, CodeDetail]
 tags: [Unity, ScriptableObject, Project2D3D, Automatize]
 ---
 
+![GridAndObjectMatchMaker](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/39d71682-5edc-4247-a3ff-b0ddf820215d)
+
+
+
+# Grid And Object MatchMaker 구현
+
+tile grid에 배치된 sprite에 매치되는 3d prefab을 서로 짝지을 수 있는 화면을 구현하고,
+이 매치를 저장하고 불러올 수 있는 기능을 구현하였다.
+
+가령 tile palette의 초록 풀 바닥 타일과, 3d prefab인 초록 풀 오브젝트를 짝지은 뒤 배치 기능을 실행하면
+tile palette에 배치된 초록 풀 바닥 타일에 위치에 대응되는 3d공간에 3d prefab인 초록 풀 오브젝트가 자동으로 배치된다.
+
+### 겪었던 문제들
+
+> 1. sprite와 3d prefab을 저장하고 불러오는 기능이 의도대로 작동하지 않아서 수정하였다.
+> 2. 3d prefab과 sprite를 짝짓는 요소가 몹시 많아져서 화면을 넘어갔기 때문에 scroll view를 구현하였다.
+
+아래 글의 항목에서 이후 자세히 설명한다.
+
+<br>
+<br>
+
+---
+
+## 전체 코드
+
 <details>
 <summary>전체 코드 [접기/펼치기]</summary>
 <div markdown="1">
@@ -354,24 +380,6 @@ public class GridAnd3dObjectMatchMaker : EditorWindow
 
 </div>
 </details>
-
-# Grid And Object MatchMaker 구현
-
-tile grid에 배치된 sprite에 매치되는 3d prefab을 서로 짝지을 수 있는 화면을 구현하고,
-이 매치를 저장하고 불러올 수 있는 기능을 구현하였다.
-
-가령 tile palette의 초록 풀 바닥 타일과, 3d prefab인 초록 풀 오브젝트를 짝지은 뒤 배치 기능을 실행하면
-tile palette에 배치된 초록 풀 바닥 타일에 위치에 대응되는 3d공간에 3d prefab인 초록 풀 오브젝트가 자동으로 배치된다.
-
-### 겪었던 문제들
-
-아래 항목에서 자세히 설명한다.
-
-> 1. sprite와 3d prefab을 저장하고 불러오는 기능이 의도대로 작동하지 않아서 수정하였다.
-> 2. 3d prefab과 sprite를 짝짓는 요소가 몹시 많아져서 화면을 넘어갔기 때문에 scroll view를 구현하였다.
-
-<br>
-<br>
 
 ---
 
