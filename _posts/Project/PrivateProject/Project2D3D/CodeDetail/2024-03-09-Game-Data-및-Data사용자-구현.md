@@ -8,7 +8,7 @@ tags: [Unity, ScriptableObject, Project2D3D, Json, Save, Load]
 
 # Game Data 및 Data사용자 구현
 
-게임 내에 존재하는 여러 유형의 데이터 중 일부를 설명한다.
+게임 내에 존재하는 여러 유형의 데이터 중 시나리오 데이터와 시나리오 데이터를 불러오고 사용하는 코드를 설명한다.
 
 각 데이터마다 형태도 다르고 특성이나 불러오는 방식이 상이하다.
 
@@ -17,48 +17,7 @@ tags: [Unity, ScriptableObject, Project2D3D, Json, Save, Load]
 * 데이터를 json으로 변환될 필드들([serializeble] 필드들)의 정의
 을 GameDataManager가 아닌 데이터를 사용하는 각 클래스에서 구현하도록 위임하였다.
 
-## PlayerData 및 PlayerData 사용자
-
-### 플레이어 데이터
-```csharp
-[Serializable]
-public class PlayerData
-{
-    public PlayerData(float positionX = 0f, float positionY = 0f, string locatedSceneName = "StartVillage House")
-    {
-        this.positionX = positionX;
-        this.positionY = positionY;
-        this.locatedSceneName = locatedSceneName;
-    }
-
-    [SerializeField] public float positionX;
-    [SerializeField] public float positionY;
-    [SerializeField] public string locatedSceneName;
-}
-```
-
-### 플레이어 데이터 사용자
-
-```csharp
-
-## ScenarioData 및 ScenarioData 사용자
-
 ### 시나리오 데이터
-
-```csharp
-[Serializable]
-public class FieldScenarioData : ScenarioData
-{
-    public FieldScenarioData(string eventName, bool isRead = false) : base(eventName, isRead)
-    {
-    }
-
-    [SerializeField] private string upperTestData = "upperTest";
-    public bool IsConditionSatisfied { get; private set; } = true;
-}
-```
-
-### 시나리오 데이터 사용자
 
 <details>
 <summary> SceneScenarioEvent.cs 전체 코드 [접기/펼치기]</summary>
