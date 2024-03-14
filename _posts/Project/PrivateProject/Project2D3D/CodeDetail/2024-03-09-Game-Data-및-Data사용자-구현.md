@@ -39,8 +39,6 @@ public class PlayerData
 
 ### 플레이어 데이터 사용자
 
-[ TODO 사진 플레이어 데이터 사용자 모노비헤비어 사진]
-
 ```csharp
 
 ## ScenarioData 및 ScenarioData 사용자
@@ -129,9 +127,11 @@ public class SceneScenarioEvent : MonoBehaviour
 </div>
 </details>
 
-[TODO ScenarioData 사용자인 SceneScenarioEvent 모노비헤비어 사진]
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/7968ed3e-5784-4388-9e5e-e44717af8a6a)
 
 이 오브젝트는 씬이 시작될 때 ScenarioData를 불러와서 시나리오가 읽혔는지 아닌지를 판단해서 대화를 시작한다.
+
+사진과 같이 씬에 있는 오브젝트에 컴포넌트 추가로 생성한 뒤, 재생할 시나리오 TextAsset을 바인딩해서 사용한다.
 
 만약 한번 읽은 시나리오라면 재생하지 않는다.
 
