@@ -8,7 +8,10 @@ tags: [Unity, ScriptableObject, Project2D3D, Palette, Grid, Automatize]
 
 # Palette Layer Dispatcher 구현
 
-[TODO사진 추가 레이어별 타일 그리드 하이라키]
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/8ae84b19-8796-4466-bc80-25e4eaadbfd2)
+
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/5182bb1d-841d-4c0a-86e0-540ba2dc1387)
+
 
 게임 내에는 다양한 크기의 구조물 오브젝트가 타일맵에 그려져있다. 그 중 2x3 나무나 3x2의 커다란 바위같은 경우도 있는데,
 나무의 같은 경우에는 밑둥에만 충돌 처리가 있고, 윗부분은 충돌처리가 없어야 한다.
@@ -17,7 +20,7 @@ tags: [Unity, ScriptableObject, Project2D3D, Palette, Grid, Automatize]
 
 그러나 이 나무를 그리기 위해서 충돌 레이어에 밑둥을 한번, 윗부분을 비충돌 레이어에 한번 더 그리는 복잡한 작업을 수행해야 한다.
 
-[TODO일일히 그림을 그리는 복잡한 움짤 구현]
+![otd없는프로세스](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/2c670f23-6ec4-4ea8-aa02-8941a50a45bd)
 
 이런 작업을 자동화하기 위해, 레이어별로 타일맵을 그리는 작업을 자동화하는 툴을 만들었다.
 
@@ -289,14 +292,14 @@ public class ObjectTileDispositionDataEditor : EditorWindow
 
 * EditorWindow를 사용하는 전체 모습
 
-[TODOEditorWindow사용하는 움짤 추가]
-
+![otd사용법Full](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/e2d760ed-e0a1-48fd-9015-627c3ea6a6f8)
 
 두개의 화면으로 나뉜다.
 
 #### tileMap 선택
 
-[TODO첫번째 화면 사진 추가]
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/8ed0e177-39cc-4654-854a-b7d2fbcecc66)
+
 
 먼저 첫번째 화면에서는 배치 타겟이 될 tileMap들을 선택한다.
 
@@ -309,7 +312,7 @@ tileMap들을 모두 선택했다면 버튼을 눌러 다음 화면으로 넘어
 
 #### 배치 데이터 생성
 
-[TODO두번째 화면 사진 추가]
+![AddRow](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/abb3a0f9-b5b0-4f77-bfbf-2b5c77006591)
 
 가장 위의 Column Count를 설정할 수 있고, 밑의 AddRow버튼을 눌러서 새로운 Row를 추가할 수 있다.
 
@@ -317,11 +320,12 @@ Row에서는 tileMap 대상을 고를 수 있고, 왼쪽의 네모를 클릭해 
 
 네모를 클릭하면 색이 활성화 되면서 Sprite를 선택할 수 있는 상태임을 시각적으로 알려준다.
 
-[TODO실제로 나무가 그려진 에셋 사진 추가]
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/09c8b5b5-0dce-48b2-a191-2fdc630d693b)
 
 이 상태에서 tileMap의 sprite를 설정하면 [일련의 프로세스"TODO문단 링크 추가"]()를 수행하여서 sprite를 저장하고, 이 sprite를 버튼 위에 보여준다.
 
-[TODO저장하는 모습 추가]
+![SaveOtd](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/4c51c6ad-f8c4-4c74-a443-1ed8246863c4)
+
 
 각 tileMap 레이어들에 모든 오브젝트 sprite들을 배치한 뒤에 밑의 버튼을 눌러 이 에셋을 저장할 수 있다.
 
@@ -441,6 +445,9 @@ else
 
 #### ShowTopMenuZone()
 
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/8f42d098-bb03-42b1-aceb-4e6ce2011bc8)
+
+
 ```csharp
 private void ShowTopMenuZone()
 {
@@ -474,6 +481,9 @@ Column Count를 설정할 수 있고, AddRow버튼을 눌러서 새로운 Row를
 columnCount는 한 Row에 몇개의 타일을 배치할지를 설정하는 필드이다. 이 필드는 5에서 20까지의 값을 가질 수 있다.
 
 #### ShowRowData()
+
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/bf5c1f22-b16e-47dc-9962-67d1b94501a8)
+
 
 ```csharp
 private void ShowRowData()
@@ -596,7 +606,7 @@ public void ResetToggles()
 
 #### ShowBottomMenuZone()
 
-[TODO 바텀메뉴존사진]
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/678a3c79-3a15-4cfc-8eaa-acde9b991d1a)
 
 ```csharp
 private void ShowBottomMenuZone()
