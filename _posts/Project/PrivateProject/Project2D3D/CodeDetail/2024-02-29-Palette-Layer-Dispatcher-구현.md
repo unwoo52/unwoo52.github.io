@@ -322,7 +322,7 @@ Row에서는 tileMap 대상을 고를 수 있고, 왼쪽의 네모를 클릭해 
 
 ![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/09c8b5b5-0dce-48b2-a191-2fdc630d693b)
 
-이 상태에서 tileMap의 sprite를 설정하면 [일련의 프로세스"TODO문단 링크 추가"]()를 수행하여서 sprite를 저장하고, 이 sprite를 버튼 위에 보여준다.
+이 상태에서 tileMap의 sprite를 설정하면 [일련의 프로세스](https://github.com/unwoo52/unwoo52.github.io/blob/main/_posts/Project/PrivateProject/Project2D3D/CodeDetail/2024-02-29-Palette-Layer-Dispatcher-%EA%B5%AC%ED%98%84.md#showbottommenuzone)를 수행하여서 sprite를 저장하고, 이 sprite를 버튼 위에 보여준다.
 
 ![SaveOtd](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/4c51c6ad-f8c4-4c74-a443-1ed8246863c4)
 
@@ -562,7 +562,7 @@ public void ReturnRowData(out List<TileBase> tileBaseOuters, out List<Sprite> sp
 * ShowDropdownList(Tilemap[] targetTilemaps) : 현재 Row의 tileMap을 설정할 수 있는 드롭다운을 보여준다.
 * ReturnRowData(out List<TileBase> tileBaseOuters, out List<Sprite> spriteOuters, out string tilemapNameOuter) : 현재 Row의 데이터를 반환한다.
 
-이 OtdEditorsRow 클래스는 다음 포스트에서 자세히 설명한다. [TODO링크 추가]
+이 OtdEditorsRow 클래스는 [다음 포스트](https://unwoo52.github.io/posts/ObjectTileDispositionData-%EA%B5%AC%ED%98%84/)에서 자세히 설명한다.
 
 <br>
 
