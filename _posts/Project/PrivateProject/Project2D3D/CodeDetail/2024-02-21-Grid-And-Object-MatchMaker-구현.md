@@ -385,6 +385,9 @@ public class GridAnd3dObjectMatchMaker : EditorWindow
 
 ## 기본 기능(설정 및 버튼) 설명
 
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/db777182-71dd-48e1-a6aa-da4836198698)
+
+
 ```csharp
 targetTilemap = (Tilemap)EditorGUILayout.ObjectField("Tilemap", targetTilemap, typeof(Tilemap), true);
 tileObjectParent =
@@ -495,6 +498,10 @@ if (GUILayout.Button("Batch Tiles", new GUIStyle(GUI.skin.button){normal = {text
     Save(filePath);
 }
 ```
+
+* 자동 저장된 파일들. 씬이름_날짜_인덱스
+
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/b187b635-f99b-40e0-819a-b871c1ef6d45)
 
 ---
 
