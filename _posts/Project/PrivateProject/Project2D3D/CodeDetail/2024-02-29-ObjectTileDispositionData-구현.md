@@ -8,11 +8,11 @@ tags: [Unity, ScriptableObject, Project2D3D, Palette, Grid, Automatize]
 
 # ObjectTileDispositionData 구현
 
-이전 포스트 [TODO RuleTile Finder 구현 링크]에서 RuleTile에 대한 정보를 얻는 Tool을 구현하기 위해 사용되는 클래스이다.
+이전 포스트 [Palette Layer Dispatcher 구현](https://unwoo52.github.io/posts/Palette-Layer-Dispatcher-%EA%B5%AC%ED%98%84/)에서 RuleTile에 대한 정보를 얻는 Tool을 구현하기 위해 사용되는 클래스이다.
 
-[TODO otd 데이터 한줄 사진]
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/147cf3cd-d389-45e4-b0f5-9d70f3c46113)
 
-위 사진의 한 줄마다 하나의 ObjectTileDispositionData(이하 otdData) 인스턴스가 존재한다.
+위 사진의 세줄에서 각 한 줄마다 하나의 ObjectTileDispositionData(이하 otdData) 인스턴스가 존재한다.
 
 ## 전체 코드
 
@@ -373,7 +373,7 @@ for (int i = 0; i < toggles.Length; i++)
 }
 ```
 
-[TODO 한 토글에 sprite를 추가하고, 또 이를 다시 클릭해서 없애는 움짤]
+![deleteOtdByClick](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/1d1dc6d5-b874-4765-a3fc-da17c134e397)
 
 만약 이 toggle이 sprite를 갖고 있다면 sprite를 그린다. 다시 버튼을 누르면 sprite와 tileBase를 null로 만들어서, 새 sprite를 입력할 수 있게 했다.
 
@@ -576,7 +576,7 @@ public void ShowDropdownList(Tilemap[] targetTilemaps)
 }
 ```
 
-[TODO 열 하나짜리 사진,, ground ↓ , ㅁㅁㅁㅁ, Remove 이 부분 중 DropDown이 열린 사진]
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/18e5b71b-fdda-4165-8fbd-ae2a14507daf)
 
 tileMap을 선택할 수 있는 DropDown을 보여주는 함수이다. 이를 통해 마우스로 선택할 대상 tileMap을 선택할 수 있다.
 
