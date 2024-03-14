@@ -6,7 +6,7 @@ categories: [Project, PrivateProject, Project2D3D, CodeDetail]
 tags: [Unity, ScriptableObject, Project2D3D, Json, Save, Load]
 ---
 
-# Game Data Manager 구현
+# Game Data Manager
 
 게임 데이터를 저장하고 불러오는 기능을 담당하는 클래스이다.
 
@@ -116,3 +116,4 @@ namespace Manager
 </div>
 </details>
 
+# GameTotalData
