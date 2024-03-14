@@ -8,10 +8,15 @@ tags: [Unity, ScriptableObject, Project2D3D, Palette, Grid, Automatize]
 
 # Random Tile Disposition 구현
 
-[TODO 꽃 바위 사진 추가]
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/eb6a2b98-5526-446c-a588-95c7a409f158)
 
-[TODO EditorWindow 사진 추가]
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/89a07aba-3b09-41a7-8d31-548e97e4d45e)
+
 한칸짜리 꽃이나 바위를 배치하는데, 이정도의 자동화는 아주 빠르게 만들 수 있다는 생각이 들어 즉석에서 만들어서 사용하였다.
+
+* 자동화된 모습
+
+![autoRandomTile](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/5ccce8c1-04a9-4067-8970-430e8187dbe5)
 
 <details>
 <summary> RandomTileDisposition.cs 전체 코드 [접기/펼치기]</summary>
@@ -197,7 +202,8 @@ Event.current.Use();
 EditorUtility.SetDirty(targetTilemap);
 ```
 
-[TODO 하이라키에서 씬 앞에 *이 보이는 표시에 빨간색 그어서 사진 추가하자]
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/2f501c9c-e093-4610-ba2c-f314b4a4f7f3)
+
 이 코드를 실행하지 않으면 Scene이 변경점을 감지하지 못해서 저장과 같은 행동을 할 수 없고, 씬을 벗어날 때 저장할지를 뭍지 않는다.
 
 dirty 상태를 갱신함으로써 Scene이 변경점을 감지하고 저장할지를 물어볼 수 있게 한다.
