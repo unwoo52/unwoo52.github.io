@@ -10,12 +10,22 @@ TODO - 링크 하나 적어야 함
 
 # RuleTile Finder 구현
 
-[링크 적기]Grid And Object MatchMaker을 구현하던 도중 문제가 생겼다.
+[Grid And Object MatchMaker](https://unwoo52.github.io/posts/Grid-And-Object-MatchMaker-%EA%B5%AC%ED%98%84/)을 구현하던 도중 문제가 생겼다.
 
 tile grid에 그려진 TileBase에서는 ruletile에 대한 정보밖에 얻을 수 없었고, 어떤 형태의 sprite인지 알 수 없었다.
 
 TileBase의 모든 함수를 찾아보기도 하고, TileBase를 Tile로 캐스팅 하는 방법 등 여러 방법을 시도하였지만,
 TileBase는 어떤 sprite인지 디버그창에서만 보여줄 수 있을 뿐 함수나 프로퍼티로는 전혀 공개되어 노출 되어있지 않았다.
+
+* 디버그 창에선 tileBase에서 sprite이름을 확인할 수 있다.
+
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/8fa584f6-b032-459e-b3cd-1376c35f2fe3)
+
+* 그러나 공개된 함수와 프로퍼티중에는 sprite를 얻을 수 있는 코드가 없다.
+
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/e37756e7-b063-4f73-a0b3-9518011f76b5)
+
+
 
 때문에 각 8방향별로 다르게 배치되어야 하는 언덕 prefab을 배치하는 것이 불가능했다.
 
