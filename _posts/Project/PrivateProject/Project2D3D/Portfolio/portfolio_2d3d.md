@@ -175,7 +175,7 @@ JRPG는 단순한 게임이니 만큼, **동일한 패턴의 반복 작업이 �
 
 #### sprite <> gameobject match 기능 및 저장 기능
 
-> TODO match image 추가
+> ![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/f88e3910-de1f-471c-9c86-50d74e438ce5)
 >
 > tile grid에 배치된 sprite에 매치되는 3d prefab을 서로 짝지을 수 있는 화면을 구현하고, 이 매치를 저장하고 불러올 수 있는 기능을 구현하였다.
 
@@ -184,7 +184,7 @@ JRPG는 단순한 게임이니 만큼, **동일한 패턴의 반복 작업이 �
 
 #### 랜덤 꽃 타일 배치기
 
-> TODO: 움짤 autoRandomTile 추가
+> ![autoRandomTile](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/a6330797-49a7-4a67-80ed-3c17e8d33974)
 >
 > 간단하게 꽃과 바위 같은 타일을 쉽게 랜덤으로 배치할 수 있는 EditorWindow를 구현하였다.
 
@@ -192,7 +192,7 @@ JRPG는 단순한 게임이니 만큼, **동일한 패턴의 반복 작업이 �
 
 #### layer별 배치 기능 및 저장 기능
 
-> TODO otd 사용법 움짤 추가
+> ![otd사용법Full](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/a4f3bd0b-115c-4311-890d-4c7f11483bd9)
 >
 > 거대한 나무는 밑둥만 충돌처리가 존재하고, 윗부분은 충돌처리가 없는 tile grid에 매치되어야 한다.
 >
@@ -230,11 +230,3 @@ JRPG는 단순한 게임이니 만큼, **동일한 패턴의 반복 작업이 �
 #### game data
 
 > total data에서 받아온 데이터들 중 원하는 데이터를 감별하는 역할을 각각의 game data에게 위임하였다.
-
-#### 게임 저장 시스템 단점과 개선 방향
-
-> 데이터의 수가 많아질수록 데이터를 로드하는 것이 느려진다. 이는 각 data의 구분을 getType으로 얻은 type name 문자열을 데이터 앞에
-> 붙혀두어서 구분지었기 때문이다.
->
-> 이를 개선하기 위해 추상화와 개방폐쇄를 포기하고, game total data가 각 데이터의 type 형태를 알고 있게 하여서 데이터들을 정렬해
-> 저장하게 할 수 있다. 이렇게 하면 원하는 데이터 검색 시간이 빨라지게 될 뿐 아니라, 원치 않는 데이터는 json언박싱을 수행하지 않아도 되게 된다.
