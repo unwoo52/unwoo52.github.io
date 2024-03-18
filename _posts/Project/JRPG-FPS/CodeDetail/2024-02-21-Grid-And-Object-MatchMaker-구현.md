@@ -18,15 +18,20 @@ tile grid에 배치된 sprite에 매치되는 3d prefab을 서로 짝지을 수 
 가령 tile palette의 초록 풀 바닥 타일과, 3d prefab인 초록 풀 오브젝트를 짝지은 뒤 배치 기능을 실행하면
 tile palette에 배치된 초록 풀 바닥 타일에 위치에 대응되는 3d공간에 3d prefab인 초록 풀 오브젝트가 자동으로 배치된다.
 
-### 겪었던 문제들
 
-> 1. sprite와 3d prefab을 저장하고 불러오는 기능이 의도대로 작동하지 않아서 수정하였다.
-> 2. 3d prefab과 sprite를 짝짓는 요소가 몹시 많아져서 화면을 넘어갔기 때문에 scroll view를 구현하였다.
+---
 
-아래 글의 항목에서 이후 자세히 설명한다.
+## 결과물
 
-<br>
-<br>
+> tile의 sprite와 대칭되는 3d prefab을 배치할 수 있는 EditorWindow의 모습
+
+TODO editor사진
+
+> EditorWindow를 이용해 자동으로 타일을 배치한 전 후 모습
+
+grid사진 TODO 배치후 사진
+
+EditorWindow로 각 tile의 sprite들과 3d prefab들을 짝지어서 작업을 실행시키면 자동으로 tileGrid에 배치된 언덕과 동일하게 3d prefab들이 자동으로 배치된다.
 
 ---
 
