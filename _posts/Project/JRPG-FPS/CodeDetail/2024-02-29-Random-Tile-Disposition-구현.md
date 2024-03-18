@@ -18,6 +18,9 @@ tags: [Unity, ScriptableObject, Project2D3D, Palette, Grid, Automatize]
 
 ![autoRandomTile](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/5ccce8c1-04a9-4067-8970-430e8187dbe5)
 
+    마우스를 클릭하는 지점에 4개의 꽃 스프라이트 중 하나가 랜덤으로 그려진다.
+    일일히 TilePalette에서 꽃 tile을 교체해가며 그리지 않아도 된다.
+
 <details>
 <summary> RandomTileDisposition.cs 전체 코드 [접기/펼치기]</summary>
 <div markdown="1">
