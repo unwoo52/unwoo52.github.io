@@ -25,11 +25,13 @@ tile palette에 배치된 초록 풀 바닥 타일에 위치에 대응되는 3d�
 
 > tile의 sprite와 대칭되는 3d prefab을 배치할 수 있는 EditorWindow의 모습
 
-TODO editor사진
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/db777182-71dd-48e1-a6aa-da4836198698)
 
 > EditorWindow를 이용해 자동으로 타일을 배치한 전 후 모습
 
-grid사진 TODO 배치후 사진
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/0f488684-e5b9-4954-b316-29dd245b4477)
+
+![image](https://github.com/unwoo52/unwoo52.github.io/assets/73688472/ba5558b1-7183-4729-b16a-73d294246fc3)
 
 EditorWindow로 각 tile의 sprite들과 3d prefab들을 짝지어서 작업을 실행시키면 자동으로 tileGrid에 배치된 언덕과 동일하게 3d prefab들이 자동으로 배치된다.
 
