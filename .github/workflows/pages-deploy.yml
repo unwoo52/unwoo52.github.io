@@ -58,12 +58,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: "_site${{ steps.pages.outputs.base_path }}"
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: my-artifact
-      - name: Display structure of downloaded files
-        run: ls -R
         
   deploy:
     environment:
