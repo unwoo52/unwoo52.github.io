@@ -59,6 +59,12 @@ jobs:
         with:
           path: "_site${{ steps.pages.outputs.base_path }}"
 
+      - uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+      - name: Display structure of downloaded files
+        run: ls -R
+        
   deploy:
     environment:
       name: github-pages
